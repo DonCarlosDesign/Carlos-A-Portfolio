@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of DONCARLOS - Graphic Designer and Front-End Developer">
+    <title>Portfolio | DONCARLOS Design Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Layer 1.svg" alt="Logo">
+                    <span class="logo-text">DONCARLOS</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Portfolio Hero Section -->
+        <section id="portfolio-hero">
+            <div class="container">
+                <h1>My Portfolio</h1>
+                <p class="lead">A showcase of my best design and development work across various industries and platforms.</p>
+                
+                <div class="portfolio-filter">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="web">Web Design</button>
+                    <button class="filter-btn" data-filter="brand">Brand Identity</button>
+                    <button class="filter-btn" data-filter="print">Print Design</button>
+                    <button class="filter-btn" data-filter="ui">UI/UX</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Project -->
+        <section id="featured-project">
+            <div class="container">
+                <div class="featured-label">Featured Project</div>
+                <div class="featured-project-content">
+                    <div class="featured-project-image">
+                        <img src="images/featured-project.jpg" alt="Healthcare App Design">
+                    </div>
+                    <div class="featured-project-details">
+                        <h2>Healthcare App Design & Development</h2>
+                        <div class="project-meta">
+                            <span class="project-tag">UI/UX</span>
+                            <span class="project-tag">Development</span>
+                            <span class="project-tag">Healthcare</span>
+                        </div>
+                        <p>A comprehensive healthcare application designed to help patients manage appointments, medications, and health records. The project involved extensive user research, prototyping, and development of a responsive web application.</p>
+                        <ul class="project-highlights">
+                            <li>User-centered design with extensive research and testing</li>
+                            <li>Intuitive interface with accessibility considerations</li>
+                            <li>Responsive implementation using modern web technologies</li>
+                            <li>Integration with existing healthcare systems</li>
+                        </ul>
+                        <a href="#" class="btn primary-btn">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Grid -->
+        <section id="portfolio-grid">
+            <div class="container">
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card" data-category="web ui">
+                        <div class="project-thumbnail">
+                            <img src="images/project1.jpg" alt="E-commerce Website Redesign">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>E-commerce Website Redesign</h3>
+                            <p>Revamped online store with improved UX and conversion-focused design.</p>
+                            <div class="project-tags">
+                                <span>Web Design</span>
+                                <span>UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card" data-category="brand">
+                        <div class="project-thumbnail">
+                            <img src="images/project2.jpg" alt="Startup Brand Identity">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Startup Brand Identity</h3>
+                            <p>Complete brand identity package for a tech startup in the finance sector.</p>
+                            <div class="project-tags">
+                                <span>Branding</span>
+                                <span>Logo Design</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card" data-category="ui web">
+                        <div class="project-thumbnail">
+                            <img src="images/project3.jpg" alt="Mobile Banking App">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Mobile Banking App</h3>
+                            <p>User-friendly banking application with focus on security and ease of use.</p>
+                            <div class="project-tags">
+                                <span>UI/UX</span>
+                                <span>Mobile Design</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="project-card" data-category="print">
+                        <div class="project-thumbnail">
+                            <img src="images/project4.jpg" alt="Annual Report Design">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Annual Report Design</h3>
+                            <p>Corporate annual report with data visualization and engaging layout.</p>
+                            <div class="project-tags">
+                                <span>Print Design</span>
+                                <span>Editorial</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 5 -->
+                    <div class="project-card" data-category="brand print">
+                        <div class="project-thumbnail">
+                            <img src="images/project5.jpg" alt="Restaurant Branding">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Restaurant Branding</h3>
+                            <p>Complete branding and menu design for a new upscale restaurant.</p>
+                            <div class="project-tags">
+                                <span>Branding</span>
+                                <span>Print Design</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 6 -->
+                    <div class="project-card" data-category="web ui">
+                        <div class="project-thumbnail">
+                            <img src="images/project6.jpg" alt="Educational Platform">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Educational Platform</h3>
+                            <p>Learning management system with intuitive navigation and engagement features.</p>
+                            <div class="project-tags">
+                                <span>Web Design</span>
+                                <span>UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process">
+            <div class="container">
+                <h2>My Design Process</h2>
+                <p class="section-intro">Every successful project follows a structured process that ensures quality results.</p>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">01</div>
+                        <h3>Discovery</h3>
+                        <p>Understanding your business, goals, target audience, and project requirements through detailed consultation.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">02</div>
+                        <h3>Research</h3>
+                        <p>Market research, competitor analysis, and user research to inform design decisions and strategy.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">03</div>
+                        <h3>Concept & Design</h3>
+                        <p>Creating wireframes, prototypes, and visual designs based on research findings and project goals.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">04</div>
+                        <h3>Development</h3>
+                        <p>Bringing designs to life through clean, efficient code and attention to detail in implementation.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">05</div>
+                        <h3>Testing & Launch</h3>
+                        <p>Rigorous testing across devices and browsers, followed by a smooth launch and handover.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <div class="container">
+                <h2>Client Testimonials</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"Working with DONCARLOS was a fantastic experience. They understood our vision perfectly and delivered a beautiful, functional website that has significantly improved our online presence and user engagement."</p>
+                            <div class="testimonial-author">
+                                <div class="author-name">Sarah Johnson</div>
+                                <div class="author-title">Marketing Director, TechStart Inc.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"The branding package DONCARLOS created for our company perfectly captured our values and vision. Their attention to detail and ability to transform concepts into visual identity is remarkable."</p>
+                            <div class="testimonial-author">
+                                <div class="author-name">Michael Chen</div>
+                                <div class="author-title">CEO, Fusion Financial</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="prev-testimonial"><i class="fas fa-arrow-left"></i></button>
+                    <button class="next-testimonial"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <img src="images/Vector-CTA.svg" alt="Logo Icon">
+                </div>
+                <h2>Have a project in mind?</h2>
+                <p>Let's collaborate to create something amazing that elevates your brand and engages your audience.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn primary-btn">Start a Project <i class="fas fa-arrow-right"></i></a>
+                    <a href="about.html" class="btn secondary-btn">Learn About Me</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo-small">
+                <a href="index.html">
+                    <img src="images/Footer Logo Container.svg" alt="DONCARLOS" class="footer-logo">
+                </a>
+            </div>
+            <div class="social-links-footer">
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 DONCARLOS DESIGN. All Rights Reserved.</p>
+            <p>Powered with <i class="fas fa-heart"></i> by Don Carlos Design</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Portfolio filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            if (card.getAttribute('data-category').includes(filterValue)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Testimonial slider functionality
+            let currentTestimonial = 0;
+            const testimonials = document.querySelectorAll('.testimonial');
+            const prevBtn = document.querySelector('.prev-testimonial');
+            const nextBtn = document.querySelector('.next-testimonial');
+            
+            // Hide all testimonials except the first one
+            testimonials.forEach((testimonial, index) => {
+                if (index !== 0) {
+                    testimonial.style.display = 'none';
+                }
+            });
+            
+            // Previous testimonial button
+            prevBtn.addEventListener('click', function() {
+                testimonials[currentTestimonial].style.display = 'none';
+                currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                testimonials[currentTestimonial].style.display = 'block';
+            });
+            
+            // Next testimonial button
+            nextBtn.addEventListener('click', function() {
+                testimonials[currentTestimonial].style.display = 'none';
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                testimonials[currentTestimonial].style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html> 
