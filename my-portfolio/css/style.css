@@ -277,17 +277,17 @@ header {
 
 /* Mobile menu positioning */
 .mobile-menu-toggle {
+    cursor: pointer;
     display: none;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     transition: all 0.3s ease;
     background-color: transparent;
-    position: relative;
-    font-size: 1.2rem;
+    color: var(--text-color);
+    font-size: 1.2rem; /* Added explicit font size */
 }
 
 .mobile-menu-toggle i {
@@ -296,11 +296,17 @@ header {
     justify-content: center;
     width: 100%;
     height: 100%;
+    opacity: 1; /* Ensure icon is visible */
 }
 
-.mobile-menu-toggle:hover {
-    background-color: rgba(105, 56, 239, 0.1);
-    color: var(--primary-color);
+/* Dark mode specific styles */
+.dark-theme .mobile-menu-toggle {
+    color: #ffffff;
+    opacity: 1; /* Ensure visibility in dark mode */
+}
+
+.dark-theme .mobile-menu-toggle i {
+    opacity: 1; /* Ensure icon is visible in dark mode */
 }
 
 /* Container for icons on the right */

@@ -143,13 +143,19 @@
     }
     
     .mobile-menu-toggle {
-        display: flex;
+        display: flex !important; /* Force display with !important */
         align-items: center;
         justify-content: center;
         width: 40px;
         height: 40px;
-        margin: 0;
-        padding: 0;
+        margin-left: 8px;
+        color: inherit;
+        z-index: 100;
+    }
+
+    .mobile-menu-toggle i {
+        font-size: 1.2rem;
+        opacity: 1;
     }
     
     .hero-content,
@@ -229,6 +235,16 @@
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
+    }
+    
+    .nav-links.active li {
+        margin: 0.75rem 1.5rem;
+        width: calc(100% - 3rem);
+    }
+    
+    .nav-links.active a {
+        width: 100%;
+        display: block;
     }
     
     .dark-theme .nav-links {
@@ -313,7 +329,7 @@
 
 /* Mobile menu toggle styles */
 .mobile-menu-toggle {
-    display: none;
+    display: none; /* Hidden by default on desktop */
 }
 
 @media only screen and (max-width: 768px) {

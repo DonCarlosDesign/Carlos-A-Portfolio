@@ -91,64 +91,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Mobile menu toggle
-    const mobileMenuToggle = document.createElement('div');
-    mobileMenuToggle.className = 'mobile-menu-toggle';
-    mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    
-    const navbar = document.querySelector('.main-nav');
-    const navIcons = document.querySelector('.nav-icons');
+    // Mobile menu functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
-    // Append mobile menu toggle to nav-icons
-    if (navIcons) {
-        navIcons.appendChild(mobileMenuToggle);
-        
-        // Let CSS handle the display property
-        mobileMenuToggle.style.fontSize = '1.2rem';
-    } else {
-        navbar.appendChild(mobileMenuToggle);
-    }
-    
-    // Only create mobile dark mode toggle for mobile view
-    function createMobileThemeToggle() {
-        // Remove any existing mobile theme toggle first
-        const existingToggle = document.querySelector('.mobile-theme-toggle');
-        if (existingToggle) {
-            existingToggle.remove();
-        }
-        
-        if (window.innerWidth < 768 && navLinks) {
-            // Create mobile dark mode toggle
-            const mobileDarkModeToggle = document.createElement('div');
-            mobileDarkModeToggle.className = 'mobile-theme-toggle';
-            mobileDarkModeToggle.innerHTML = `<i class="fas fa-${htmlElement.classList.contains('dark-theme') ? 'sun' : 'moon'}"></i>Toggle Dark Mode`;
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
             
-            // Add mobile dark mode toggle to the navigation links
-            navLinks.appendChild(mobileDarkModeToggle);
-            
-            // Add click event to mobile theme toggle
-            mobileDarkModeToggle.addEventListener('click', function() {
-                toggleTheme();
-            });
-        }
+            // Toggle icon between bars and times
+            const icon = this.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
     }
-    
-    // Initial creation of mobile theme toggle
-    createMobileThemeToggle();
-    
-    // Update toggle on window resize
-    window.addEventListener('resize', createMobileThemeToggle);
-    
-    mobileMenuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-        
-        if (navLinks.classList.contains('active')) {
-            mobileMenuToggle.innerHTML = '<i class="fas fa-times"></i>';
-        } else {
-            mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
     
     // Handle active link based on current page and scrolling
     const links = document.querySelectorAll('.nav-links a');
