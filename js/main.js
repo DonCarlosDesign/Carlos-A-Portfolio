@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Apply saved theme immediately before content is displayed
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const htmlElement = document.documentElement;
+    
+    // Apply saved theme class immediately
+    if (savedTheme === 'dark') {
+        htmlElement.classList.add('dark-theme');
+    }
+    
     // Create page transition element
     const pageTransition = document.createElement('div');
     pageTransition.className = 'page-transition';
@@ -44,17 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Theme toggle functionality
     const themeToggle = document.querySelector('.theme-toggle');
     const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
-    const htmlElement = document.documentElement;
-    
-    // Check for saved theme preference or default to light
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    
-    // Apply theme on page load based on saved preference
-    if (savedTheme === 'dark') {
-        enableDarkMode();
-    } else {
-        disableDarkMode();
-    }
     
     // Add click event to toggle theme
     if (themeToggle) {

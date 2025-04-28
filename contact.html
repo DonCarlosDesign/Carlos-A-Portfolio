@@ -12,6 +12,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prevent flash of white on page load -->
+    <script>
+        (function() {
+            // Apply dark theme immediately if saved in localStorage
+            if(localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+                document.documentElement.style.backgroundColor = '#1a1a1a';
+            }
+        })();
+    </script>
     <!-- Custom styles for contact page -->
     <style>
         .contact-hero-wrapper {
@@ -178,7 +188,7 @@
         }
         
         .dark-theme .faq-question {
-            background-color: var(--section-bg, #1E1e1e);
+            background-color: var(--card-bg, #252525);
             color: var(--text-color, #E2E8F0);
         }
         
@@ -202,7 +212,7 @@
         }
     </style>
 </head>
-<body class="light-theme">
+<body>
     <!-- Header Section -->
     <header>
         <nav class="main-nav">
