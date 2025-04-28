@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function enableDarkMode() {
         htmlElement.classList.add('dark-theme');
         updateThemeIcons('sun');
+        updateFooterLogo('white');
         localStorage.setItem('theme', 'dark');
     }
     
@@ -76,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function disableDarkMode() {
         htmlElement.classList.remove('dark-theme');
         updateThemeIcons('moon');
+        updateFooterLogo('dark');
         localStorage.setItem('theme', 'light');
     }
     
@@ -87,6 +89,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 toggle.innerHTML = `<i class="fas fa-${iconName}"></i>Toggle Dark Mode`;
             } else {
                 toggle.innerHTML = `<i class="fas fa-${iconName}"></i>`;
+            }
+        });
+    }
+    
+    // Add this new function to update footer logo
+    function updateFooterLogo(theme) {
+        const footerLogos = document.querySelectorAll('.footer-logo');
+        footerLogos.forEach(logo => {
+            if (theme === 'white') {
+                // Use white logo for dark theme
+                logo.src = logo.src.replace('Footer-Logo-Optimized-Simple.svg', 'Footer-Logo-White.svg')
+                              .replace('Footer Logo Container-new.svg', 'Footer-Logo-White.svg');
+            } else {
+                // Use dark logo for light theme
+                logo.src = logo.src.replace('Footer-Logo-White.svg', 'Footer-Logo-Optimized-Simple.svg')
+                              .replace('Footer Logo Container-new.svg', 'Footer-Logo-Optimized-Simple.svg');
             }
         });
     }

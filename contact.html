@@ -11,8 +11,149 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom styles for contact page -->
+    <style>
+        .contact-hero-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--color-bg-secondary, #f8f9fa);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--color-text, #333);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 8px;
+            background-color: var(--color-bg, #fff);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color, #6938EF);
+            box-shadow: 0 0 0 2px rgba(105, 56, 239, 0.2);
+            outline: none;
+        }
+        
+        .submit-btn {
+            display: inline-block;
+            padding: 1rem 1.5rem;
+            background-color: var(--primary-color, #6938EF);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary-color, #3B82F6);
+            transform: translateY(-2px);
+        }
+        
+        .form-message {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+        
+        .form-message.success {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: #27ae60;
+        }
+        
+        .form-message.error {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+        }
+        
+        .form-message i {
+            font-size: 1.5rem;
+        }
+        
+        .website-field {
+            display: none;
+        }
+        
+        /* FAQ Section Styling */
+        .faq-container {
+            margin: 3rem 0;
+        }
+        
+        .faq-item {
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            background-color: var(--color-bg-secondary);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .contact-hero-wrapper {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="light-theme">
+    <!-- Header Section -->
     <header>
         <nav class="main-nav">
             <div class="logo">
@@ -39,120 +180,113 @@
     </header>
 
     <main>
-        <!-- Contact Hero Section -->
-        <section id="contact-hero">
+        <section id="contact-hero" class="section">
             <div class="container">
-                <h1>Get In Touch</h1>
-                <p class="lead">Let's discuss your project and see how I can help bring your ideas to life.</p>
-            </div>
-        </section>
-
-        <!-- Contact Information -->
-        <section id="contact-info">
-            <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-form-container">
-                        <h2>Send Me a Message</h2>
-                        <form id="contactForm" class="contact-form">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn primary-btn">Send Message <i class="fas fa-arrow-right"></i></button>
-                        </form>
-                    </div>
-
-                    <div class="contact-details">
-                        <h2>Contact Information</h2>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h3>Email</h3>
-                                <a href="mailto:doncarlosdesign@gmail.com">doncarlosdesign@gmail.com</a>
-                            </div>
+                <div class="section-header text-center">
+                    <h1 class="section-title">Get in Touch</h1>
+                    <p class="section-subtitle">Have a project in mind? I'm here to help bring your vision to life.</p>
+                </div>
+                
+                <div class="contact-hero-wrapper">
+                    <h2>Send Me a Message</h2>
+                    <p>Fill out the form below with your project details, and I'll get back to you as soon as possible to discuss how we can work together.</p>
+                    
+                    <form id="contact-form" class="contact-form" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
                         </div>
                         
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h3>Phone</h3>
-                                <a href="tel:+19085902177">+1 (908) 590-2177</a>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                         </div>
                         
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h3>Location</h3>
-                                <p>584 Old York Road, Branchburg, NJ 08876</p>
-                            </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What is this about?">
                         </div>
                         
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-globe"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h3>Website</h3>
-                                <a href="https://doncarlosdesign.my.canva.site" target="_blank">doncarlosdesign.my.canva.site</a>
-                            </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell me about your project" required></textarea>
                         </div>
                         
-                        <div class="social-links">
-                            <h3>Connect With Me</h3>
-                            <div class="social-icons">
-                                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                                <a href="#" target="_blank"><i class="fab fa-pinterest"></i></a>
-                                <a href="#" target="_blank"><i class="fab fa-behance"></i></a>
-                            </div>
+                        <!-- Honeypot field to prevent spam -->
+                        <div class="form-group website-field">
+                            <label for="website">Website (Leave this empty)</label>
+                            <input type="text" id="website" name="website" autocomplete="off">
                         </div>
-                    </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        
+                        <div class="form-message success">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Your message has been sent successfully!</span>
+                        </div>
+                        
+                        <div class="form-message error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>There was an error sending your message. Please try again.</span>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faq">
+        <section id="faq" class="section">
             <div class="container">
                 <h2>Frequently Asked Questions</h2>
-                <div class="faq-grid">
+                
+                <div class="faq-container">
                     <div class="faq-item">
-                        <h3>What is your design process?</h3>
-                        <p>My design process typically involves discovery, research, ideation, design, development, testing, and launch. I believe in an iterative approach that allows for refinement at each stage.</p>
+                        <div class="faq-question">
+                            <h3>What services do you offer?</h3>
+                            <span class="faq-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>I specialize in web development, focusing on responsive design, front-end development with React.js, and back-end solutions using Node.js. I can help with building websites from scratch, redesigning existing sites, or adding specific functionality to your current platform.</p>
+                        </div>
                     </div>
                     
                     <div class="faq-item">
-                        <h3>How much do your services cost?</h3>
-                        <p>Pricing varies based on project scope, complexity, and timeline. I offer custom quotes after understanding your specific needs and requirements.</p>
+                        <div class="faq-question">
+                            <h3>What is your typical project timeline?</h3>
+                            <span class="faq-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Project timelines vary depending on scope and complexity. A simple website might take 2-4 weeks, while more complex applications could take several months. After our initial discussion, I'll provide you with a detailed timeline estimate for your specific project.</p>
+                        </div>
                     </div>
                     
                     <div class="faq-item">
-                        <h3>How long does a typical project take?</h3>
-                        <p>Project timelines depend on the complexity and scope of work. A simple website might take 2-4 weeks, while more complex projects can take several months.</p>
+                        <div class="faq-question">
+                            <h3>How do you handle revisions?</h3>
+                            <span class="faq-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>I believe in collaborative development and include up to three rounds of revisions in my standard packages. This ensures you're completely satisfied with the final product. For additional revision requests beyond the included rounds, we can discuss a fair rate based on the scope of changes.</p>
+                        </div>
                     </div>
                     
                     <div class="faq-item">
-                        <h3>Do you work with clients remotely?</h3>
-                        <p>Yes, I work with clients worldwide. Modern communication tools make remote collaboration efficient and effective.</p>
+                        <div class="faq-question">
+                            <h3>Do you offer maintenance after project completion?</h3>
+                            <span class="faq-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, I offer ongoing maintenance packages to keep your website secure, up-to-date, and performing optimally. These packages can include regular updates, security monitoring, performance optimization, and content updates. We can customize a maintenance plan that fits your specific needs.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -163,7 +297,7 @@
         <div class="footer-content">
             <div class="logo-small">
                 <a href="index.html">
-                    <img src="images/Footer Logo Container.svg" alt="DONCARLOS" class="footer-logo">
+                    <img src="images/Footer-Logo-Optimized-Simple.svg" alt="DONCARLOS" class="footer-logo">
                 </a>
             </div>
             <div class="social-links-footer">
@@ -181,27 +315,6 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        // Form submission handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // In a real implementation, you would send this data to a server
-            // For demo purposes, we'll just log it to console and show a success message
-            console.log({name, email, subject, message});
-            
-            // Reset form
-            this.reset();
-            
-            // Show success message
-            alert('Thank you for your message! I will get back to you soon.');
-        });
-    </script>
+    <script src="js/contact.js"></script>
 </body>
 </html>

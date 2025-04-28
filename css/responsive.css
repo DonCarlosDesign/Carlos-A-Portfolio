@@ -83,13 +83,14 @@
     }
     
     .logo-item {
-        width: 140px;
-        height: 70px;
-        margin: 0 17px;
+        width: 120px;
+        height: 60px;
+        margin: 0 15px;
     }
     
     .logo-item img {
-        height: 45px;
+        height: 35px;
+        max-width: 100px;
     }
     
     @keyframes marquee {
@@ -99,6 +100,34 @@
     
     .carousel-track {
         animation-duration: 25s; /* Slightly faster for smaller screens */
+    }
+    
+    /* Featured Project Responsive Styles */
+    .featured-project-content {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .featured-project-image {
+        min-height: 300px;
+    }
+    
+    .featured-project-details {
+        padding: 2rem;
+    }
+    
+    .featured-project-details h2 {
+        text-align: center;
+    }
+    
+    .project-meta {
+        text-align: center;
+    }
+    
+    .project-highlights {
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -174,13 +203,14 @@
     }
     
     .logo-item {
-        width: 120px;
-        height: 60px;
-        margin: 0 14px;
+        width: 100px;
+        height: 50px;
+        margin: 0 12px;
     }
     
     .logo-item img {
-        height: 40px;
+        height: 30px;
+        max-width: 80px;
     }
     
     .cta-buttons {
@@ -252,6 +282,27 @@
         backdrop-filter: blur(10px) !important;
         -webkit-backdrop-filter: blur(10px) !important;
     }
+    
+    /* Featured Project Responsive Styles - Mobile */
+    .featured-project-image {
+        min-height: 250px;
+    }
+    
+    .featured-project-details {
+        padding: 1.5rem;
+    }
+    
+    .featured-project-details h2 {
+        font-size: 1.5rem;
+    }
+    
+    .project-tag {
+        margin-bottom: 0.5rem;
+    }
+    
+    .project-highlights {
+        padding-left: 1rem;
+    }
 }
 
 /* Extra small screens (small mobiles, 480px and down) */
@@ -309,17 +360,18 @@
     }
     
     .logo-item {
-        width: 100px;
-        height: 50px;
-        margin: 0 10px;
+        width: 80px;
+        height: 40px;
+        margin: 0 8px;
     }
     
     .logo-item img {
-        height: 35px;
+        height: 25px;
+        max-width: 60px;
     }
     
     .carousel-track {
-        animation-duration: 15s; /* Fastest for smallest screens */
+        animation-duration: 20s;
     }
     
     .services-grid {

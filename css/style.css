@@ -807,29 +807,29 @@ footer {
 .logo-small {
     display: flex;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .logo-small a {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-weight: 700;
-    font-size: 0.9rem; /* Smaller than navbar logo */
-    color: var(--primary-color);
-    transition: color 0.3s ease;
-    letter-spacing: 0.5px;
+    opacity: 1;
+    visibility: visible;
 }
 
 .footer-logo {
     max-width: 150px;
     height: auto;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    filter: invert(30%) sepia(10%) saturate(100%) brightness(90%);
+    transition: transform 0.3s ease;
+    /* No filter by default */
 }
 
 .logo-small a:hover .footer-logo {
     transform: scale(1.05);
-    filter: brightness(1.2) invert(30%) sepia(55%) saturate(3530%) hue-rotate(249deg) brightness(97%) contrast(96%);
+    /* Apply hover effect */
+    filter: brightness(1.2);
 }
 
 .logo-small a:hover {
@@ -840,13 +840,14 @@ footer {
     color: var(--primary-color);
 }
 
+/* Remove the filter for dark theme since we'll use different SVG instead */
 .dark-theme .footer-logo {
-    filter: brightness(0) invert(1);
+    /* No filter needed */
 }
 
 .dark-theme .logo-small a:hover .footer-logo {
     transform: scale(1.05);
-    filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+    filter: brightness(1.2);
 }
 
 .footer-links {
@@ -968,7 +969,7 @@ footer {
 }
 
 #portfolio-grid {
-    padding: 5rem 0;
+    padding: 0 0 8rem;
 }
 
 .projects-grid {
@@ -1656,12 +1657,15 @@ button[type="submit"].btn:hover {
 
 /* Dark Mode Styles */
 .dark-theme {
-    --background-color: #121212;
-    --text-color: #FFFFFF;
+    --primary-color: #8B5CF6;
+    --secondary-color: #60A5FA;
+    --accent-color: #F472B6;
+    --text-color: #E2E8F0;
     --text-light: #B0B0B0;
-    --section-bg: #1E1E1E;
+    --background-color: #121212;
+    --section-bg: #1E1e1e;
     --border-color: #333333;
-    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
     --navbar-bg: #1e1e1e;
     --navbar-text: #e0e0e0;
     --card-bg: #252525;
@@ -1789,7 +1793,7 @@ button[type="submit"].btn:hover {
 
 /* Dark Mode Buttons */
 .dark-theme .secondary-btn {
-    border-color: #444;
+    border-color: #ffffff;
     color: #ffffff;
 }
 
@@ -2003,39 +2007,6 @@ button[type="submit"].btn:hover {
     animation: fadeInFloat 1.2s ease 0.3s backwards, float 7s ease-in-out infinite 1.2s;
 }
 
-/* Page Transition Styles */
-.page-transition {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--background-color);
-    z-index: 9999;
-    pointer-events: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.dark-theme .page-transition {
-    background-color: var(--background-color);
-}
-
-.page-transition.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-@keyframes fadeInPage {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 /* Social Links in Footer */
 .social-links-footer {
     display: flex;
@@ -2082,15 +2053,76 @@ button[type="submit"].btn:hover {
     transform: translateX(5px);
 }
 
-.dark-theme .logo-small a {
-    color: var(--primary-color);
+/* Featured Project Section */
+#featured-section {
+    padding: 4rem 0;
+    background-color: var(--section-bg);
 }
 
-.dark-theme .footer-logo {
-    filter: brightness(1.1);
+.featured-label {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
 }
 
-.dark-theme .logo-small a:hover .footer-logo {
+.featured-project-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.featured-project-image {
+    height: 100%;
+    width: 100%;
+}
+
+.featured-project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.featured-project-content:hover .featured-project-image img {
     transform: scale(1.05);
-    filter: brightness(1.3);
+}
+
+.featured-project-details {
+    padding: 2.5rem;
+}
+
+.featured-project-details h2 {
+    font-size: 1.75rem;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.project-meta {
+    margin-bottom: 1.5rem;
+}
+
+/* Dark Theme Featured Project Styles */
+.dark-theme .featured-project-content {
+    background-color: #252525;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.dark-theme .featured-project-details h2 {
+    color: var(--text-color);
+}
+
+.dark-theme .project-highlights li {
+    color: var(--text-light);
 }
