@@ -1,5 +1,10 @@
 /* Responsive Styles */
 
+/* Hide mobile theme toggle in desktop view */
+.mobile-theme-toggle {
+    display: none;
+}
+
 /* Large screens (laptops/desktops, 1200px and up) */
 @media only screen and (max-width: 1200px) {
     .hero-content,
@@ -129,6 +134,27 @@
         margin-left: auto;
         margin-right: auto;
     }
+    
+    /* Timeline Responsive Styles - Tablets */
+    .timeline::before {
+        left: 30px; /* Move timeline to left side */
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 0;
+    }
+    
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    
+    .timeline-item:nth-child(odd)::after,
+    .timeline-item:nth-child(even)::after {
+        left: 22px; /* Adjust circle position */
+    }
 }
 
 /* Small screens (mobiles, 768px and down) */
@@ -143,6 +169,22 @@
     
     h2 {
         font-size: 1.5rem;
+    }
+
+    /* Show mobile theme toggle in mobile view when dropdown is active */
+    .nav-links.active .mobile-theme-toggle {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1.5rem;
+        margin: 0.75rem 1.5rem;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 100px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-links.active .mobile-theme-toggle:hover {
+        background-color: rgba(105, 56, 239, 0.1);
     }
     
     .main-nav {
@@ -230,6 +272,30 @@
         padding: 0.6rem 1rem;
     }
     
+    /* Timeline Responsive Styles - Mobile */
+    .timeline {
+        padding: 1.5rem 0;
+    }
+    
+    .timeline-item {
+        margin-bottom: 2rem;
+        padding-left: 60px;
+    }
+    
+    .timeline-content {
+        padding: 1.2rem;
+    }
+    
+    .timeline-item::after {
+        width: 12px;
+        height: 12px;
+        top: 18px;
+    }
+    
+    .company, .date {
+        font-size: 0.9rem;
+    }
+    
     .footer-content {
         flex-direction: column;
         gap: 1.5rem;
@@ -274,7 +340,12 @@
     
     .nav-links.active a {
         width: 100%;
-        display: block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.5rem; /* Match desktop button padding */
+        height: 44px; /* Match button height */
+        font-size: 0.9rem; /* Match button font size */
     }
     
     .dark-theme .nav-links {
@@ -317,6 +388,12 @@
     
     .nav-links li {
         margin: 0.5rem;
+    }
+    
+    .nav-links a {
+        padding: 0.6rem 1.2rem; /* Slightly smaller padding for very small screens */
+        height: 40px; /* Slightly reduced height for small screens */
+        font-size: 0.85rem; /* Slightly smaller font for small screens */
     }
     
     .hero-buttons {
@@ -376,6 +453,25 @@
     
     .services-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Timeline Responsive Styles - Extra Small */
+    .timeline-item {
+        padding-left: 50px;
+    }
+    
+    .timeline-content {
+        padding: 1rem;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item::after {
+        left: 12px;
+        width: 10px;
+        height: 10px;
     }
 }
 

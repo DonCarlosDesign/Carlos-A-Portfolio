@@ -25,18 +25,25 @@ document.addEventListener('DOMContentLoaded', function() {
             
             e.preventDefault();
             
-            // Activate transition
-            pageTransition.classList.add('active');
+            // Fade out content first
+            document.body.style.opacity = '0.8';
+            document.body.style.transition = 'opacity 0.3s ease';
             
-            // Navigate after transition completes
+            // Activate transition with a slight delay
             setTimeout(() => {
-                window.location.href = href;
-            }, 500);
+                pageTransition.classList.add('active');
+                
+                // Navigate after transition completes
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 400);
+            }, 100);
         });
     });
     
     // Theme toggle functionality
     const themeToggle = document.querySelector('.theme-toggle');
+    const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
     const htmlElement = document.documentElement;
     
     // Check for saved theme preference or default to light
@@ -52,6 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add click event to toggle theme
     if (themeToggle) {
         themeToggle.addEventListener('click', function() {
+            toggleTheme();
+        });
+    }
+    
+    // Add click event to mobile theme toggle
+    if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', function() {
             toggleTheme();
         });
     }

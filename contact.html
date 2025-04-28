@@ -7,6 +7,7 @@
     <title>Contact | DONCARLOS Design Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -144,6 +145,55 @@
             max-height: 500px;
         }
         
+        /* Dark Mode Styles */
+        .dark-theme .contact-hero-wrapper {
+            background-color: var(--card-bg, #252525);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .dark-theme .contact-hero-wrapper h2,
+        .dark-theme .contact-hero-wrapper p {
+            color: var(--text-color, #E2E8F0);
+        }
+        
+        .dark-theme .form-group label {
+            color: var(--text-color, #E2E8F0);
+        }
+        
+        .dark-theme .form-group input,
+        .dark-theme .form-group textarea {
+            background-color: #333;
+            border-color: #444;
+            color: white;
+        }
+        
+        .dark-theme .form-group input::placeholder,
+        .dark-theme .form-group textarea::placeholder {
+            color: #999;
+        }
+        
+        .dark-theme .faq-item {
+            background-color: var(--card-bg, #252525);
+            border-color: #444;
+        }
+        
+        .dark-theme .faq-question {
+            background-color: var(--section-bg, #1E1e1e);
+            color: var(--text-color, #E2E8F0);
+        }
+        
+        .dark-theme .faq-answer {
+            color: var(--text-light, #B0B0B0);
+        }
+        
+        .dark-theme .form-message.success {
+            background-color: rgba(39, 174, 96, 0.2);
+        }
+        
+        .dark-theme .form-message.error {
+            background-color: rgba(231, 76, 60, 0.2);
+        }
+        
         /* Responsive Styles */
         @media (max-width: 768px) {
             .contact-hero-wrapper {
@@ -167,6 +217,9 @@
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
+                <li class="mobile-theme-toggle">
+                    <i class="fas fa-moon"></i>Toggle Dark Mode
+                </li>
             </ul>
             <div class="nav-icons">
                 <div class="theme-toggle">
@@ -316,5 +369,6 @@
 
     <script src="js/main.js"></script>
     <script src="js/contact.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
