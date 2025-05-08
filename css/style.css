@@ -2244,3 +2244,36 @@ button[type="submit"].btn:hover {
 .dark-theme .project-highlights li {
     color: var(--text-light);
 }
+
+/* NAV-CENTER-FIX */
+@media (min-width: 769px) {
+    .main-nav {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .logo {
+        grid-column: 1;
+    }
+
+    .nav-links {
+        grid-column: 2;
+        position: static;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        background: none;
+        width: 100%;
+    }
+
+    .nav-icons {
+        grid-column: 3;
+        margin: 0;
+    }
+}
+
