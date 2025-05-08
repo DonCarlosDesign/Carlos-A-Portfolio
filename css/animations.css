@@ -7,7 +7,7 @@
     transition-duration: 250ms;
 }
 
-/* Global fade-in animation for the page */
+/* PERF-TEST: disable page fade
 @keyframes fadeInPage {
     0% {
         opacity: 0;
@@ -17,7 +17,6 @@
     }
 }
 
-/* Page transition overlay */
 .page-transition {
     position: fixed;
     top: 0;
@@ -35,6 +34,7 @@
     opacity: 0.9;
     pointer-events: all;
 }
+*/
 
 /* Animations for content based on scroll */
 .fade-in {
@@ -215,4 +215,4 @@ html {
         height: 40px;
         font-size: 1rem;
     }
-} 
+}

@@ -8,10 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
         htmlElement.classList.add('dark-theme');
     }
     
+    /* PERF-TEST: disable page fade
     // Create page transition element
     const pageTransition = document.createElement('div');
     pageTransition.className = 'page-transition';
     document.body.appendChild(pageTransition);
+    */
     
     // Handle page transitions
     document.querySelectorAll('a').forEach(link => {
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
+            /* PERF-TEST: disable page fade
             e.preventDefault();
             
             // Fade out content first
@@ -47,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = href;
                 }, 400);
             }, 100);
+            */
         });
     });
     

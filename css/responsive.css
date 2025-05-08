@@ -374,6 +374,59 @@
     .project-highlights {
         padding-left: 1rem;
     }
+
+    /* Design Process Timeline Responsive Styles - Mobile */
+    .process-steps {
+        flex-direction: column;
+        gap: 2.5rem;
+        padding: 0;
+        margin: 0 1.5rem;
+    }
+
+    .process-steps::before {
+        left: 29px;
+        right: auto;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        height: 100%;
+    }
+
+    .process-step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-gap: 1.5rem;
+        text-align: left;
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        padding-left: 0;
+    }
+
+    .step-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.25rem;
+        margin: 0;
+        align-self: flex-start;
+    }
+
+    .step-content {
+        padding-right: 1rem;
+    }
+
+    .process-step h3 {
+        font-size: 1.1rem;
+        margin: 0.25rem 0 0.75rem;
+        white-space: normal;
+        line-height: 1.4;
+    }
+
+    .process-step p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0;
+    }
 }
 
 /* Extra small screens (small mobiles, 480px and down) */
@@ -472,6 +525,105 @@
         left: 12px;
         width: 10px;
         height: 10px;
+    }
+
+    /* Design Process Timeline Stroke Alignment Fix */
+    .process-steps {
+        margin: 0;
+        padding: 0 1rem;
+    }
+
+    .process-steps::before {
+        left: 19px; /* Perfectly centers the stroke with the 40px circles */
+        width: 2px;
+        height: calc(100% - 30px);
+        top: 20px;
+        background-color: var(--border-color);
+        z-index: 1;
+    }
+
+    .process-step {
+        display: grid;
+        grid-template-columns: 40px 1fr; /* Match column width to circle size */
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .step-number {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 3; /* Keep circles above the stroke */
+    }
+
+    .step-content {
+        position: relative;
+        z-index: 2;
+        padding: 0.5rem 0.75rem;
+        background: var(--background-color);
+        border-radius: 4px;
+        padding-top: 0.5rem; /* Align text with circle vertical center */
+    }
+
+    /* Remove margin from last step for proper stroke end */
+    .process-step:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Design Process Extra Small Screen Adjustments */
+    .process-steps {
+        margin: 0;
+        padding: 0 0.75rem;
+    }
+
+    .process-steps::before {
+        left: 24px;
+        width: 2px;
+        height: calc(100% - 50px);
+        top: 25px;
+    }
+
+    .process-step {
+        grid-template-columns: 50px minmax(0, 1fr);
+        grid-gap: 0.875rem;
+        padding: 0;
+        margin-bottom: 2rem;
+    }
+
+    .process-step:last-child {
+        margin-bottom: 0;
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    .step-content {
+        padding-right: 0.25rem;
+        min-width: 0; /* Ensures text wrapping works properly */
+    }
+
+    .step-content h3 {
+        font-size: 1rem;
+        margin: 0 0 0.5rem;
+    }
+
+    .step-content p {
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin: 0;
+        color: var(--text-light);
+    }
+
+    .section-intro {
+        padding: 0 1rem;
+        margin-bottom: 2rem;
     }
 }
 
