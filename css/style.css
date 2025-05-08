@@ -230,15 +230,86 @@ header {
 }
 
 .nav-links {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 1rem; /* Reduced from 2rem for tighter spacing */
+    gap: 1rem;
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+@media screen and (min-width: 769px) {
+    .nav-links {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main-nav {
+        position: static;
+    }
+    
+    .nav-icons {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile-menu-toggle {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 220px;
+        min-width: 220px;
+        max-width: calc(100vw - 2rem);
+        background-color: rgba(255, 255, 255, 0.97) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        flex-direction: column;
+        padding: 0.75rem 0;
+        display: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+        animation: dropdownFadeIn 0.2s ease forwards;
+    }
+
+    @keyframes dropdownFadeIn {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -8px);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+    }
+
+    /* Reset flex properties on list items */
+    .nav-links li {
+        margin: 0;
+        width: 100%;
+    }
+
+    /* Adjust link styling */
+    .nav-links a {
+        padding: 0.75rem 1.25rem;
+        width: 100%;
+        justify-content: flex-start;
+        white-space: nowrap;
+    }
 }
 
 .nav-links li {
@@ -348,107 +419,92 @@ header {
     margin-left: auto;
     padding-right: 0.5rem;
     flex-shrink: 0;
+    position: relative;
 }
 
 /* Adjustments for mobile view */
 @media only screen and (max-width: 768px) {
     .nav-links {
         position: absolute;
-        left: 0;
-        top: 100%;
-        transform: none;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.8) !important; /* Force opacity with !important */
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
+        top: calc(100% + 0.5rem);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 220px;
+        min-width: 220px;
+        max-width: calc(100vw - 2rem);
+        background-color: rgba(255, 255, 255, 0.97) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
         flex-direction: column;
-        padding: 1rem 0;
+        padding: 0.75rem 0;
         display: none;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         z-index: 1000;
+        flex-shrink: 0;
+        flex-grow: 0;
     }
-    
+
     .nav-links.active {
         display: flex;
+        animation: dropdownFadeIn 0.2s ease forwards;
     }
-    
+
+    /* Reset flex properties on list items */
     .nav-links li {
-        margin: 0.75rem 1.5rem;
+        margin: 0;
+        width: auto;
+        flex: none;
     }
-    
+
+    /* Adjust link styling */
     .nav-links a {
-        transition: all 0.3s ease;
-        transform: none; /* Reset any transform on mobile to avoid layout issues */
-        height: 44px; /* Maintain consistent height on mobile */
-        display: flex; /* Change to flex for better mobile layout */
-        width: 100%; /* Make links take full width of the container */
-        justify-content: flex-start; /* Left align text on mobile */
-        padding: 0 1.5rem; /* Adjust padding for mobile */
-    }
-    
-    .nav-links a:hover {
-        transform: none; /* On mobile, avoid the float effect to prevent layout issues */
-    }
-    
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    .main-nav {
-        justify-content: space-between;
-    }
-    
-    .logo {
-        flex: 1;
-    }
-    
-    /* Hide the theme toggle in the navbar on mobile */
-    .nav-icons .theme-toggle {
-        display: none;
-    }
-    
-    /* Style for the theme toggle when it's in the mobile menu */
-    .mobile-theme-toggle {
+        padding: 0 1.25rem;
+        width: 100%;
+        min-height: 44px;
         display: flex;
         align-items: center;
-        padding: 0 1.5rem;
-        margin: 0.75rem 1.5rem;
-        font-weight: 500;
-        color: var(--navbar-text, #333333);
-        cursor: pointer;
-        border-radius: 100px;
-        transition: all 0.3s ease;
-        height: 44px; /* Match button height */
-        font-size: 0.9rem; /* Match button font size */
-    }
-    
-    .mobile-theme-toggle i {
-        margin-right: 10px;
-    }
-    
-    .mobile-theme-toggle:hover {
-        color: var(--primary-color);
-        background-color: rgba(105, 56, 239, 0.1);
-    }
-    
-    .dark-theme .mobile-theme-toggle {
-        color: #e0e0e0;
-    }
-    
-    .dark-theme .mobile-theme-toggle:hover {
-        background-color: rgba(105, 56, 239, 0.15);
-        color: var(--primary-color);
+        white-space: nowrap;
     }
 
-    .nav-icons {
-        padding-right: 0;
-    }
-
-    .theme-toggle,
+    /* Ensure proper positioning of mobile menu toggle */
     .mobile-menu-toggle {
-        width: 36px; /* Slightly smaller on mobile */
-        height: 36px;
-        font-size: 1.1rem;
+        position: relative;
+        display: flex;
+        margin-left: auto; /* Push to the right */
+        margin-right: 1rem;
+    }
+
+    /* Main nav container adjustments */
+    .main-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        position: relative; /* For dropdown positioning */
+    }
+
+    /* Dark theme specific adjustments */
+    .dark-theme .nav-links {
+        background-color: rgba(30, 30, 30, 0.97) !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Ensure dropdown fade animation doesn't affect width */
+    .nav-links.active {
+        display: flex;
+        animation: dropdownFadeIn 0.2s ease forwards;
+    }
+
+    @keyframes dropdownFadeIn {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -8px);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
     }
 }
 
@@ -1786,10 +1842,9 @@ button[type="submit"].btn:hover {
 /* Mobile dropdown styles - ONLY apply to mobile dropdown when active */
 @media only screen and (max-width: 768px) {
     .dark-theme .nav-links.active {
-        background-color: rgba(30, 30, 30, 0.8) !important;
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        background-color: rgba(30, 30, 30, 0.95) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
     }
 }
 
