@@ -969,14 +969,14 @@ footer {
 }
 
 /* Additional Styles for Portfolio Page */
-#portfolio-hero {
+#projects-hero {
     padding-top: 8rem;
     padding-bottom: 3rem;
     text-align: center;
     background-color: var(--background-color);
 }
 
-.portfolio-filter {
+.project-filter {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -984,27 +984,14 @@ footer {
     gap: 1rem;
 }
 
-.filter-btn {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    padding: 0.75rem 1.5rem;
-    min-width: 120px;
-    height: 44px;
-    border-radius: 100px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+#projects-grid {
+    padding: 0 0 8rem;
 }
 
-.filter-btn.active,
-.filter-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
 }
 
 #featured-project {
@@ -1064,10 +1051,6 @@ footer {
 .project-highlights li {
     margin-bottom: 0.5rem;
     color: var(--text-light);
-}
-
-#portfolio-grid {
-    padding: 0 0 8rem;
 }
 
 .projects-grid {

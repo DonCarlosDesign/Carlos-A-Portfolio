@@ -18,7 +18,7 @@ This portfolio website is designed to highlight professional design and developm
 The portfolio includes the following pages:
 
 1. **Home** - Main landing page with hero section, featured project, client logos, skills, and services
-2. **Portfolio** - Showcase of projects with filtering capability by category
+2. **Projects** - Showcase of projects with filtering capability by category
 3. **About** - Personal information, work experience, education, and approach
 4. **Contact** - Contact form, contact information, and FAQ section
 
@@ -65,4 +65,4 @@ This project is available for personal and commercial use.
 
 - Fonts: [Google Fonts](https://fonts.google.com/)
 - Icons: [Font Awesome](https://fontawesome.com/)
-- Images: Replace with your own 
+- Images: Replace with your own
