@@ -1,21 +1,21 @@
-# DONCARLOS Design Portfolio
+# DONCARLOS Design Projects
 
-A modern, responsive portfolio website showcasing graphic design and front-end development work.
+A modern, responsive website showcasing graphic design and front-end development work.
 
 ## Overview
 
-This portfolio website is designed to highlight professional design and development skills with a clean, modern aesthetic. The site features:
+This website is designed to highlight professional design and development skills with a clean, modern aesthetic. The site features:
 
 - Responsive design that works on all devices
 - Light/dark mode toggle
-- Interactive portfolio filtering
+- Interactive project filtering
 - Project showcases
 - Skills and services sections
 - Contact form
 
 ## Pages
 
-The portfolio includes the following pages:
+The website includes the following pages:
 
 1. **Home** - Main landing page with hero section, featured project, client logos, skills, and services
 2. **Projects** - Showcase of projects with filtering capability by category
@@ -40,12 +40,12 @@ The portfolio includes the following pages:
 
 ## Customization
 
-To customize this portfolio for your own use:
+To customize this website for your own use:
 
 1. Replace image placeholders in the `images` folder with your own images
 2. Update text content in HTML files to reflect your information
 3. Modify colors in the CSS variables (in `css/style.css`) to match your brand
-4. Add your own projects to the portfolio section
+4. Add your own projects to the projects section
 
 ## Browser Support
 

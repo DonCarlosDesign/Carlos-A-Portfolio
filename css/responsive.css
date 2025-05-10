@@ -651,3 +651,21 @@
         margin: 0.75rem 0;
     }
 }
+
+/* ===== Align Design Proficiency intro paragraph ===== */
+#skills > p {
+  /* Match the section’s global horizontal padding */
+  padding: 0 1.5rem;
+  /* Center it and constrain its width like your containers */
+  max-width: 1200px;      /* or whatever your global max-content width is */
+  margin: 0 auto 2rem;    /* auto-center + bottom space to separate from the cards */
+  box-sizing: border-box; /* include the padding in the width */
+}
+
+/* On larger screens you might prefer no side padding: */
+@media (min-width: 992px) {
+  #skills > p {
+    padding: 0;           /* container itself already has enough gutter */
+  }
+}
+
