@@ -22,6 +22,35 @@
             }
         })();
     </script>
+    <style>
+        .briefcase-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+            max-width: 300px;
+        }
+        
+        .briefcase-image {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(105, 56, 239, 0.3));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        
+        .briefcase-image:hover {
+            transform: translateY(-5px);
+            filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.5));
+        }
+
+        /* Dark Mode Support */
+        .dark-theme .briefcase-image {
+            filter: drop-shadow(0 0 20px rgba(105, 56, 239, 0.4));
+        }
+        
+        .dark-theme .briefcase-image:hover {
+            filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.6));
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -56,8 +85,12 @@
         <!-- Projects Hero Section -->
         <section id="projects-hero">
             <div class="container">
-                <h1>My Projects</h1>
+                <h1 class="section-title">My Projects</h1>
                 <p class="lead">A showcase of my best design and development work across various industries and platforms.</p>
+                
+                <div class="briefcase-container">
+                    <img src="images/vecteezy_briefcase-business-pastel-color-3d-render_39324434.png" alt="3D Briefcase illustration" class="briefcase-image">
+                </div>
             </div>
         </section>
 
@@ -65,6 +98,7 @@
         <section id="featured-section">
             <div class="container">
                 <div class="featured-label">Featured Project</div>
+                <h2 class="section-title">Healthcare Experience Design</h2>
                 <div class="featured-project-content">
                     <div class="featured-project-image">
                         <img src="images/work in progress-update.png" alt="Healthcare App Design">
@@ -106,6 +140,7 @@
         <!-- Projects Grid -->
         <section id="projects-grid">
             <div class="container">
+                <h2 class="section-title">More Projects</h2>
                 <div class="projects-grid">
                     <!-- Project 1 -->
                     <div class="project-card" data-category="web ui">
@@ -223,7 +258,7 @@
         <!-- Process Section -->
         <section id="process">
             <div class="container">
-                <h2>My Design Process</h2>
+                <h2 class="section-title">My Design Process</h2>
                 <p class="section-intro">Every successful project follows a structured process that ensures quality results.</p>
                 
                 <div class="process-steps">
@@ -277,7 +312,7 @@
                 <div class="cta-icon">
                     <img src="images/Vector-CTA.svg" alt="Logo Icon">
                 </div>
-                <h2>Have a project in mind?</h2>
+                <h2 class="section-title">Have a project in mind?</h2>
                 <p>Let's collaborate to create something amazing that elevates your brand and engages your audience.</p>
                 <div class="cta-buttons">
                     <a href="contact.html" class="btn primary-btn">Start a Project <i class="fas fa-arrow-right"></i></a>
@@ -295,16 +330,14 @@
                 </a>
             </div>
             <div class="social-links-footer">
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2024 DONCARLOS DESIGN. All Rights Reserved.</p>
-            <p>Powered with <i class="fas fa-heart"></i> by Don Carlos Design</p>
+            <p>&copy; 2025 Don Carlos Design. All Rights Reserved.</p>
+            <p>Engineered at Don Carlos Design, accelerated with AI. <i class="fas fa-heart"></i></p>
         </div>
     </footer>
 

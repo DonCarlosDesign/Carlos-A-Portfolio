@@ -123,4 +123,11 @@ document.addEventListener('DOMContentLoaded', function() {
             */
         });
     });
-}); 
+
+    // Initialize animations specific to the contact page
+    document.querySelectorAll('.section-title').forEach(title => {
+        if (!title.classList.contains('visible')) {
+            title.classList.add('visible');
+        }
+    });
+});

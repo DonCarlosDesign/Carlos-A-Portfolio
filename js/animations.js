@@ -14,6 +14,23 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         updateSectionVisibility();
     });
+
+    // Observer for section titles
+    const sectionTitleObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all section titles
+    document.querySelectorAll('.section-title').forEach(title => {
+        sectionTitleObserver.observe(title);
+    });
 });
 
 // Function to initialize scroll-based animations
@@ -252,4 +269,4 @@ function createBackToTopButton() {
             behavior: 'smooth'
         });
     });
-} 
+}

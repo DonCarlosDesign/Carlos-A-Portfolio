@@ -97,6 +97,7 @@
 .section-title {
     position: relative;
     overflow: hidden;
+    margin-bottom: 1.5rem;
 }
 
 .section-title::after {
@@ -106,13 +107,24 @@
     left: 50%;
     width: 0;
     height: 3px;
-    background-color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     transition: width 600ms ease, left 600ms ease;
+    border-radius: 1.5px;
 }
 
 .section-title.visible::after {
     width: 60px;
     left: calc(50% - 30px);
+}
+
+/* Section title animation for left-aligned titles */
+.section-title.text-left::after {
+    left: 0;
+}
+
+.section-title.text-left.visible::after {
+    width: 60px;
+    left: 0;
 }
 
 /* Enhanced hover animations for various elements */

@@ -22,6 +22,28 @@
             }
         })();
     </script>
+    <style>
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(105, 56, 239, 0.3));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        
+        .hero-image img:hover {
+            transform: translateY(-5px);
+            filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.5));
+        }
+
+        /* Dark Mode Support */
+        .dark-theme .hero-image img {
+            filter: drop-shadow(0 0 20px rgba(105, 56, 239, 0.4));
+        }
+        
+        .dark-theme .hero-image img:hover {
+            filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.6));
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -58,7 +80,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <span class="subtitle">Graphic Design & Front End Development</span>
-                    <h1>Creating <span class="highlight">Digital</span> Experiences That Inspire</h1>
+                    <h1 class="section-title">Creating <span class="highlight">Digital</span> Experiences That Inspire</h1>
                     <p>Empowering brands with purpose-driven design, development, and digital solutions—crafted to align with your vision, values, and growth.</p>
                     <div class="hero-buttons">
                         <a href="contact.html" class="btn primary-btn">Contact Me <i class="fas fa-arrow-right"></i></a>
@@ -129,7 +151,7 @@
 
         <!-- Skills Section -->
         <section id="skills">
-            <h2>Design Proficiency</h2>
+            <h2 class="section-title">Design Proficiency</h2>
             <p>My expertise spans both design and development, allowing me to create cohesive digital experiences from concept to implementation.</p>
             
             <div class="skills-container">
@@ -209,7 +231,7 @@
 
         <!-- Services Section -->
         <section id="services">
-            <h2>Services</h2>
+            <h2 class="section-title">Services</h2>
             <p>I offer a range of design and development services to help businesses create impactful digital and print experiences.</p>
             
             <div class="services-grid">
@@ -269,7 +291,7 @@
                 <div class="cta-icon">
                     <img src="images/Vector-CTA.svg" alt="Logo Icon">
                 </div>
-                <h2>Ready to start your project?</h2>
+                <h2 class="section-title">Ready to start your project?</h2>
                 <p>Let's create something amazing together! Get in touch to discuss your project needs and how I can help bring your vision to life.</p>
                 <div class="cta-buttons">
                     <a href="contact.html" class="btn primary-btn">Get In Touch <i class="fas fa-arrow-right"></i></a>
@@ -287,16 +309,14 @@
                 </a>
             </div>
             <div class="social-links-footer">
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2024 DONCARLOS DESIGN. All Rights Reserved.</p>
-            <p>Powered with <i class="fas fa-heart"></i> by Don Carlos Design</p>
+            <p>&copy; 2025 Don Carlos Design. All Rights Reserved.</p>
+            <p>Engineered at Don Carlos Design, accelerated with AI. <i class="fas fa-heart"></i></p>
         </div>
     </footer>
 

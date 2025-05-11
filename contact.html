@@ -233,6 +233,34 @@
                 padding: 1.5rem;
             }
         }
+
+        .storm-cloud-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+            max-width: 300px;
+        }
+        
+        .storm-cloud-image {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(105, 56, 239, 0.3));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        
+        .storm-cloud-image:hover {
+            transform: translateY(-5px);
+            filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.5));
+        }
+
+        /* Dark Mode Support */
+        .dark-theme .storm-cloud-image {
+            filter: drop-shadow(0 0 20px rgba(105, 56, 239, 0.4));
+        }
+        
+        .dark-theme .storm-cloud-image:hover {
+            filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.6));
+        }
     </style>
 </head>
 <body>
@@ -272,9 +300,13 @@
                     <h1 class="section-title">Get in Touch</h1>
                     <p class="section-subtitle">Have a project in mind? I'm here to help bring your vision to life.</p>
                 </div>
+
+                <div class="storm-cloud-container">
+                    <img src="images/vecteezy_wonderful-classic-glowing-3d-cloud-with-lightning-bolts-4k_56765374.png" alt="Glowing storm cloud with lightning bolts" class="storm-cloud-image">
+                </div>
                 
                 <div class="contact-hero-wrapper">
-                    <h2>Send Me a Message</h2>
+                    <h2 class="section-title">Send Me a Message</h2>
                     <p>Fill out the form below with your project details, and I'll get back to you as soon as possible to discuss how we can work together.</p>
                     
                     <form id="contact-form" class="contact-form" action="#" method="POST">
@@ -324,7 +356,7 @@
 
         <section id="faq" class="section">
             <div class="container">
-                <h2>Frequently Asked Questions</h2>
+                <h2 class="section-title">Frequently Asked Questions</h2>
                 
                 <div class="faq-container">
                     <div class="faq-item">
@@ -387,16 +419,14 @@
                 </a>
             </div>
             <div class="social-links-footer">
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2024 DONCARLOS DESIGN. All Rights Reserved.</p>
-            <p>Powered with <i class="fas fa-heart"></i> by Don Carlos Design</p>
+            <p>&copy; 2025 Don Carlos Design. All Rights Reserved.</p>
+            <p>Engineered at Don Carlos Design, accelerated with AI. <i class="fas fa-heart"></i></p>
         </div>
     </footer>
 

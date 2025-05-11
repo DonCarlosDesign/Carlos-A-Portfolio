@@ -22,6 +22,35 @@
             }
         })();
     </script>
+    <style>
+        .flame-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+            max-width: 300px;
+        }
+        
+        .flame-image {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(255, 87, 34, 0.3));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        
+        .flame-image:hover {
+            transform: translateY(-5px);
+            filter: drop-shadow(0 0 25px rgba(255, 87, 34, 0.5));
+        }
+
+        /* Dark Mode Support */
+        .dark-theme .flame-image {
+            filter: drop-shadow(0 0 20px rgba(255, 87, 34, 0.4));
+        }
+        
+        .dark-theme .flame-image:hover {
+            filter: drop-shadow(0 0 25px rgba(255, 87, 34, 0.6));
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -60,26 +89,22 @@
                     <img src="images/Asset 1-8.png" alt="DONCARLOS Designer" class="profile-photo">
                 </div>
                 <div class="about-text">
-                    <h1>Multimedia Designer & Production Artist</h1>
-                    <p class="lead">A creative, hard-working designer with a deep passion for art and a background that spans over 14 years of experience in the Graphic Design field.</p>
-                    <p>Maintains an extensive knowledge in branding and logo design with expertise in layout design, web banners, web design, photo retouching, presentation design, typographical work and conceptual design. Deadline oriented and efficiency focused with exceptional organizational and communication skills. Through the creative process, assisted in fostering growth of large clientele within the Healthcare space.</p>
-                    <div class="social-links">
-                        <h3>Connect With Me</h3>
-                        <div class="social-icons">
-                            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-pinterest"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-behance"></i></a>
-                        </div>
-                    </div>
+                    <h1 class="section-title">Senior Graphic Designer<br>Front-End Developer</h1>
+                    <p class="lead">My work is a blend of creativity and technology, where I strive to create visually stunning and user-friendly designs that not only meet client expectations but also resonate with their target audience.</p>
+                    <p>With a strong foundation in both design and development, I am able to bridge the gap between aesthetics and functionality, ensuring that every project I undertake is not only visually appealing but also highly effective.</p>
+                    <p>My goal is to create designs that not only look good but also serve a purpose, whether it's enhancing user experience, driving conversions, or building brand identity.</p>
                 </div>
             </div>
         </section>
 
+        <div class="flame-container">
+            <img src="images/vecteezy_a-3d-render-of-a-glossy-orange-flame-icon-illustration-for-a_58264915.png" alt="3D Flame illustration" class="flame-image">
+        </div>
+
         <!-- Experience Section -->
         <section id="experience">
             <div class="container">
-                <h2>Work Experience</h2>
+                <h2 class="section-title">Work Experience</h2>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-content">
@@ -123,7 +148,7 @@
         <!-- Education Section -->
         <section id="education">
             <div class="container">
-                <h2>Education & Certifications</h2>
+                <h2 class="section-title">Education & Certifications</h2>
                 <div class="education-grid">
                     <div class="education-item">
                         <div class="education-icon">
@@ -164,7 +189,7 @@
         <!-- Detailed Skills Section -->
         <section id="detailed-skills">
             <div class="container">
-                <h2>Detailed Skills</h2>
+                <h2 class="section-title">Detailed Skills</h2>
                 <p>My comprehensive skill set spans design, development, and software proficiency, enabling me to deliver complete creative solutions.</p>
                 
                 <div class="detailed-skills-grid">
@@ -224,11 +249,11 @@
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>Illustration</span>
-                                <span class="percentage" data-value="75">0%</span>
+                                <span>Website</span>
+                                <span class="percentage" data-value="90">0%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="75%"></div>
+                                <div class="skill-progress" data-width="90%"></div>
                             </div>
                         </div>
                     </div>
@@ -259,7 +284,7 @@
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>React</span>
+                                <span>AI/LLM</span>
                                 <span class="percentage" data-value="80">0%</span>
                             </div>
                             <div class="skill-bar">
@@ -279,7 +304,7 @@
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>TypeScript</span>
+                                <span>Python</span>
                                 <span class="percentage" data-value="75">0%</span>
                             </div>
                             <div class="skill-bar">
@@ -290,10 +315,10 @@
                         <div class="skill-item">
                             <div class="skill-info">
                                 <span>Web Animation</span>
-                                <span class="percentage" data-value="70">0%</span>
+                                <span class="percentage" data-value="80">0%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="70%"></div>
+                                <div class="skill-progress" data-width="80%"></div>
                             </div>
                         </div>
                     </div>
@@ -389,21 +414,21 @@
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>Procreate</span>
-                                <span class="percentage" data-value="85">0%</span>
+                                <span>Powerpoint</span>
+                                <span class="percentage" data-value="95">0%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="85%"></div>
+                                <div class="skill-progress" data-width="95%"></div>
                             </div>
                         </div>
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>Blender</span>
-                                <span class="percentage" data-value="65">0%</span>
+                                <span>Cursor</span>
+                                <span class="percentage" data-value=90">0%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="65%"></div>
+                                <div class="skill-progress" data-width="90%"></div>
                             </div>
                         </div>
                         
@@ -434,7 +459,7 @@
         <!-- Personal Info Section -->
         <section id="personal">
             <div class="container">
-                <h2>Personal Approach</h2>
+                <h2 class="section-title">Personal Approach</h2>
                 <div class="approach-grid">
                     <div class="approach-item">
                         <div class="approach-icon purple">
@@ -477,7 +502,7 @@
                 <div class="cta-icon">
                     <img src="images/Vector-CTA.svg" alt="Logo Icon">
                 </div>
-                <h2>Interested in working together?</h2>
+                <h2 class="section-title">Interested in working together?</h2>
                 <p>Let's discuss how I can help bring your vision to life with creative design and development solutions.</p>
                 <div class="cta-buttons">
                     <a href="contact.html" class="btn primary-btn">Get In Touch <i class="fas fa-arrow-right"></i></a>
@@ -495,16 +520,14 @@
                 </a>
             </div>
             <div class="social-links-footer">
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2024 DONCARLOS DESIGN. All Rights Reserved.</p>
-            <p>Powered with <i class="fas fa-heart"></i> by Don Carlos Design</p>
+            <p>&copy; 2025 Don Carlos Design. All Rights Reserved.</p>
+            <p>Engineered at Don Carlos Design, accelerated with AI. <i class="fas fa-heart"></i></p>
         </div>
     </footer>
 
