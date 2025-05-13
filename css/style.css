@@ -1062,14 +1062,24 @@ footer {
 }
 
 .featured-label {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--accent-color);
     color: white;
     font-size: 0.8rem;
     font-weight: 600;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
-    margin-bottom: 2rem;
+    margin: 0 auto 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .featured-label {
+        width: auto;
+        max-width: 90%;
+        margin: 0 auto 1.5rem;
+    }
 }
 
 .featured-project-content {
@@ -2227,17 +2237,28 @@ button[type="submit"].btn:hover {
 #featured-section {
     padding: 4rem 0;
     background-color: var(--section-bg);
+    text-align: center;
 }
 
 .featured-label {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--accent-color);
     color: white;
     font-size: 0.8rem;
     font-weight: 600;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .featured-label {
+        width: auto;
+        max-width: 90%;
+        margin: 0 auto 1.5rem;
+    }
 }
 
 .featured-project-content {
@@ -2530,4 +2551,5 @@ button[type="submit"].btn:hover {
 .faq-answer p {
     margin: 0;
     line-height: 1.6;
-} 
+}
+
