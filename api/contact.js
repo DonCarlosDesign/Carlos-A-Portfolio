@@ -32,25 +32,28 @@ export default async function handler(req, res) {
       .json({ error: `Missing required fields: ${missing.join(", ")}` });
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
 
-  await resend.emails.send({
-    from: 'onboarding@resend.dev',
-    to: 'delivered@resend.dev',
-    subject: 'Test Contact Form Submission',
-    html: '<strong>This is a test email</strong>',
-  });
+const { Resend } = require('resend');
 
-  
-    if (!data.id) {
-      console.error('❌ No ID in Resend response:', data);
-      return res.status(500).json({ error: 'Email send failed: No ID in response' });
-    }
-  
-    res.status(200).json({ message: 'Email sent successfully' });
-  } catch (err) {
-    console.error('❌ Resend API Error:', err);
-    res.status(500).json({ error: 'Email send failed' });
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+module.exports = async (req, res) => {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
   }
-  
-}
+
+  try {
+    const { name, email, message } = req.body;
+
+    const data = await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: 'test@resend.dev', // Replace with a Resend testing address if needed
+      subject: `New contact from ${name}`,
+      html: `<p><strong>Email:</strong> ${email}</p><p>${message}</p>`,
+    });
+
+    return res.status(200).json(data);
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
+};
