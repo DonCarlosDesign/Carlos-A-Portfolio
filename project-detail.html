@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project Details - DONCARLOS Design">
+    <title>Project Details | DONCARLOS Design</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prevent flash of white on page load -->
+    <script>
+        (function() {
+            if(localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+                document.documentElement.style.backgroundColor = '#1a1a1a';
+            }
+        })();
+    </script>
+    <style>
+        /* Project Detail Page Specific Styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 5rem;
+        }
+
+        .back-button:hover {
+            background: var(--section-bg);
+            transform: translateX(-5px);
+        }
+
+        .dark-theme .back-button {
+            border-color: #444;
+        }
+
+        .dark-theme .back-button:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            aspect-ratio: 16/9;
+            background: var(--section-bg);
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .pdf-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+            padding: 2rem;
+            background-color: var(--section-bg);
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-link i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .pdf-link span {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .pdf-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .pdf-link:hover i,
+        .pdf-link:hover span {
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Dark mode support */
+        .dark-theme .pdf-link {
+            background-color: var(--card-bg);
+        }
+
+        .dark-theme .pdf-link:hover {
+            background-color: var(--primary-color);
+        }
+
+        .dark-theme .gallery-item video {
+            background-color: var(--card-bg);
+        }
+
+        /* Modal/Lightbox styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                        opacity 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -2rem;
+            right: -2rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* Dark mode support */
+        .dark-theme .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .dark-theme .modal-close {
+            background-color: var(--primary-color);
+        }
+
+        .dark-theme .modal-close:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Accessibility improvements */
+        .modal-close:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-close {
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Layer 1.svg" alt="Logo">
+                    <span class="logo-text">DONCARLOS</span>
+                </a>
+            </div>
+            <div class="nav-icons">
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="mobile-theme-toggle">
+                        <i class="fas fa-moon"></i>Toggle Dark Mode
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="project-detail" class="section">
+            <div class="container">
+                <a href="projects.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Projects
+                </a>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="image">Images</button>
+                    <button class="filter-btn" data-filter="pdf">PDFs</button>
+                    <button class="filter-btn" data-filter="video">Videos</button>
+                </div>
+
+                <div class="project-gallery">
+                    <!-- Gallery items will be dynamically populated -->
+                </div>
+
+                <!-- Modal/Lightbox -->
+                <div class="modal-overlay" role="dialog" aria-label="Image preview">
+                    <div class="modal-content">
+                        <img class="modal-image" src="" alt="" loading="lazy">
+                        <button class="modal-close" aria-label="Close image preview">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo-small">
+                <a href="index.html">
+                    <img src="images/Footer-Logo-Optimized-Simple.svg" alt="DONCARLOS" class="footer-logo">
+                </a>
+            </div>
+            <div class="social-links-footer">
+                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Don Carlos Design. All Rights Reserved.</p>
+            <p>Engineered at Don Carlos Design, accelerated with AI. <i class="fas fa-heart"></i></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Store scroll position when leaving the page
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('scrollPos', window.scrollY);
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        // Add fade-in animation
+                        item.style.opacity = '0';
+                        requestAnimationFrame(() => {
+                            item.style.opacity = '1';
+                        });
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Add smooth animation for filtered items
+        galleryItems.forEach(item => {
+            item.style.transition = 'opacity 0.3s ease';
+        });
+
+        // Lazy loading for gallery items
+        const lazyLoadGallery = () => {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.gallery-item img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        };
+
+        // Function to humanize filenames
+        function humanizeFileName(fileName) {
+            return fileName
+                .replace(/\.[^/.]+$/, '') // Remove extension
+                .replace(/[-_]/g, ' ') // Replace dashes and underscores with spaces
+                .replace(/([A-Z])/g, ' $1') // Add space before capital letters
+                .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+                .trim()
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(' ');
+        }
+
+        // Function to generate gallery HTML
+        function generateGalleryHTML() {
+            const gallery = document.querySelector('.project-gallery');
+            const imageFiles = [
+                // Images
+                "3429-Dental-Preventive-Landing-Page.jpg",
+                "3506-CGNA-Care-Man-YHF-Toolkit2.jpg",
+                "3506-CGNA-Care-Man-YHF-Toolkit3.jpg",
+                "3506-CGNA-Care-Man-YHF-Toolkit4.jpg",
+                "3506-CGNA-Care-Man-YHF-Toolkit5.jpg",
+                "3506-CGNA-Care-Man-YHF-Toolkit6.jpg",
+                "3506-CGNA-Care-Man-YHF-Toolkit7.jpg",
+                "3506-CGNA-Care-Man-YHF-Toolkit8.jpg",
+                "3506-CGNA-Care-Man-YHF-Toolkit9.jpg",
+                "3595-EWC-Website-LP-Refresh-R3.jpg",
+                "3761-CGNA-ATC-Better-Care-Promise-Flyer-R5.png",
+                "3761-CGNA-ATC-Better-Care-Promise-Flyer-R52.png",
+                "3777-CGNA-Broker-Brighter-Match-Infographic.png",
+                "ARCFOX.png",
+                "Artboard 1 copy 3@300x-100.jpg",
+                "Asset 2@180x-100.jpg",
+                "Asset 4@180x-100.jpg",
+                "Banner-ab-small.png",
+                "CEM-Graphic.png",
+                "CEM-Instagram-.png",
+                // Add all your image files here
+            ];
+
+            const pdfFiles = [
+                "tinywow_3622-Accredo-Interchangeable-Biosimilar-Infographic-R3_80354503_10.pdf",
+                "tinywow_3532-CGNA-Vision-Article-4-Women-and-Vision-r4v1_80354503_8.pdf",
+                "tinywow_3515-CGNA-State-of-CT-Provider-Panel-Name-Blurb-R2_80354503_7.pdf",
+                "tinywow_3498-Mental-Health-Infographic-Employer-r4v1_80354503_6.pdf",
+                "tinywow_3429-Dental-Preventive-Landing-Page 2_80354503_5.pdf",
+                "tinywow_3367-CGNA-Vision-Onsite-Pop-Up-Clinic-Overview_80354503_4.pdf",
+                "tinywow_3317 FAQ flyer-r8_80354503_3.pdf",
+                "tinywow_3175-EVN-Inflammatory-Conditions-Topic-r2_80354503_2.pdf",
+                "tinywow_3154 EN MyChart Flyer-r8_80354503_1.pdf",
+                "q4NHSgnw7o2Hs3p5hc42yhjGOX2u9bePhQoQ8SLY.pdf"
+                // All your PDF files will be listed here
+            ];
+
+            // Clear existing content
+            gallery.innerHTML = '';
+
+            // Add Images
+            imageFiles.forEach(file => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.dataset.category = 'image';
+                div.innerHTML = `
+                    <img src="images/projects/${file}" 
+                         alt="${humanizeFileName(file)}" 
+                         loading="lazy">
+                `;
+                gallery.appendChild(div);
+            });
+
+            // Add PDFs
+            pdfFiles.forEach(file => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.dataset.category = 'pdf';
+                div.innerHTML = `
+                    <a href="pdfs/projects/${file}" 
+                       target="_blank" 
+                       class="pdf-link">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>${humanizeFileName(file)}</span>
+                    </a>
+                `;
+                gallery.appendChild(div);
+            });
+        }
+
+        // Modal/Lightbox functionality
+        const modal = document.querySelector('.modal-overlay');
+        const modalImage = modal.querySelector('.modal-image');
+        const modalClose = modal.querySelector('.modal-close');
+        let currentScrollPosition = 0;
+
+        // Handle clicking on gallery images
+        document.querySelector('.project-gallery').addEventListener('click', (e) => {
+            const galleryItem = e.target.closest('.gallery-item[data-category="image"]');
+            if (!galleryItem) return;
+
+            const img = galleryItem.querySelector('img');
+            if (!img) return;
+
+            // Store scroll position and prevent body scroll
+            currentScrollPosition = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${currentScrollPosition}px`;
+            document.body.style.width = '100%';
+
+            // Show modal with image
+            modalImage.src = img.src;
+            modalImage.alt = img.alt;
+            modal.classList.add('active');
+
+            // Focus close button for accessibility
+            modalClose.focus();
+        });
+
+        // Close modal function
+        const closeModal = () => {
+            modal.classList.remove('active');
+            
+            // Restore scroll position
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, currentScrollPosition);
+        };
+
+        // Close modal on button click
+        modalClose.addEventListener('click', closeModal);
+
+        // Close on overlay click (outside image)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Prevent modal image click from closing
+        modalImage.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Initialize gallery
+        document.addEventListener('DOMContentLoaded', () => {
+            generateGalleryHTML();
+            lazyLoadGallery();
+        });
+    </script>
+</body>
+</html>
