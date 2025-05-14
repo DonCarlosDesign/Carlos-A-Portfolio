@@ -1,4 +1,4 @@
-
+// api/contact.js
 const { Resend } = require("resend");
 
 // grab your env vars
@@ -31,12 +31,13 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    // for test mode you can send to test@resend.dev
+    // Use test address in non-prod so Resend will always accept it
     const to = process.env.NODE_ENV === "production"
       ? RECIPIENT_EMAIL
       : "test@resend.dev";
 
-    const result = await resend.emails.send({
+    // Send and deconstruct the response
+    const { data, error } = await resend.emails.send({
       from: "Portfolio Contact <no-reply@resend.dev>",
       to,
       subject: `[Portfolio] ${subject}`,
@@ -44,18 +45,21 @@ module.exports = async function handler(req, res) {
       html: `
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <p><strong>Message:</strong><br/>${message}</p>
       `,
       reply_to: email,
     });
 
-    if (!result || !result.id) {
-      console.error("❌ No ID in Resend response:", result);
+    if (error) {
+      console.error("❌ Resend API error:", error);
+      throw new Error(error.message || "Resend API returned an error");
+    }
+    if (!data || !data.id) {
+      console.error("❌ No ID in Resend data:", data);
       throw new Error("No confirmation ID from Resend");
     }
 
-    return res.status(200).json({ message: "Sent", id: result.id });
+    return res.status(200).json({ message: "Sent", id: data.id });
   } catch (err) {
     console.error("Email send failed:", err);
     return res.status(500).json({ message: "Email send failed", error: err.message });
