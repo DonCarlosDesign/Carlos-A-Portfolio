@@ -32,32 +32,25 @@ export default async function handler(req, res) {
       .json({ error: `Missing required fields: ${missing.join(", ")}` });
   }
 
-  const resend = new Resend(RESEND_API_KEY);
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    const sent = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
-      to:   GMAIL_USER,
-      subject: `[Portfolio] ${subject || "New Message"}`,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong><br/>${message}</p>
-      `,
-      reply_to: email,
+    const data = await resend.emails.send({
+      from: 'Your Name <you@yourdomain.com>',
+      to: ['youremail@example.com'],
+      subject: 'New Contact Form Message',
+      html: '<p>Hello world</p>',
     });
-
-    console.log("✅ Resend response:", sent);
-    if (!sent?.id) {
-      console.error("❌ No ID in Resend response");
-      return res.status(500).json({ error: "Email send failed" });
+  
+    if (!data.id) {
+      console.error('❌ No ID in Resend response:', data);
+      return res.status(500).json({ error: 'Email send failed: No ID in response' });
     }
-
-    return res.status(200).json({ success: true, id: sent.id });
+  
+    res.status(200).json({ message: 'Email sent successfully' });
   } catch (err) {
-    console.error("🔥 Resend API error:", err);
-    return res
-      .status(500)
-      .json({ error: err.message || "Unknown server error" });
+    console.error('❌ Resend API Error:', err);
+    res.status(500).json({ error: 'Email send failed' });
   }
+  
 }
