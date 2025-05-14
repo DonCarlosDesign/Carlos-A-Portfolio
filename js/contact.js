@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorMessage = document.querySelector('.form-message.error');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Check if honeypot field is filled (bot submission)
@@ -49,27 +49,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 message: message
             };
             
-            // Display a loading state
+            // Display loading state
             const submitBtn = contactForm.querySelector('.submit-btn');
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             
-            // Simulate form submission with a delay (replace with actual API call in production)
-            setTimeout(function() {
-                // Reset form
+            try {
+                // Make API call to send email
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || 'Failed to send message');
+                }
+
+                // Reset form on success
                 contactForm.reset();
-                
-                // Reset button
+                showMessage(successMessage, 'Your message has been sent successfully!');
+                console.log('Form submitted successfully:', data);
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showMessage(errorMessage, error.message || 'Failed to send message. Please try again.');
+            } finally {
+                // Reset button state
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
-                
-                // Show success message
-                showMessage(successMessage, 'Your message has been sent successfully!');
-                
-                // Log form data to console (for demonstration)
-                console.log('Form submitted with data:', formData);
-            }, 1500);
+            }
         });
     }
     
@@ -102,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             element.style.display = 'none';
         }, 5000);
     }
-    
+
     // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
     
@@ -112,15 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
         question.addEventListener('click', () => {
             // Toggle active class on the clicked item
             item.classList.toggle('active');
-            
-            // Close other items (uncomment to make it work like an accordion)
-            /*
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
-            });
-            */
         });
     });
 
