@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   try {
     await client.send({
       from: `${name} <${email}>`,
-      to: process.env.GMAIL_USER,  // You can still send it to your Gmail if you'd like
+      to: "doncarlosdesign@gmail.com",  // You can still send it to your Gmail if you'd like
       subject: "Portfolio Contact Form Submission",
       text: message,
       html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong><br/>${message}</p>`

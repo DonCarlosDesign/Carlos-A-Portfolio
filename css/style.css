@@ -611,6 +611,7 @@ header {
     justify-content: center;
     gap: 1rem;
     margin-bottom: 3rem;
+    margin-top: 5rem;
 }
 
 .filter-btn {
@@ -1034,7 +1035,7 @@ footer {
     padding-top: 8rem;
     padding-bottom: 3rem;
     text-align: center;
-    background-color: var(--background-color);
+    background-color: var(--section-bg);
 }
 
 .project-filter {
@@ -1095,7 +1096,8 @@ footer {
 
 .featured-project-details {
     flex: 1;
-    max-width: 600px;
+    max-width: 100%;
+    text-align: left;
 }
 
 .project-meta {
@@ -1122,6 +1124,7 @@ footer {
 .project-highlights li {
     margin-bottom: 0.5rem;
     color: var(--text-light);
+    text-align: left;
 }
 
 .projects-grid {
@@ -1374,7 +1377,7 @@ footer {
 /* About Page Styles */
 #about-hero {
     padding-top: 8rem;
-    padding-bottom: 5rem;
+    padding-bottom: 0rem;
 }
 
 .about-hero-content {
