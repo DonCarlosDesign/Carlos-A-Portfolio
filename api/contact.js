@@ -1,7 +1,6 @@
-import resend from "resend"; // Import Resend
+import { Resend } from "resend";
 
-// Set up Resend client with your API key
-const client = resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -15,16 +14,18 @@ export default async function handler(req, res) {
   }
 
   try {
-    await client.send({
-      from: `${name} <${email}>`,
-      to: "doncarlosdesign@gmail.com",  // You can still send it to your Gmail if you'd like
-      subject: "Portfolio Contact Form Submission",
-      text: message,
-      html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong><br/>${message}</p>`
+    const response = await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: "doncarlosdesign@gmail.com", // Hardcoded for now
+      subject: "New Contact Form Submission",
+      html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong><br/>${message}</p>`,
     });
+
+    console.log("Email send response:", response);
 
     return res.status(200).json({ message: "Message sent successfully" });
   } catch (err) {
-    return res.status(500).json({ message: "Email failed to send", error: err.toString() });
+    console.error("Email send error:", err);
+    return res.status(500).json({ message: "Email failed to send", error: err.message });
   }
 }
