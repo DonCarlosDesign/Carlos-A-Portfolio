@@ -10,12 +10,23 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
-  const { name, email, message } = req.body;
+  const { name, email, message, subject } = req.body;
 
-  if (!name || !email || !message) {
-    return res.status(400).json({ message: "Missing required fields" });
-  }
+if (!name || !email || !message || !subject) {
+  return res.status(400).json({ message: "Missing required fields" });
+}
 
+await client.send({
+    from: `${name} <${email}>`,
+    to: process.env.GMAIL_USER,
+    subject: subject, // <- Use the submitted subject
+    text: message,
+    html: `<p><strong>Name:</strong> ${name}</p>
+           <p><strong>Email:</strong> ${email}</p>
+           <p><strong>Subject:</strong> ${subject}</p>
+           <p><strong>Message:</strong><br/>${message}</p>`
+  });
+  
   try {
     const response = await resend.emails.send({
       from: "onboarding@resend.dev",
