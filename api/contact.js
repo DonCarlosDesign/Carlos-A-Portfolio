@@ -1,6 +1,4 @@
-// api/contact.js
 
-// use require instead of import
 const { Resend } = require("resend");
 
 // grab your env vars
