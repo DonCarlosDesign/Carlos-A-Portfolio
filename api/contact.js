@@ -17,8 +17,8 @@ if (!name || !email || !message || !subject) {
 }
 
 await client.send({
-    from: `${name} <${email}>`,
-    to: process.env.GMAIL_USER,
+    from: "onboarding@resend.dev",
+    to: "doncarlosdesign@gmail.com",
     subject: subject, // <- Use the submitted subject
     text: message,
     html: `<p><strong>Name:</strong> ${name}</p>
