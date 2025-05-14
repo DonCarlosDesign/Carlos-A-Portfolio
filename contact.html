@@ -433,6 +433,63 @@
     <script src="js/main.js"></script>
     <script src="js/contact.js"></script>
     <script src="js/animations.js"></script>
-   
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contact-form");
+        const successMessage = document.querySelector(".form-message.success");
+        const errorMessage = document.querySelector(".form-message.error");
+
+        if (!form) return;
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("name")?.value.trim();
+          const email = document.getElementById("email")?.value.trim();
+          const subject = document.getElementById("subject")?.value.trim();
+          const message = document.getElementById("message")?.value.trim();
+
+          if (!name || !email || !message) {
+            show(errorMessage, "Please fill in all required fields.");
+            return;
+          }
+
+          try {
+            const res = await fetch("/api/contact", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ name, email, subject, message }),
+            });
+
+            let data;
+            try {
+              data = await res.json();
+            } catch {
+              throw new Error("Server returned invalid response.");
+            }
+
+            if (!res.ok) {
+              throw new Error(data.error || "Submission failed");
+            }
+
+            show(successMessage, "Message sent successfully!");
+            form.reset();
+          } catch (err) {
+            show(errorMessage, err.message);
+          }
+        });
+
+        function show(el, text) {
+          document.querySelectorAll(".form-message").forEach((m) => (m.style.display = "none"));
+          if (el) {
+            el.querySelector("span").textContent = text;
+            el.style.display = "flex";
+            setTimeout(() => (el.style.display = "none"), 5000);
+          }
+        }
+      });
+    </script>
 </body>
 </html>
