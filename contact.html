@@ -492,63 +492,63 @@
       });
     </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const form = document.getElementById("contact-form");
-          const successEl = document.querySelector(".form-message.success");
-          const errorEl   = document.querySelector(".form-message.error");
-        
-          if (!form) return;
-        
-          form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const name    = form.name.value.trim();
-            const email   = form.email.value.trim();
-            const subject = form.subject.value.trim();
-            const message = form.message.value.trim();
-        
-            if (!name || !email || !message) {
-              return show(errorEl, "Please fill in all required fields.");
-            }
-        
-            try {
-              const res = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, email, subject, message }),
-              });
-        
-              let data;
-              try {
-                data = await res.json();
-              } catch (parseErr) {
-                console.error("Could not parse JSON:", parseErr);
-                const text = await res.text();
-                console.error("Raw response:", text);
-                throw new Error("Server returned invalid JSON");
-              }
-        
-              if (!res.ok) {
-                console.error("Server error object:", data);
-                throw new Error(data.error || "Unknown server error");
-              }
-        
-              show(successEl, "Your message has been sent!");
-              form.reset();
-            } catch (err) {
-              console.error("Form submission error:", err.message || err);
-              show(errorEl, err.message || "Failed to send message");
-            }
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contact-form");
+      const successEl = document.querySelector(".form-message.success");
+      const errorEl   = document.querySelector(".form-message.error");
+      if (!form) return;
+    
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+    
+        const name    = form.name.value.trim();
+        const email   = form.email.value.trim();
+        const subject = form.subject.value.trim();
+        const message = form.message.value.trim();
+    
+        if (!name || !email || !message) {
+          return show(errorEl, "Please fill in all required fields.");
+        }
+    
+        try {
+          const res = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, subject, message }),
           });
-        
-          function show(el, msg) {
-            document.querySelectorAll(".form-message").forEach(x => x.style.display = "none");
-            el.querySelector("span").textContent = msg;
-            el.style.display = "flex";
-            setTimeout(() => (el.style.display = "none"), 5000);
+    
+          // Read body exactly once:
+          const text = await res.text();
+          let data;
+          try {
+            data = JSON.parse(text);
+          } catch {
+            // not JSON, show raw
+            throw new Error(text || `HTTP ${res.status}`);
           }
-        });
+    
+          if (!res.ok) {
+            throw new Error(data.error || `HTTP ${res.status}`);
+          }
+    
+          show(successEl, "Your message has been sent!");
+          form.reset();
+        } catch (err) {
+          console.error("Form submission error:", err);
+          show(errorEl, err.message || "Failed to send message");
+        }
+      });
+    
+      function show(el, msg) {
+        document.querySelectorAll(".form-message").forEach(x => x.style.display = "none");
+        el.querySelector("span").textContent = msg;
+        el.style.display = "flex";
+        setTimeout(() => el.style.display = "none", 5000);
+      }
+    });
     </script>
+    
         
 </body>
 </html>
