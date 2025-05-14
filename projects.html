@@ -52,6 +52,75 @@
         .dark-theme .briefcase-image:hover {
             filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.6));
         }
+
+        .gallery-nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .gallery-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-decoration: underline;
+        }
+
+        .gallery-link i {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-link:hover {
+            color: var(--primary-color);
+        }
+
+        .gallery-link:hover i {
+            transform: translateX(-5px);
+        }
+
+        .dark-theme .gallery-link {
+            color: var(--text-light);
+        }
+
+        .dark-theme .gallery-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Disable View Project buttons */
+        .project-card {
+            pointer-events: none;
+        }
+
+        .project-overlay {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .view-project {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .project-card:hover {
+            transform: none;
+        }
+
+        .project-card:hover .project-thumbnail img {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-nav {
+                padding: 0 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -98,37 +167,7 @@
                 </div>
             </div>
         </section>
-
-        <!-- Featured Project -->
-        <section id="featured-section">
-            <div class="container">
-                <div class="featured-label">Featured Project</div>
-                <h2 class="section-title">Healthcare Experience Design</h2>
-                <div class="featured-project-content">
-                    <div class="featured-project-image">
-                        <img src="images/work in progress-update.png" alt="Healthcare App Design">
-                    </div>
-                    <div class="featured-project-details">
-                        <h2>Healthcare App Design & Development</h2>
-                        <div class="project-meta">
-                            <span class="project-tag">UI/UX</span>
-                            <span class="project-tag">Development</span>
-                            <span class="project-tag">Healthcare</span>
-                        </div>
-                        <p>A comprehensive healthcare application designed to help patients manage appointments,
-                            medications, and health records. The project involved extensive user research, prototyping,
-                            and development of a responsive web application.</p>
-                        <ul class="project-highlights">
-                            <li>User-centered design with extensive research and testing</li>
-                            <li>Intuitive interface with accessibility considerations</li>
-                            <li>Responsive implementation using modern web technologies</li>
-                            <li>Integration with existing healthcare systems</li>
-                        </ul>
-                        <a href="#" class="btn primary-btn">View Project <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    
 
         <!-- Projects Filter Section -->
         <section id="projects-filter-section">
@@ -147,6 +186,12 @@
         <!-- Projects Grid -->
         <section id="projects-grid">
             <div class="container">
+                <div class="gallery-nav">
+                    <a href="project-detail.html" class="gallery-link">
+                        <i class="fas fa-th"></i>
+                        <span>View Full Gallery</span>
+                    </a>
+                </div>
                 <h2 class="section-title">More Projects</h2>
                 <div class="projects-grid">
                     <!-- Project 1 -->
@@ -154,7 +199,7 @@
                         <div class="project-thumbnail">
                             <img src="images/Slide 16_9 - 5.png" alt="E-commerce Website Redesign">
                             <div class="project-overlay">
-                                <a href="#" class="view-project">View Project</a>
+                                <a href="project-detail.html?project=1" class="view-project">View Project</a>
                             </div>
                         </div>
                         <div class="project-info">
@@ -174,7 +219,7 @@
                         <div class="project-thumbnail">
                             <img src="images/work in progress-update.png" alt="Startup Brand Identity">
                             <div class="project-overlay">
-                                <a href="#" class="view-project">View Project</a>
+                                <a href="project-detail.html?project=2" class="view-project">View Project</a>
                             </div>
                         </div>
                         <div class="project-info">
@@ -192,7 +237,7 @@
                         <div class="project-thumbnail">
                             <img src="images/work in progress-update.png" alt="Mobile Banking App">
                             <div class="project-overlay">
-                                <a href="#" class="view-project">View Project</a>
+                                <a href="project-detail.html?project=3" class="view-project">View Project</a>
                             </div>
                         </div>
                         <div class="project-info">
@@ -210,7 +255,7 @@
                         <div class="project-thumbnail">
                             <img src="images/work in progress-update.png" alt="Annual Report Design">
                             <div class="project-overlay">
-                                <a href="#" class="view-project">View Project</a>
+                                <a href="project-detail.html?project=4" class="view-project">View Project</a>
                             </div>
                         </div>
                         <div class="project-info">
@@ -228,7 +273,7 @@
                         <div class="project-thumbnail">
                             <img src="images/work in progress-update.png" alt="Restaurant Branding">
                             <div class="project-overlay">
-                                <a href="#" class="view-project">View Project</a>
+                                <a href="project-detail.html?project=5" class="view-project">View Project</a>
                             </div>
                         </div>
                         <div class="project-info">
@@ -246,7 +291,7 @@
                         <div class="project-thumbnail">
                             <img src="images/work in progress-update.png" alt="Educational Platform">
                             <div class="project-overlay">
-                                <a href="#" class="view-project">View Project</a>
+                                <a href="project-detail.html?project=6" class="view-project">View Project</a>
                             </div>
                         </div>
                         <div class="project-info">
@@ -415,6 +460,22 @@
                 testimonials[currentTestimonial].style.display = 'none';
                 currentTestimonial = (currentTestimonial + 1) % testimonials.length;
                 testimonials[currentTestimonial].style.display = 'block';
+            });
+        });
+
+        // Restore scroll position when returning to the page
+        window.addEventListener('load', () => {
+            const savedPosition = sessionStorage.getItem('scrollPos');
+            if (savedPosition) {
+                window.scrollTo(0, parseInt(savedPosition));
+                sessionStorage.removeItem('scrollPos');
+            }
+        });
+
+        // Store scroll position when clicking a project link
+        document.querySelectorAll('.view-project').forEach(link => {
+            link.addEventListener('click', () => {
+                sessionStorage.setItem('scrollPos', window.scrollY);
             });
         });
     </script>
