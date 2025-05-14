@@ -1,59 +1,65 @@
-// pages/api/contact.js
-import { Resend } from "resend";
+// api/contact.js
 
-export default async function handler(req, res) {
-  // Always return JSON
-  res.setHeader("Content-Type", "application/json");
+// use require instead of import
+const { Resend } = require("resend");
 
-  const { RESEND_API_KEY, GMAIL_USER } = process.env;
-  if (!RESEND_API_KEY || !GMAIL_USER) {
-    console.error("❌ Missing RESEND_API_KEY or GMAIL_USER");
-    return res
-      .status(500)
-      .json({ error: "Server misconfiguration: missing env vars" });
-  }
+// grab your env vars
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const RECIPIENT_EMAIL = process.env.GMAIL_USER;
 
+if (!RESEND_API_KEY || !RECIPIENT_EMAIL) {
+  console.error("Missing required environment variables");
+  throw new Error("Missing required environment variables");
+}
+
+const resend = new Resend(RESEND_API_KEY);
+
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method Not Allowed" });
+    return res.status(405).json({ message: "Method Not Allowed" });
   }
 
-  console.log("📬 Received body:", req.body);
-
-  const { name, email, subject, message } = req.body || {};
+  const { name, email, subject, message } = req.body;
   const missing = [];
-  if (!name)    missing.push("name");
-  if (!email)   missing.push("email");
+  if (!name) missing.push("name");
+  if (!email) missing.push("email");
+  if (!subject) missing.push("subject");
   if (!message) missing.push("message");
-
   if (missing.length) {
-    console.error("❌ Missing fields:", missing);
-    return res
-      .status(400)
-      .json({ error: `Missing required fields: ${missing.join(", ")}` });
-  }
-
-
-const { Resend } = require('resend');
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-module.exports = async (req, res) => {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+    return res.status(400).json({
+      message: "Missing required fields",
+      error: `Missing: ${missing.join(", ")}`,
+    });
   }
 
   try {
-    const { name, email, message } = req.body;
+    // for test mode you can send to test@resend.dev
+    const to = process.env.NODE_ENV === "production"
+      ? RECIPIENT_EMAIL
+      : "test@resend.dev";
 
-    const data = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'test@resend.dev', // Replace with a Resend testing address if needed
-      subject: `New contact from ${name}`,
-      html: `<p><strong>Email:</strong> ${email}</p><p>${message}</p>`,
+    const result = await resend.emails.send({
+      from: "Portfolio Contact <no-reply@resend.dev>",
+      to,
+      subject: `[Portfolio] ${subject}`,
+      text: message,
+      html: `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
+      reply_to: email,
     });
 
-    return res.status(200).json(data);
-  } catch (error) {
-    return res.status(500).json({ error });
+    if (!result || !result.id) {
+      console.error("❌ No ID in Resend response:", result);
+      throw new Error("No confirmation ID from Resend");
+    }
+
+    return res.status(200).json({ message: "Sent", id: result.id });
+  } catch (err) {
+    console.error("Email send failed:", err);
+    return res.status(500).json({ message: "Email send failed", error: err.message });
   }
 };
