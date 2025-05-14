@@ -61,14 +61,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify(formData)
                 });
 
-                const data = await response.json();
+                let data;
+                try {
+                    data = await response.json();
+                } catch (jsonError) {
+                    console.error('Failed to parse JSON response:', jsonError);
+                    const text = await response.text();
+                    console.error('Raw response:', text);
+                    throw new Error('Server returned invalid JSON response');
+                }
 
                 if (!response.ok) {
-                    throw new Error(data.message || 'Failed to send message');
+                    throw new Error(data.message || data.error || 'Failed to send message');
                 }
 
                 // Reset form on success
@@ -77,7 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Form submitted successfully:', data);
             } catch (error) {
                 console.error('Form submission error:', error);
-                showMessage(errorMessage, error.message || 'Failed to send message. Please try again.');
+                const errorMsg = error.message === 'Server returned invalid JSON response' 
+                    ? 'Server error occurred. Please try again later.'
+                    : error.message || 'Failed to send message. Please try again.';
+                showMessage(errorMessage, errorMsg);
             } finally {
                 // Reset button state
                 submitBtn.disabled = false;
