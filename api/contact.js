@@ -34,13 +34,13 @@ export default async function handler(req, res) {
 
   const resend = new Resend(process.env.RESEND_API_KEY);
 
-  try {
-    const data = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'delivered@resend.dev',
-      subject: 'New Contact Form Message',
-      html: '<p>Hello world</p>',
-    });
+  await resend.emails.send({
+    from: 'onboarding@resend.dev',
+    to: 'delivered@resend.dev',
+    subject: 'Test Contact Form Submission',
+    html: '<strong>This is a test email</strong>',
+  });
+
   
     if (!data.id) {
       console.error('❌ No ID in Resend response:', data);
