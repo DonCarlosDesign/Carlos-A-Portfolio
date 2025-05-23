@@ -416,6 +416,7 @@
 
     .step-content {
         padding-right: 1rem;
+        background-color: transparent;
     }
 
     .process-step h3 {
@@ -429,6 +430,7 @@
         font-size: 0.9rem;
         line-height: 1.6;
         margin: 0;
+        background-color: transparent;
     }
 }
 
@@ -537,7 +539,7 @@
     }
 
     .process-steps::before {
-        left: 19px; /* Perfectly centers the stroke with the 40px circles */
+        left: 19px;
         width: 2px;
         height: calc(100% - 30px);
         top: 20px;
@@ -547,9 +549,10 @@
 
     .process-step {
         display: grid;
-        grid-template-columns: 40px 1fr; /* Match column width to circle size */
+        grid-template-columns: 40px 1fr;
         gap: 1.25rem;
         margin-bottom: 2rem;
+        background-color: transparent;
     }
 
     .step-number {
@@ -559,69 +562,21 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        z-index: 3; /* Keep circles above the stroke */
+        z-index: 3;
     }
 
     .step-content {
         position: relative;
         z-index: 2;
         padding: 0.5rem 0.75rem;
-        background: var(--background-color);
+        background-color: transparent;
         border-radius: 4px;
-        padding-top: 0.5rem; /* Align text with circle vertical center */
+        padding-top: 0.5rem;
     }
 
     /* Remove margin from last step for proper stroke end */
     .process-step:last-child {
         margin-bottom: 0;
-    }
-
-    /* Design Process Extra Small Screen Adjustments */
-    .process-steps {
-        margin: 0;
-        padding: 0 0.75rem;
-    }
-
-    .process-steps::before {
-        left: 24px;
-        width: 2px;
-        height: calc(100% - 50px);
-        top: 25px;
-    }
-
-    .process-step {
-        grid-template-columns: 50px minmax(0, 1fr);
-        grid-gap: 0.875rem;
-        padding: 0;
-        margin-bottom: 2rem;
-    }
-
-    .process-step:last-child {
-        margin-bottom: 0;
-    }
-
-    .step-number {
-        width: 50px;
-        height: 50px;
-        font-size: 1.1rem;
-        margin: 0;
-    }
-
-    .step-content {
-        padding-right: 0.25rem;
-        min-width: 0; /* Ensures text wrapping works properly */
-    }
-
-    .step-content h3 {
-        font-size: 1rem;
-        margin: 0 0 0.5rem;
-    }
-
-    .step-content p {
-        font-size: 0.875rem;
-        line-height: 1.5;
-        margin: 0;
-        color: var(--text-light);
     }
 
     .section-intro {
@@ -654,7 +609,7 @@
 
 /* ===== Align Design Proficiency intro paragraph ===== */
 #skills > p {
-  /* Match the section’s global horizontal padding */
+  /* Match the section's global horizontal padding */
   padding: 0 1.5rem;
   /* Center it and constrain its width like your containers */
   max-width: 1200px;      /* or whatever your global max-content width is */

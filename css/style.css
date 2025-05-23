@@ -1881,15 +1881,112 @@ button[type="submit"].btn:hover {
     --primary-color: #8B5CF6;
     --secondary-color: #60A5FA;
     --accent-color: #F472B6;
-    --text-color: #E2E8F0;
-    --text-light: #B0B0B0;
-    --background-color: #121212;
-    --section-bg: #1E1e1e;
-    --border-color: #333333;
-    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    --text-color: #e0e0e0;
+    --text-light: #999;
+    --background-color: #1a1a1a;
+    --section-bg: #222;
+    --border-color: #333;
+    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     --navbar-bg: #1e1e1e;
     --navbar-text: #e0e0e0;
     --card-bg: #252525;
+}
+
+/* Safari Dark Mode Fix */
+@supports (-webkit-touch-callout: none) {
+    .dark-theme p,
+    .dark-theme .nav-links,
+    .dark-theme .nav-links li,
+    .dark-theme .nav-links a,
+    .dark-theme .mobile-menu-toggle,
+    .dark-theme .theme-toggle,
+    .dark-theme .step-content,
+    .dark-theme .process-step,
+    .dark-theme .timeline-content,
+    .dark-theme .design-process p,
+    .dark-theme .process-step p,
+    .dark-theme .section-intro,
+    .dark-theme .section-intro p {
+        background-color: transparent !important;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        -webkit-text-fill-color: currentColor;
+    }
+
+    /* Mobile-specific fixes */
+    @media only screen and (max-width: 768px) {
+        .dark-theme .nav-links.active {
+            background-color: rgba(30, 30, 30, 0.95) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+        }
+        
+        .dark-theme .nav-links a {
+            background-color: transparent !important;
+        }
+        
+        .dark-theme .nav-links a:hover,
+        .dark-theme .nav-links a.active {
+            background-color: rgba(105, 56, 239, 0.15) !important;
+        }
+
+        .dark-theme .design-process p,
+        .dark-theme .process-step p,
+        .dark-theme .section-intro p {
+            background-color: transparent !important;
+            -webkit-text-fill-color: currentColor;
+        }
+    }
+
+    /* Extra small screen fixes */
+    @media only screen and (max-width: 480px) {
+        .dark-theme .process-steps {
+            margin: 0;
+            padding: 0 0.75rem;
+        }
+
+        .dark-theme .process-step {
+            grid-template-columns: 50px minmax(0, 1fr);
+            grid-gap: 0.875rem;
+            padding: 0;
+            margin-bottom: 2rem;
+            background-color: transparent !important;
+        }
+
+        .dark-theme .step-content {
+            padding-right: 0.25rem;
+            min-width: 0;
+            background-color: transparent !important;
+        }
+
+        .dark-theme .timeline-content {
+            background-color: transparent !important;
+        }
+
+        .dark-theme .nav-links.active {
+            background-color: rgba(30, 30, 30, 0.98) !important;
+        }
+
+        .dark-theme .design-process p,
+        .dark-theme .process-step p,
+        .dark-theme .section-intro p {
+            background-color: transparent !important;
+            -webkit-text-fill-color: currentColor;
+            padding: 0;
+            margin: 0 0 1rem;
+        }
+    }
+}
+
+/* Design Process Dark Mode Fix */
+@media (prefers-color-scheme: dark) {
+    .dark-theme .design-process p,
+    .dark-theme .process-step p,
+    .dark-theme .section-intro p {
+        background-color: transparent !important;
+        -webkit-text-fill-color: currentColor;
+        color: var(--text-light);
+    }
 }
 
 /* Dark Mode Navbar Styles - COMPLETELY RESET */
@@ -2557,5 +2654,55 @@ button[type="submit"].btn:hover {
 .faq-answer p {
     margin: 0;
     line-height: 1.6;
+}
+
+/* Design Process Dark Mode Fix */
+@media (prefers-color-scheme: dark) {
+    .dark-theme .design-process p,
+    .dark-theme .process-step p,
+    .dark-theme .section-intro p {
+        background-color: transparent !important;
+        -webkit-text-fill-color: currentColor;
+        color: var(--text-light);
+    }
+}
+
+/* Social Icons - Base Styles */
+.social-icons,
+.social-links-footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icons a,
+.social-links-footer a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.social-icons a:hover,
+.social-links-footer a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Dark Mode Styles */
+.dark-theme .social-icons a,
+.dark-theme .social-links-footer a {
+    color: var(--text-light);
+}
+
+.dark-theme .social-icons a:hover,
+.dark-theme .social-links-footer a:hover {
+    color: var(--primary-color);
 }
 
