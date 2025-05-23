@@ -863,11 +863,12 @@ header {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(105, 56, 239, 0.15);
 }
 
 .service-icon {
@@ -1552,12 +1553,13 @@ social-links {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
 }
 
 .approach-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(105, 56, 239, 0.15);
 }
 
 .approach-icon {
@@ -1843,11 +1845,12 @@ button[type="submit"].btn:hover {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(105, 56, 239, 0.15);
 }
 
 .service-icon {
