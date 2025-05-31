@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- Added site favicon using existing brand image
 - New hover animations system:
   - Created dedicated `hover-animations.css` for centralized animation management
   - Added safe hover effects for cards, images, buttons, icons, and links
