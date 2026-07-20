@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EverTrust Bank Mobile App Redesign — a concept case study by DONCARLOS Design exploring a UX/UI redesign for a mobile banking app.">
+    <title>EverTrust Bank Mobile App | DONCARLOS Design</title>
+    <link rel="icon" href="images/DCD-Logo-Mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/case-study.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prevent flash of white on page load -->
+    <script>
+        (function() {
+            if(localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+                document.documentElement.style.backgroundColor = '#1a1a1a';
+            }
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Layer 1.svg" alt="Logo">
+                    <span class="logo-text">DONCARLOS</span>
+                </a>
+            </div>
+            <div class="nav-icons">
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="mobile-theme-toggle">
+                        <i class="fas fa-moon"></i>Toggle Dark Mode
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Case Study Hero -->
+        <section class="case-hero">
+            <div class="container">
+                <a href="projects.html" class="case-back"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+
+                <div class="case-hero-labels">
+                    <div class="case-hero-label">UX/UI Case Study</div>
+                    <span class="concept-tag"><i class="fas fa-flask"></i> Concept Project</span>
+                </div>
+                <h1>EverTrust Bank — Mobile Banking Redesign</h1>
+                <p class="lead">A self-directed UX/UI exploration for a mid-size bank's mobile app, built around a simple brief: make digital banking feel calm and trustworthy instead of corporate and cluttered.</p>
+
+                <div class="case-tags">
+                    <span>UX/UI Design</span>
+                    <span>Mobile App</span>
+                    <span>Fintech</span>
+                </div>
+
+                <div class="case-hero-media">
+                    <img src="images/projects/evertrust/wireframe-mockups.webp" alt="EverTrust mobile banking app wireframe screens: dashboard, send money, transfer, budget, recent, more">
+                </div>
+
+                <div class="case-meta">
+                    <div class="case-meta-item">
+                        <h4>Client</h4>
+                        <p>EverTrust Bank (concept)</p>
+                    </div>
+                    <div class="case-meta-item">
+                        <h4>Role</h4>
+                        <p>UX/UI Designer</p>
+                    </div>
+                    <div class="case-meta-item">
+                        <h4>Platform</h4>
+                        <p>iOS &amp; Android</p>
+                    </div>
+                    <div class="case-meta-item">
+                        <h4>Year</h4>
+                        <p>2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem / Approach / Solution -->
+        <section id="case-narrative">
+            <div class="container">
+                <div class="case-narrative">
+                    <div class="case-narrative-item">
+                        <span class="case-step-label">01</span>
+                        <h3>The Brief</h3>
+                        <p>EverTrust's mobile app was functional but dated — a common story for mid-size banks competing against Chime, SoFi, and Monzo. The ask: a full UX/UI redesign that simplifies day-to-day banking while making security and trust feel built-in, not bolted-on.</p>
+                    </div>
+                    <div class="case-narrative-item">
+                        <span class="case-step-label">02</span>
+                        <h3>The Approach</h3>
+                        <p>Concepted an interface around one idea: reduce friction on the tasks people do daily — checking balances, sending money, tracking budgets — before adding anything else. Explored four logo directions (a shield, a lettermark, a swirl, a skyline) to find a mark that read as secure without feeling cold.</p>
+                    </div>
+                    <div class="case-narrative-item">
+                        <span class="case-step-label">03</span>
+                        <h3>The Direction</h3>
+                        <p>Landed on a calm navy-and-teal UI kit with clear visual hierarchy: a dashboard-first layout, biometric login front and center, and a budget tracker that uses a simple progress ring instead of overwhelming charts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Concept Gallery -->
+        <section id="case-gallery-section" class="case-section-alt">
+            <div class="container">
+                <h2>Concept Direction</h2>
+                <p class="section-intro">Early logo exploration and the resulting UI kit — built to feel secure, modern, and easy to scan at a glance.</p>
+
+                <div class="case-gallery">
+                    <figure class="case-figure">
+                        <img src="images/projects/evertrust/logo-sketches.webp" alt="Four early logo concept sketches for the EverTrust mobile app icon: shield, lettermark, swirl, and skyline">
+                        <figcaption>Early app-icon concepts — shield, lettermark, swirl, and skyline directions.</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img src="images/projects/evertrust/ui-kit-preview.webp" alt="EverTrust UI kit preview showing buttons, inputs, account overview, and send-money screens">
+                        <figcaption>UI kit preview — components, account overview, and send-money flow.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables -->
+        <section id="case-deliverables">
+            <div class="container">
+                <h2>Deliverables</h2>
+                <p class="section-intro">Scoped as a concept UX/UI package, not a full production build.</p>
+
+                <ul class="project-highlights">
+                    <li>Complete wireframe set for six key mobile screens</li>
+                    <li>UI kit covering buttons, inputs, cards, and account views</li>
+                    <li>Four early logo/app-icon concept directions</li>
+                    <li>Brand tone: calm, trustworthy, jargon-free copy direction</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <img src="images/Vector-CTA.svg" alt="Logo Icon">
+                </div>
+                <h2>Have a product that needs a UX pass?</h2>
+                <p>Let's turn a rough brief into an interface people actually enjoy using.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn primary-btn">Start a Project <i class="fas fa-arrow-right"></i></a>
+                    <a href="projects.html" class="btn secondary-btn">See More Work</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo-small">
+                <a href="index.html">
+                    <img src="images/Footer-Logo-Optimized-Simple.svg" alt="DONCARLOS" class="footer-logo">
+                </a>
+            </div>
+            <div class="social-links-footer">
+                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; <span id="copyright-year">2024</span> DONCARLOS DESIGN. All Rights Reserved.</p>
+            <p>Powered with <i class="fas fa-heart"></i> by Don Carlos Design</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
