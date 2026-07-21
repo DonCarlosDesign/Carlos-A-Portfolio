@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Projects by DONCARLOS - Graphic Designer and Front-End Developer">
     <title>Projects | DONCARLOS Design</title>
+    <link rel="icon" href="images/DCD-Logo-Mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/animations.css">
@@ -24,35 +25,6 @@
             }
         })();
     </script>
-    <style>
-        .briefcase-container {
-            display: flex;
-            justify-content: center;
-            margin: 2rem auto;
-            max-width: 300px;
-        }
-
-        .briefcase-image {
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(105, 56, 239, 0.3));
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        .briefcase-image:hover {
-            transform: translateY(-5px);
-            filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.5));
-        }
-
-        /* Dark Mode Support */
-        .dark-theme .briefcase-image {
-            filter: drop-shadow(0 0 20px rgba(105, 56, 239, 0.4));
-        }
-
-        .dark-theme .briefcase-image:hover {
-            filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.6));
-        }
-    </style>
 </head>
 
 <body>
@@ -87,14 +59,15 @@
     <main>
         <!-- Projects Hero Section -->
         <section id="projects-hero">
-            <div class="container">
-                <h1 class="section-title">My Projects</h1>
-                <p class="lead">A showcase of my best design and development work across various industries and
-                    platforms.</p>
-
-                <div class="briefcase-container">
-                    <img src="images/vecteezy_briefcase-business-pastel-color-3d-render_39324434.png"
-                        alt="3D Briefcase illustration" class="briefcase-image">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>My <span class="highlight">Projects</span></h1>
+                    <p class="lead">A showcase of my best design and development work across various industries and platforms.</p>
+                </div>
+                <div class="hero-image">
+                    <div class="decor-image-container">
+                        <img src="images/decor-briefcase.webp" alt="3D briefcase illustration" class="decor-image">
+                    </div>
                 </div>
             </div>
         </section>
@@ -103,28 +76,25 @@
         <section id="featured-section">
             <div class="container">
                 <div class="featured-label">Featured Project</div>
-                <h2 class="section-title">Healthcare Experience Design</h2>
                 <div class="featured-project-content">
                     <div class="featured-project-image">
-                        <img src="images/work in progress-update.png" alt="Healthcare App Design">
+                        <img src="images/projects/kitd/spread-brand-story.webp" alt="KITD brand story spread from the brand identity guidelines">
                     </div>
                     <div class="featured-project-details">
-                        <h2>Healthcare App Design & Development</h2>
+                        <h2>KITD Brand Identity</h2>
                         <div class="project-meta">
-                            <span class="project-tag">UI/UX</span>
-                            <span class="project-tag">Development</span>
-                            <span class="project-tag">Healthcare</span>
+                            <span class="project-tag">Brand Identity</span>
+                            <span class="project-tag">Logo Design</span>
+                            <span class="project-tag">Visual Identity System</span>
                         </div>
-                        <p>A comprehensive healthcare application designed to help patients manage appointments,
-                            medications, and health records. The project involved extensive user research, prototyping,
-                            and development of a responsive web application.</p>
+                        <p>A full brand identity system for a premium wall-mounted sports gear display — built before the product ever shipped. The project covered brand strategy, a six-version logo system, and a complete visual identity guideline.</p>
                         <ul class="project-highlights">
-                            <li>User-centered design with extensive research and testing</li>
-                            <li>Intuitive interface with accessibility considerations</li>
-                            <li>Responsive implementation using modern web technologies</li>
-                            <li>Integration with existing healthcare systems</li>
+                            <li>Brand story, positioning, and voice defined from scratch</li>
+                            <li>Six-version logo system for dark, light, and print use cases</li>
+                            <li>A distinct shape language derived from the wordmark itself</li>
+                            <li>Full guidelines document plus a plain-language file guide</li>
                         </ul>
-                        <a href="#" class="btn primary-btn">View Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="project-kitd.html" class="btn primary-btn">View Project <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -150,19 +120,18 @@
                 <h2 class="section-title">More Projects</h2>
                 <div class="projects-grid">
                     <!-- Project 1 -->
-                    <div class="project-card" data-category="web ui">
+                    <div class="project-card" data-category="web brand ui">
                         <div class="project-thumbnail">
-                            <img src="images/Slide 16_9 - 5.png" alt="E-commerce Website Redesign">
+                            <img src="images/projects/clover-thread/hero-redesign-mockup.webp" alt="Clover & Thread Brand & Web Redesign">
                             <div class="project-overlay">
-                                <a href="#" class="view-project">View Project</a>
+                                <a href="project-clover-thread.html" class="view-project">View Project</a>
                             </div>
                         </div>
                         <div class="project-info">
-                            <h3>E-commerce Website Redesign</h3>
-                            <p>Revamped online store with improved UX and conversion-focused design.</p>
+                            <h3>Clover &amp; Thread Redesign</h3>
+                            <p>Brand refresh and e-commerce redesign for a sustainable fashion label, driven by real conversion data.</p>
                             <div class="project-tags">
                                 <span>Web Design</span>
-                                <span>UI/UX</span>
                                 <span>Branding</span>
                                 <span>Logo Design</span>
                             </div>
@@ -172,14 +141,14 @@
                     <!-- Project 2 -->
                     <div class="project-card" data-category="brand">
                         <div class="project-thumbnail">
-                            <img src="images/work in progress-update.png" alt="Startup Brand Identity">
+                            <img src="images/projects/kitd/hero-cover.webp" alt="KITD Brand Identity">
                             <div class="project-overlay">
-                                <a href="#" class="view-project">View Project</a>
+                                <a href="project-kitd.html" class="view-project">View Project</a>
                             </div>
                         </div>
                         <div class="project-info">
-                            <h3>Startup Brand Identity</h3>
-                            <p>Complete brand identity package for a tech startup in the finance sector.</p>
+                            <h3>KITD Brand Identity</h3>
+                            <p>Full brand identity system for a premium wall-mounted sports gear display, from strategy to a six-version logo system.</p>
                             <div class="project-tags">
                                 <span>Branding</span>
                                 <span>Logo Design</span>
@@ -190,36 +159,38 @@
                     <!-- Project 3 -->
                     <div class="project-card" data-category="ui web">
                         <div class="project-thumbnail">
-                            <img src="images/work in progress-update.png" alt="Mobile Banking App">
+                            <img src="images/projects/evertrust/wireframe-mockups.webp" alt="EverTrust Bank Mobile App Redesign">
                             <div class="project-overlay">
-                                <a href="#" class="view-project">View Project</a>
+                                <a href="project-evertrust.html" class="view-project">View Project</a>
                             </div>
                         </div>
                         <div class="project-info">
-                            <h3>Mobile Banking App</h3>
-                            <p>User-friendly banking application with focus on security and ease of use.</p>
+                            <h3>EverTrust Mobile Banking</h3>
+                            <p>UX/UI redesign concept for a mobile banking app, focused on security and ease of use.</p>
                             <div class="project-tags">
                                 <span>UI/UX</span>
                                 <span>Mobile Design</span>
                             </div>
+                            <span class="concept-tag"><i class="fas fa-flask"></i> Concept Project</span>
                         </div>
                     </div>
 
                     <!-- Project 4 -->
                     <div class="project-card" data-category="print">
                         <div class="project-thumbnail">
-                            <img src="images/work in progress-update.png" alt="Annual Report Design">
+                            <img src="images/projects/vantrex/hero-mockup.webp" alt="Vantrex Global Holdings Annual Report Design">
                             <div class="project-overlay">
-                                <a href="#" class="view-project">View Project</a>
+                                <a href="project-vantrex.html" class="view-project">View Project</a>
                             </div>
                         </div>
                         <div class="project-info">
-                            <h3>Annual Report Design</h3>
-                            <p>Corporate annual report with data visualization and engaging layout.</p>
+                            <h3>Vantrex Annual Report</h3>
+                            <p>Corporate annual report concept with data visualization and engaging layout.</p>
                             <div class="project-tags">
                                 <span>Print Design</span>
                                 <span>Editorial</span>
                             </div>
+                            <span class="concept-tag"><i class="fas fa-flask"></i> Concept Project</span>
                         </div>
                     </div>
 
@@ -256,6 +227,44 @@
                                 <span>Web Design</span>
                                 <span>UI/UX</span>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 7 -->
+                    <div class="project-card" data-category="print brand">
+                        <div class="project-thumbnail">
+                            <img src="images/projects/cigna/toolkit-01.webp" alt="Cigna & Evernorth Healthcare Collateral">
+                            <div class="project-overlay">
+                                <a href="project-cigna.html" class="view-project">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Cigna &amp; Evernorth Healthcare Collateral</h3>
+                            <p>Print and digital design collateral for healthcare campaigns, toolkits, and provider-matching tools.</p>
+                            <div class="project-tags">
+                                <span>Print Design</span>
+                                <span>Healthcare</span>
+                                <span>Editorial</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 8 -->
+                    <div class="project-card" data-category="brand">
+                        <div class="project-thumbnail">
+                            <img src="images/projects/finvero/hero-mockup.webp" alt="Finvero Startup Brand Identity">
+                            <div class="project-overlay">
+                                <a href="project-finvero.html" class="view-project">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Finvero Brand Identity</h3>
+                            <p>Brand identity concept for an AI-driven personal finance app aimed at Gen Z and Millennials.</p>
+                            <div class="project-tags">
+                                <span>Branding</span>
+                                <span>Logo Design</span>
+                            </div>
+                            <span class="concept-tag"><i class="fas fa-flask"></i> Concept Project</span>
                         </div>
                     </div>
                 </div>
@@ -344,15 +353,11 @@
                 </a>
             </div>
             <div class="social-links-footer">
-                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank"><i
-                        class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 Don Carlos Design. All Rights Reserved.</p>
-            <p>Engineered at Don Carlos Design, accelerated with AI. <i class="fas fa-heart"></i></p>
+            <p>&copy; <span id="copyright-year">2024</span> Don Carlos Design. Engineered at Don Carlos Design, accelerated with AI <i class="fas fa-heart"></i></p>
         </div>
     </footer>
 
@@ -390,32 +395,35 @@
                 });
             });
 
-            // Testimonial slider functionality
-            let currentTestimonial = 0;
+            // Testimonial slider functionality (only runs if a testimonial slider is present)
             const testimonials = document.querySelectorAll('.testimonial');
             const prevBtn = document.querySelector('.prev-testimonial');
             const nextBtn = document.querySelector('.next-testimonial');
 
-            // Hide all testimonials except the first one
-            testimonials.forEach((testimonial, index) => {
-                if (index !== 0) {
-                    testimonial.style.display = 'none';
-                }
-            });
+            if (testimonials.length && prevBtn && nextBtn) {
+                let currentTestimonial = 0;
 
-            // Previous testimonial button
-            prevBtn.addEventListener('click', function () {
-                testimonials[currentTestimonial].style.display = 'none';
-                currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-                testimonials[currentTestimonial].style.display = 'block';
-            });
+                // Hide all testimonials except the first one
+                testimonials.forEach((testimonial, index) => {
+                    if (index !== 0) {
+                        testimonial.style.display = 'none';
+                    }
+                });
 
-            // Next testimonial button
-            nextBtn.addEventListener('click', function () {
-                testimonials[currentTestimonial].style.display = 'none';
-                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-                testimonials[currentTestimonial].style.display = 'block';
-            });
+                // Previous testimonial button
+                prevBtn.addEventListener('click', function() {
+                    testimonials[currentTestimonial].style.display = 'none';
+                    currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                    testimonials[currentTestimonial].style.display = 'block';
+                });
+
+                // Next testimonial button
+                nextBtn.addEventListener('click', function() {
+                    testimonials[currentTestimonial].style.display = 'none';
+                    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                    testimonials[currentTestimonial].style.display = 'block';
+                });
+            }
         });
     </script>
 

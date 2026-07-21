@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="About DONCARLOS - Graphic Designer and Front-End Developer">
     <title>About | DONCARLOS Design</title>
+    <link rel="icon" href="images/DCD-Logo-Mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/animations.css">
@@ -22,35 +23,6 @@
             }
         })();
     </script>
-    <style>
-        .flame-container {
-            display: flex;
-            justify-content: center;
-            margin: 2rem auto;
-            max-width: 300px;
-        }
-        
-        .flame-image {
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(255, 87, 34, 0.3));
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-        
-        .flame-image:hover {
-            transform: translateY(-5px);
-            filter: drop-shadow(0 0 25px rgba(255, 87, 34, 0.5));
-        }
-
-        /* Dark Mode Support */
-        .dark-theme .flame-image {
-            filter: drop-shadow(0 0 20px rgba(255, 87, 34, 0.4));
-        }
-        
-        .dark-theme .flame-image:hover {
-            filter: drop-shadow(0 0 25px rgba(255, 87, 34, 0.6));
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -85,21 +57,22 @@
         <!-- About Hero Section -->
         <section id="about-hero">
             <div class="about-hero-content">
+                <div class="about-text">
+                    <h1><span class="highlight">Multimedia</span> Designer & Production Artist</h1>
+                    <p class="lead">A creative, hard-working designer with a deep passion for art and a background that spans over 14 years of experience in the Graphic Design field.</p>
+                    <p>Maintains an extensive knowledge in branding and logo design with expertise in layout design, web banners, web design, photo retouching, presentation design, typographical work and conceptual design. Deadline oriented and efficiency focused with exceptional organizational and communication skills. Through the creative process, assisted in fostering growth of large clientele within the Healthcare space.</p>
+                    <div class="social-links">
+                        <h3>Connect With Me</h3>
+                        <div class="social-icons">
+                            <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
                 <div class="about-image">
                     <img src="images/Asset 1-8.png" alt="DONCARLOS Designer" class="profile-photo">
                 </div>
-                <div class="about-text">
-                    <h1 class="section-title">Senior Graphic Designer<br>Front-End Developer</h1>
-                    <p class="lead">My work is a blend of creativity and technology, where I strive to create visually stunning and user-friendly designs that not only meet client expectations but also resonate with their target audience.</p>
-                    <p>With a strong foundation in both design and development, I am able to bridge the gap between aesthetics and functionality, ensuring that every project I undertake is not only visually appealing but also highly effective.</p>
-                    <p>My goal is to create designs that not only look good but also serve a purpose, whether it's enhancing user experience, driving conversions, or building brand identity.</p>
-                </div>
             </div>
         </section>
-
-        <div class="flame-container">
-            <img src="images/vecteezy_a-3d-render-of-a-glossy-orange-flame-icon-illustration-for-a_58264915.png" alt="3D Flame illustration" class="flame-image">
-        </div>
 
         <!-- Experience Section -->
         <section id="experience">
@@ -520,14 +493,11 @@
                 </a>
             </div>
             <div class="social-links-footer">
-                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 Don Carlos Design. All Rights Reserved.</p>
-            <p>Engineered at Don Carlos Design, accelerated with AI. <i class="fas fa-heart"></i></p>
+            <p>&copy; <span id="copyright-year">2024</span> Don Carlos Design. Engineered at Don Carlos Design, accelerated with AI <i class="fas fa-heart"></i></p>
         </div>
     </footer>
 

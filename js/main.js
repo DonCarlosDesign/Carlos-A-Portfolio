@@ -7,53 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
     if (savedTheme === 'dark') {
         htmlElement.classList.add('dark-theme');
     }
-    
-    /* PERF-TEST: disable page fade
-    // Create page transition element
-    const pageTransition = document.createElement('div');
-    pageTransition.className = 'page-transition';
-    document.body.appendChild(pageTransition);
-    */
-    
-    // Handle page transitions
-    document.querySelectorAll('a').forEach(link => {
-        // Skip links that open in new tabs, have no href, or are hash links
-        if (link.getAttribute('target') === '_blank' || 
-            !link.getAttribute('href') || 
-            link.getAttribute('href').startsWith('#') ||
-            link.getAttribute('href').startsWith('mailto:') ||
-            link.getAttribute('href').startsWith('tel:')) {
-            return;
-        }
 
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            // Don't run transition for external links
-            if (href.startsWith('http') && !href.includes(window.location.hostname)) {
-                return;
-            }
-            
-            /* PERF-TEST: disable page fade
-            e.preventDefault();
-            
-            // Fade out content first
-            document.body.style.opacity = '0.8';
-            document.body.style.transition = 'opacity 0.3s ease';
-            
-            // Activate transition with a slight delay
-            setTimeout(() => {
-                pageTransition.classList.add('active');
-                
-                // Navigate after transition completes
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 400);
-            }, 100);
-            */
-        });
-    });
-    
+    // Sync the footer logo to the saved theme on every page load,
+    // not just when the toggle is clicked
+    updateFooterLogo(savedTheme === 'dark' ? 'white' : 'dark');
+
+    // Keep footer copyright year current
+    const copyrightYear = document.getElementById('copyright-year');
+    if (copyrightYear) {
+        copyrightYear.textContent = new Date().getFullYear();
+    }
+
     // Theme toggle functionality
     const themeToggle = document.querySelector('.theme-toggle');
     const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');

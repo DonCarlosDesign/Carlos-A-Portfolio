@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 190.13 35.12">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#New_Gradient_Swatch_2);
+      }
+
+      .cls-2 {
+        fill: #1a1a1a;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="99.06" y1="25.34" x2="93.72" y2="4.33" gradientTransform="translate(0 37.12) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff5f6d"/>
+      <stop offset="1" stop-color="#ff8c00"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_2" data-name="New Gradient Swatch 2" x1="17.19" y1="0" x2="17.19" y2="35.12" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff5f6d"/>
+      <stop offset="1" stop-color="#ff8c00"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="uuid-40e95e5c-af1a-46ba-857a-9b9080dbca86" data-name="Layer 1-2">
+      <g>
+        <path class="cls-3" d="M92.74,9.18c-2.3,8.04-4.63,16.08-6.92,24.12l1.56,1.82h12.7l7.42-25.94h-14.76Z"/>
+        <polygon class="cls-1" points="24.29 35.12 14.61 30.95 0 35.12 34.38 0 24.29 35.12"/>
+        <path class="cls-2" d="M187.04,6.95c-2.06-2.22-5.02-3.94-8.86-5.14-3.84-1.21-8.42-1.81-13.75-1.81h-87.71l-19.12,12.42,3.57-12.42h-16.7l-10.08,35.12h16.7l2.4-8.36,4.75-3.08,10.2,11.44h18.94l-16.41-19.13L95.22.64l-2.48,8.54h14.76l-7.42,25.94h16.99l7.42-25.94h14.55l-7.44,25.94h27c4.61,0,8.83-.47,12.67-1.4,3.84-.94,7.16-2.29,9.97-4.06s4.99-3.9,6.55-6.37c1.56-2.47,2.34-5.27,2.34-8.38s-1.03-5.73-3.1-7.95h.01ZM171.42,20.79c-1.06,1.56-2.6,2.79-4.64,3.71-2.04.92-4.57,1.38-7.6,1.38h-7.92l4.75-16.66h6.48c2.3,0,4.24.25,5.8.75s2.74,1.22,3.53,2.16,1.19,2.09,1.19,3.46c0,1.91-.53,3.64-1.58,5.19h0Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

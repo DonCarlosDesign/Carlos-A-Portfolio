@@ -27,9 +27,6 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     line-height: 1.6;
-    /* PERF-TEST: disable page fade
-    animation: fadeInPage 0.6s ease forwards;
-    */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1033,7 +1030,6 @@ footer {
 #projects-hero {
     padding-top: 8rem;
     padding-bottom: 3rem;
-    text-align: center;
     background-color: var(--background-color);
 }
 
@@ -1208,6 +1204,9 @@ footer {
 
 .project-tags {
     margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .project-tags span {
@@ -1216,7 +1215,6 @@ footer {
     font-size: 0.8rem;
     padding: 0.25rem 0.75rem;
     border-radius: 100px;
-    margin-right: 0.5rem;
 }
 
 #process {
@@ -1503,11 +1501,19 @@ social-links {
     font-size: 0.9rem;
 }
 
-.education-grid, .approach-grid {
+.education-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
     max-width: 1200px;
+    margin: 0 auto;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -1575,6 +1581,21 @@ social-links {
     padding-bottom: 3rem;
     text-align: center;
     background-color: var(--background-color);
+}
+
+/* Match the width/centering of the message card below, so both left edges align */
+#contact-hero .hero-content {
+    max-width: 800px;
+    padding: 0;
+    margin: 0 auto 3rem;
+}
+
+/* #contact-hero inherits text-align: center for its message form below;
+   override just the hero text back to left above the mobile stacking breakpoint */
+@media (min-width: 993px) {
+    #contact-hero .hero-text {
+        text-align: left;
+    }
 }
 
 .lead {
@@ -2065,9 +2086,65 @@ button[type="submit"].btn:hover {
 }
 
 /* If the line is a horizontal divider between navbar sections */
-.navbar-divider, 
+.navbar-divider,
 .nav-separator {
     display: none;
+}
+
+/* Decorative hero icon (briefcase, storm cloud, etc.) */
+.decor-image-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+    max-width: 300px;
+}
+
+.decor-image {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(105, 56, 239, 0.3));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.decor-image:hover {
+    transform: translateY(-5px);
+    filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.5));
+}
+
+.dark-theme .decor-image {
+    filter: drop-shadow(0 0 20px rgba(105, 56, 239, 0.4));
+}
+
+.dark-theme .decor-image:hover {
+    filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.6));
+}
+
+/* Concept Project tag — marks speculative/practice projects, distinct from real client work */
+.concept-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+}
+
+.concept-tag i {
+    font-size: 0.65rem;
+}
+
+.dark-theme .concept-tag {
+    color: var(--text-light);
+    border-color: #444;
+}
+
+.project-info .concept-tag {
+    display: inline-flex;
+    margin-top: 0.75rem;
 }
 
 /* Dark Mode Carousel Styles */
