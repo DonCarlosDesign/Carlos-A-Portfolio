@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (savedTheme === 'dark') {
         htmlElement.classList.add('dark-theme');
     }
-    
+
+    // Sync the footer logo to the saved theme on every page load,
+    // not just when the toggle is clicked
+    updateFooterLogo(savedTheme === 'dark' ? 'white' : 'dark');
+
     // Keep footer copyright year current
     const copyrightYear = document.getElementById('copyright-year');
     if (copyrightYear) {
