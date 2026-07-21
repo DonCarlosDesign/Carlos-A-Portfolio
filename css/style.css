@@ -1491,11 +1491,19 @@ social-links {
     font-size: 0.9rem;
 }
 
-.education-grid, .approach-grid {
+.education-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
     max-width: 1200px;
+    margin: 0 auto;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -1565,11 +1573,11 @@ social-links {
     background-color: var(--background-color);
 }
 
-/* Hero content is already inside .container here, so drop its own redundant max-width/padding */
+/* Match the width/centering of the message card below, so both left edges align */
 #contact-hero .hero-content {
-    max-width: none;
+    max-width: 800px;
     padding: 0;
-    margin: 0 0 3rem;
+    margin: 0 auto 3rem;
 }
 
 /* #contact-hero inherits text-align: center for its message form below;
