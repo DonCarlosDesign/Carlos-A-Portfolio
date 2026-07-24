@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin:0; background:#0a0806; font-family:'JetBrains Mono','IBM Plex Mono',monospace; }
+  .wrap { background:#14100a; border-radius:12px; padding:20px; color:#cfe8df; }
+  .header { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:16px; border-bottom:1px solid #3a2f1c; padding-bottom:12px; }
+  .op { font-size:13px; letter-spacing:1px; color:#8e7a56; }
+  .season { font-size:12px; color:#6a5b41; }
+  .hero-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:20px; }
+  .hero-label { font-size:11px; color:#8e7a56; letter-spacing:1px; }
+  .hero-value { font-size:34px; font-weight:700; color:#f0a93e; line-height:1.1; }
+  .section-label { font-size:11px; color:#8e7a56; letter-spacing:1px; margin-bottom:6px; }
+  table { width:100%; border-collapse:collapse; font-size:12px; color:#e6d9c4; }
+  th { color:#6a5b41; text-align:left; padding:6px 4px; border-bottom:1px solid #3a2f1c; font-weight:400; }
+  td { padding:6px 4px; border-bottom:1px solid #241d11; }
+  .num { text-align:right; }
+  .win { color:#f0a93e; }
+  .loss { color:#c85a3e; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <span class="op">operator // shade_9</span>
+      <span class="season">season 4 · ranked</span>
+    </div>
+    <div class="hero-grid">
+      <div><div class="hero-label">rank</div><div class="hero-value">radiant</div></div>
+      <div><div class="hero-label">win rate</div><div class="hero-value">67%</div></div>
+      <div><div class="hero-label">k/d</div><div class="hero-value">1.84</div></div>
+    </div>
+    <div class="section-label">recent matches</div>
+    <table>
+      <tr><th>map</th><th>result</th><th class="num">k</th><th class="num">d</th><th class="num">a</th><th class="num">acs</th></tr>
+      <tr><td>ascent</td><td class="win">win</td><td class="num">24</td><td class="num">11</td><td class="num">7</td><td class="num">312</td></tr>
+      <tr><td>bind</td><td class="loss">loss</td><td class="num">14</td><td class="num">18</td><td class="num">4</td><td class="num">198</td></tr>
+      <tr><td>haven</td><td class="win">win</td><td class="num">31</td><td class="num">9</td><td class="num">10</td><td class="num">347</td></tr>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/base.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/styles.css">
+  <script src="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/_ds_bundle.js"></script>
+</helmet>
+<div style="width:1920px;height:800px;background:var(--c-bg-base);font-family:var(--font-mono);color:var(--text-primary);display:flex;flex-direction:column;padding:72px 96px;box-sizing:border-box">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Wordmark" size="{{ 28 }}" hint-size="180px,32px"></x-import>
+    <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Button" variant="primary" hint-size="auto,56px">track_now &gt;</x-import>
+  </div>
+
+  <div style="flex:1;display:flex;align-items:center;gap:96px">
+    <div style="flex:1;font-size:96px;font-weight:var(--weight-bold);line-height:var(--lh-tight);text-transform:lowercase">
+      stop guessing.<br>start logging.
+    </div>
+
+    <div style="flex:1;border:1px solid var(--border-default);background:var(--c-bg-row);padding:48px;display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;gap:64px">
+        <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.StatTile" label="rank progression // 14d" value="+16" accent="{{ true }}" hint-size="220px,90px"></x-import>
+        <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.StatTile" label="win rate // 30d" value="64%" hint-size="220px,90px"></x-import>
+      </div>
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.LineChart" data="{{ rankData }}" label-start="jul 8" label-end="jul 22" end-label="radiant" hint-size="100%,220px"></x-import>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { rankData: [10, 12, 11, 18, 22, 20, 26, 24, 30] };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/base.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/styles.css">
+  <script src="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/_ds_bundle.js"></script>
+</helmet>
+<div style="background:var(--c-bg-base);min-height:100vh;font-family:var(--font-mono);color:var(--text-primary)">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border-default)">
+    <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Wordmark" size="{{ 20 }}" hint-size="140px,24px"></x-import>
+    <div style="display:flex;gap:24px">
+      <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
+        <span style="cursor:pointer;font-size:12px;letter-spacing:1px;text-transform:lowercase;color:{{ tab.color }};border-bottom:{{ tab.border }};padding-bottom:4px">{{ tab.name }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:32px">
+    <div style="display:flex;align-items:center;gap:20px;margin-bottom:40px">
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.RankBadge" rank="DMND" active="{{ true }}" hint-size="48px,48px"></x-import>
+      <div>
+        <div style="font-size:var(--fs-hero);font-weight:var(--weight-bold);text-transform:lowercase;margin-bottom:var(--space-2)">you</div>
+        <div style="font-size:12px;color:var(--text-secondary);text-transform:lowercase;letter-spacing:1px">peak this season // radiant</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:96px;margin-bottom:48px">
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.StatTile" label="matches logged" value="1,047" hint-size="200px,80px"></x-import>
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.StatTile" label="win rate // season" value="58%" hint-size="200px,80px"></x-import>
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.StatTile" label="k/d ratio // season" value="1.24" hint-size="200px,80px"></x-import>
+    </div>
+
+    <div style="margin-bottom:40px">
+      <div style="font-size:12px;color:var(--text-secondary);text-transform:lowercase;letter-spacing:1px;margin-bottom:12px">rank history // last 90 days</div>
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.LineChart" data="{{ seasonData }}" label-start="apr 24" label-end="jul 22" end-label="diamond" hint-size="100%,220px"></x-import>
+    </div>
+
+    <div style="border-top:1px solid var(--border-default);padding-top:24px">
+      <div style="font-size:12px;color:var(--text-secondary);text-transform:lowercase;letter-spacing:1px;margin-bottom:16px">milestones</div>
+      <sc-for list="{{ milestones }}" as="m" hint-placeholder-count="3">
+        <div style="display:flex;justify-content:space-between;padding:12px 4px;border-bottom:1px solid var(--border-default)">
+          <span style="font-size:14px">{{ m.label }}</span>
+          <span style="font-size:12px;color:var(--text-muted)">{{ m.date }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const tabs = ['overview','match','agents','leaderboard','profile'].map(name => ({
+      name,
+      color: name === 'profile' ? 'var(--c-amber)' : 'var(--text-secondary)',
+      border: name === 'profile' ? '1px solid var(--c-amber)' : '1px solid transparent',
+    }));
+
+    const milestones = [
+      { label: 'reached radiant', date: 'jun 14' },
+      { label: '10-game win streak', date: 'may 30' },
+      { label: '1,000 matches logged', date: 'may 2' },
+    ];
+
+    return {
+      tabs,
+      milestones,
+      seasonData: [12, 14, 13, 16, 15, 19, 22, 21, 25, 24, 27, 30, 28, 26, 29],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

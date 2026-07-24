@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/base.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/styles.css">
+  <script src="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/_ds_bundle.js"></script>
+</helmet>
+<div style="background:var(--c-bg-base);min-height:100vh;font-family:var(--font-mono);color:var(--text-primary)">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border-default)">
+    <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Wordmark" size="{{ 20 }}" hint-size="140px,24px"></x-import>
+    <div style="display:flex;gap:24px">
+      <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
+        <span style="cursor:pointer;font-size:12px;letter-spacing:1px;text-transform:lowercase;color:{{ tab.color }};border-bottom:{{ tab.border }};padding-bottom:4px">{{ tab.name }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:32px">
+    <div style="font-size:12px;color:var(--text-secondary);text-transform:lowercase;letter-spacing:1px;margin-bottom:16px">agent breakdown</div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px">
+      <sc-for list="{{ agents }}" as="a" hint-placeholder-count="6">
+        <div style="border:1px solid {{ a.border }};background:{{ a.bg }};padding:20px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+            <span style="font-size:var(--fs-body-lg,16px);font-weight:var(--weight-bold);text-transform:lowercase;color:{{ a.nameColor }}">{{ a.name }}</span>
+            <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.TierTag" tier="{{ a.tier }}" hint-size="80px,24px">{{ a.tierLabel }}</x-import>
+          </div>
+          <div style="display:flex;gap:24px">
+            <div>
+              <div style="font-size:10px;color:var(--text-muted);text-transform:lowercase;letter-spacing:1px;margin-bottom:4px">games</div>
+              <div style="font-size:14px">{{ a.games }}</div>
+            </div>
+            <div>
+              <div style="font-size:10px;color:var(--text-muted);text-transform:lowercase;letter-spacing:1px;margin-bottom:4px">win rate</div>
+              <div style="font-size:14px">{{ a.winRate }}</div>
+            </div>
+            <div>
+              <div style="font-size:10px;color:var(--text-muted);text-transform:lowercase;letter-spacing:1px;margin-bottom:4px">k/d</div>
+              <div style="font-size:14px">{{ a.kd }}</div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div>
+      <div style="font-size:12px;color:var(--text-secondary);text-transform:lowercase;letter-spacing:1px;margin-bottom:12px">win rate by agent</div>
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.BarChart" bars="{{ agentBars }}" hint-size="100%,220px"></x-import>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const tabs = ['overview','match','agents','leaderboard','profile'].map(name => ({
+      name,
+      color: name === 'agents' ? 'var(--c-amber)' : 'var(--text-secondary)',
+      border: name === 'agents' ? '1px solid var(--c-amber)' : '1px solid transparent',
+    }));
+
+    const raw = [
+      { name: 'omen', games: 42, winRate: 61, kd: 1.38 },
+      { name: 'jett', games: 31, winRate: 55, kd: 1.21 },
+      { name: 'sova', games: 24, winRate: 50, kd: 1.02 },
+      { name: 'sage', games: 19, winRate: 47, kd: 0.94 },
+      { name: 'killjoy', games: 15, winRate: 40, kd: 0.81 },
+      { name: 'reyna', games: 11, winRate: 36, kd: 0.88 },
+    ].sort((a, b) => b.winRate - a.winRate);
+
+    const top = raw[0].name;
+    const tierFor = wr => (wr >= 55 ? 'excellent' : wr >= 45 ? 'average' : 'below');
+
+    const agents = raw.map(a => {
+      const tier = tierFor(a.winRate);
+      const isTop = a.name === top;
+      return {
+        name: a.name,
+        games: a.games,
+        winRate: a.winRate + '%',
+        kd: a.kd.toFixed(2),
+        tier,
+        tierLabel: tier,
+        border: isTop ? 'var(--c-amber)' : 'var(--border-default)',
+        bg: isTop ? 'var(--c-bg-row)' : 'transparent',
+        nameColor: isTop ? 'var(--c-amber)' : 'var(--text-primary)',
+      };
+    });
+
+    const agentBars = raw.map(a => ({ label: a.name, value: a.winRate, below: a.winRate < 45 }));
+
+    return { tabs, agents, agentBars };
+  }
+}
+
+</script>
+</body>
+</html>

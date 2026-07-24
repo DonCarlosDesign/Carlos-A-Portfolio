@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/base.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/styles.css">
+  <script src="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/_ds_bundle.js"></script>
+</helmet>
+<div style="background:var(--c-bg-base);min-height:100vh;font-family:var(--font-mono);color:var(--text-primary)">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border-default)">
+    <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Wordmark" size="{{ 20 }}" hint-size="140px,24px"></x-import>
+    <div style="display:flex;gap:24px">
+      <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
+        <span style="cursor:pointer;font-size:12px;letter-spacing:1px;text-transform:lowercase;color:{{ tab.color }};border-bottom:{{ tab.border }};padding-bottom:4px">{{ tab.name }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:32px">
+    <div style="font-size:12px;color:var(--text-secondary);text-transform:lowercase;letter-spacing:1px;margin-bottom:16px">ranked ladder</div>
+
+    <div style="display:flex;flex-direction:column;margin-bottom:8px">
+      <sc-for list="{{ topThree }}" as="p" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:24px;padding:20px 16px;border:1px solid var(--border-default);border-bottom:none;background:{{ p.rowBg }}">
+          <span style="width:56px;font-size:var(--fs-hero);font-weight:var(--weight-bold);color:{{ p.rankColor }}">{{ p.pos }}</span>
+          <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.RankBadge" rank="{{ p.badge }}" active="{{ p.active }}" hint-size="48px,48px"></x-import>
+          <span style="flex:1;font-size:16px;font-weight:var(--weight-bold);color:{{ p.nameColor }}">{{ p.name }}</span>
+          <div style="text-align:right;width:80px">
+            <div style="font-size:10px;color:var(--text-muted);text-transform:lowercase;letter-spacing:1px">win rate</div>
+            <div style="font-size:14px">{{ p.winRate }}</div>
+          </div>
+          <div style="text-align:right;width:80px">
+            <div style="font-size:10px;color:var(--text-muted);text-transform:lowercase;letter-spacing:1px">k/d</div>
+            <div style="font-size:14px">{{ p.kd }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="border-top:1px solid var(--border-default)">
+      <sc-for list="{{ rest }}" as="p" hint-placeholder-count="10">
+        <div style="display:flex;align-items:center;gap:24px;padding:12px 16px;background:{{ p.rowBg }};border-bottom:1px solid var(--border-default)">
+          <span style="width:56px;font-size:14px;color:var(--text-secondary)">{{ p.pos }}</span>
+          <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.RankBadge" rank="{{ p.badge }}" active="{{ p.active }}" hint-size="48px,48px"></x-import>
+          <span style="flex:1;font-size:14px;color:{{ p.nameColor }};font-weight:{{ p.nameWeight }}">{{ p.name }}</span>
+          <div style="text-align:right;width:80px;font-size:14px">{{ p.winRate }}</div>
+          <div style="text-align:right;width:80px;font-size:14px">{{ p.kd }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const tabs = ['overview','match','agents','leaderboard','profile'].map(name => ({
+      name,
+      color: name === 'leaderboard' ? 'var(--c-amber)' : 'var(--text-secondary)',
+      border: name === 'leaderboard' ? '1px solid var(--c-amber)' : '1px solid transparent',
+    }));
+
+    const raw = [
+      { name: 'nullpointer', badge: 'RDNT', winRate: 71, kd: 1.94 },
+      { name: 'vandal_kid', badge: 'RDNT', winRate: 68, kd: 1.81 },
+      { name: 'clutchgod', badge: 'IMRT', winRate: 64, kd: 1.62 },
+      { name: 'peekaboo', badge: 'IMRT', winRate: 60, kd: 1.48 },
+      { name: 'ghost_recon', badge: 'DMND', winRate: 58, kd: 1.4 },
+      { name: 'you', badge: 'DMND', winRate: 64, kd: 1.32, you: true },
+      { name: 'lurking_owl', badge: 'DMND', winRate: 53, kd: 1.19 },
+      { name: 'sova_main', badge: 'PLAT', winRate: 51, kd: 1.1 },
+      { name: 'aim_labs', badge: 'PLAT', winRate: 49, kd: 1.05 },
+      { name: 'silent_op', badge: 'PLAT', winRate: 47, kd: 0.98 },
+      { name: 'off_angle', badge: 'GOLD', winRate: 45, kd: 0.91 },
+      { name: 'wallbang', badge: 'GOLD', winRate: 42, kd: 0.87 },
+      { name: 'rook_ie', badge: 'SLVR', winRate: 38, kd: 0.79 },
+    ];
+
+    const withPos = raw.map((p, i) => ({ ...p, pos: i + 1 }));
+    const topThree = withPos.slice(0, 3).map((p, i) => ({
+      pos: p.pos,
+      badge: p.badge,
+      name: p.name,
+      winRate: p.winRate + '%',
+      kd: p.kd.toFixed(2),
+      active: !!p.you,
+      rankColor: i === 0 ? 'var(--c-amber)' : 'var(--text-primary)',
+      nameColor: p.you ? 'var(--c-amber)' : 'var(--text-primary)',
+      rowBg: p.you ? 'var(--c-bg-row)' : 'transparent',
+    }));
+
+    const rest = withPos.slice(3).map((p, i) => ({
+      pos: p.pos,
+      badge: p.badge,
+      name: p.name,
+      winRate: p.winRate + '%',
+      kd: p.kd.toFixed(2),
+      active: !!p.you,
+      nameColor: p.you ? 'var(--c-amber)' : 'var(--text-primary)',
+      nameWeight: p.you ? 'var(--weight-bold)' : 'var(--weight-regular)',
+      rowBg: p.you ? 'var(--c-bg-row)' : (i % 2 ? 'var(--c-bg-row)' : 'transparent'),
+    }));
+
+    return { tabs, topThree, rest };
+  }
+}
+
+</script>
+</body>
+</html>

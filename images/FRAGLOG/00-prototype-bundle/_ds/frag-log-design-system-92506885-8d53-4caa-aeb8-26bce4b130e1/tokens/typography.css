@@ -1,0 +1,22 @@
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/cascadia-mono/400.css');
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/cascadia-mono/600.css');
+:root{
+--font-mono:'Cascadia Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+--font-display:'Cascadia Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+
+--fs-micro:11px;
+--fs-label:12px;
+--fs-body:14px;
+--fs-body-lg:16px;
+--fs-heading:22px;
+--fs-hero-sm:32px;
+--fs-hero:56px;
+--fs-hero-lg:80px;
+
+--lh-tight:1.1; /* @kind other */
+--lh-body:1.5; /* @kind other */
+
+--tracking-label:0.06em;
+--weight-regular:400;
+--weight-bold:600;
+}

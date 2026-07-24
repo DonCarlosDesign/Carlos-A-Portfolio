@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/base.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/styles.css">
+  <script src="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/_ds_bundle.js"></script>
+</helmet>
+<div style="width:1080px;height:1080px;background:var(--c-bg-base);font-family:var(--font-mono);color:var(--text-primary);display:flex;flex-direction:column;justify-content:space-between;padding:72px;box-sizing:border-box">
+  <div style="display:flex;justify-content:flex-end">
+    <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Wordmark" size="{{ 18 }}" dim="{{ true }}" hint-size="120px,22px"></x-import>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:64px">
+    <div style="font-size:var(--fs-hero-lg);font-weight:var(--weight-bold);line-height:var(--lh-tight);text-transform:lowercase">
+      every round<br>is a data point.
+    </div>
+
+    <div style="border:1px solid var(--border-default);background:var(--c-bg-row);padding:48px;display:flex;flex-direction:column;gap:40px">
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.StatTile" label="rank progression // 14d" value="+16" accent="{{ true }}" hint-size="300px,100px"></x-import>
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.LineChart" data="{{ rankData }}" label-start="jul 8" label-end="jul 22" end-label="radiant" hint-size="100%,320px"></x-import>
+    </div>
+
+    <div>
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Button" variant="primary" hint-size="auto,56px">track_now &gt;</x-import>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { rankData: [10, 12, 11, 18, 22, 20, 26, 24, 30] };
+  }
+}
+
+</script>
+</body>
+</html>

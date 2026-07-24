@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/base.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/styles.css">
+  <script src="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/_ds_bundle.js"></script>
+</helmet>
+<div style="width:1080px;height:1920px;background:var(--c-bg-base);font-family:var(--font-mono);color:var(--text-primary);display:flex;flex-direction:column;padding:80px;box-sizing:border-box">
+  <div style="display:flex;justify-content:flex-end">
+    <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Wordmark" size="{{ 18 }}" dim="{{ true }}" hint-size="120px,22px"></x-import>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:120px;gap:56px">
+    <div style="font-size:var(--fs-hero-lg);font-weight:var(--weight-bold);line-height:var(--lh-tight);text-transform:lowercase">
+      your k/d says<br>more than your<br>rank does.
+    </div>
+
+    <div style="border:1px solid var(--border-default);background:var(--c-bg-row);padding:56px;display:flex;flex-direction:column;gap:48px">
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.StatTile" label="win rate by map" value="71%" accent="{{ true }}" hint-size="300px,100px"></x-import>
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.BarChart" bars="{{ mapBars }}" hint-size="100%,380px"></x-import>
+    </div>
+
+    <div>
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Button" variant="primary" hint-size="auto,56px">track_now &gt;</x-import>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      mapBars: [
+        { label: 'ascent', value: 62 },
+        { label: 'bind', value: 48 },
+        { label: 'haven', value: 71 },
+        { label: 'sunset', value: 39, below: true },
+        { label: 'split', value: 55 },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

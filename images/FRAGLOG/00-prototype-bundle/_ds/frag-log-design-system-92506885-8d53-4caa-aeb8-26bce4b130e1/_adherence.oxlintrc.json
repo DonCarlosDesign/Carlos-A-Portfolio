@@ -1,0 +1,275 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/brand/**",
+              "components/core/**",
+              "components/data/**",
+              "components/feedback/**",
+              "ui_kits/fraglog/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BarChartBar'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|below|key|ref|className|style|children)$/]",
+        "message": "<BarChartBar> doesn't accept that prop. Declared props: label, value, below."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|disabled|children|onClick|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, disabled, children, onClick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|secondary)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'secondary'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DataTableColumn'] > JSXAttribute > JSXIdentifier[name!=/^(?:key|label|align|key|ref|className|style|children)$/]",
+        "message": "<DataTableColumn> doesn't accept that prop. Declared props: key, label, align."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DataTableColumn'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|right)$/]",
+        "message": "<DataTableColumn> align must be one of 'left' | 'right'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EmptyState'] > JSXAttribute > JSXIdentifier[name!=/^(?:metaLabel|heading|body|buttonLabel|onAction|key|ref|className|style|children)$/]",
+        "message": "<EmptyState> doesn't accept that prop. Declared props: metaLabel, heading, body, buttonLabel, onAction."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ErrorState'] > JSXAttribute > JSXIdentifier[name!=/^(?:metaLabel|heading|body|buttonLabel|onAction|key|ref|className|style|children)$/]",
+        "message": "<ErrorState> doesn't accept that prop. Declared props: metaLabel, heading, body, buttonLabel, onAction."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Input'] > JSXAttribute > JSXIdentifier[name!=/^(?:placeholder|value|onChange|key|ref|className|style|children)$/]",
+        "message": "<Input> doesn't accept that prop. Declared props: placeholder, value, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LineChart'] > JSXAttribute > JSXIdentifier[name!=/^(?:data|labelStart|labelEnd|endLabel|key|ref|className|style|children)$/]",
+        "message": "<LineChart> doesn't accept that prop. Declared props: data, labelStart, labelEnd, endLabel."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RankBadge'] > JSXAttribute > JSXIdentifier[name!=/^(?:rank|active|key|ref|className|style|children)$/]",
+        "message": "<RankBadge> doesn't accept that prop. Declared props: rank, active."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatTile'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|accent|key|ref|className|style|children)$/]",
+        "message": "<StatTile> doesn't accept that prop. Declared props: label, value, accent."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatusTag'] > JSXAttribute > JSXIdentifier[name!=/^(?:kind|children|key|ref|className|style|children)$/]",
+        "message": "<StatusTag> doesn't accept that prop. Declared props: kind, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatusTag'] > JSXAttribute[name.name='kind'] > Literal[value!=/^(?:win|loss|pending|mvp)$/]",
+        "message": "<StatusTag> kind must be one of 'win' | 'loss' | 'pending' | 'mvp'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TierTag'] > JSXAttribute > JSXIdentifier[name!=/^(?:tier|children|key|ref|className|style|children)$/]",
+        "message": "<TierTag> doesn't accept that prop. Declared props: tier, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TierTag'] > JSXAttribute[name.name='tier'] > Literal[value!=/^(?:below|average|excellent)$/]",
+        "message": "<TierTag> tier must be one of 'below' | 'average' | 'excellent'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Wordmark'] > JSXAttribute > JSXIdentifier[name!=/^(?:size|dim|key|ref|className|style|children)$/]",
+        "message": "<Wordmark> doesn't accept that prop. Declared props: size, dim."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "BarChartBar": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "DataTableColumn": {
+        "replaces": []
+      },
+      "EmptyState": {
+        "replaces": []
+      },
+      "ErrorState": {
+        "replaces": []
+      },
+      "Input": {
+        "replaces": []
+      },
+      "LineChart": {
+        "replaces": []
+      },
+      "RankBadge": {
+        "replaces": []
+      },
+      "StatTile": {
+        "replaces": []
+      },
+      "StatusTag": {
+        "replaces": []
+      },
+      "TierTag": {
+        "replaces": []
+      },
+      "Wordmark": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--border-default",
+      "--c-amber",
+      "--c-amber-dim",
+      "--c-bg-base",
+      "--c-bg-input",
+      "--c-bg-row",
+      "--c-border-hairline",
+      "--c-loss",
+      "--c-tag-loss-bg",
+      "--c-tag-mvp-bg",
+      "--c-tag-mvp-fg",
+      "--c-tag-pending-bg",
+      "--c-tag-win-bg",
+      "--c-text-muted",
+      "--c-text-primary",
+      "--c-text-secondary",
+      "--c-tier-blue",
+      "--c-tier-blue-bg",
+      "--c-tier-gray",
+      "--c-tier-gray-bg",
+      "--c-tier-purple",
+      "--c-tier-purple-bg",
+      "--divider-hairline",
+      "--font-display",
+      "--font-mono",
+      "--fs-body",
+      "--fs-body-lg",
+      "--fs-heading",
+      "--fs-hero",
+      "--fs-hero-lg",
+      "--fs-hero-sm",
+      "--fs-label",
+      "--fs-micro",
+      "--lh-body",
+      "--lh-tight",
+      "--radius-none",
+      "--radius-sharp",
+      "--row-height",
+      "--signal-negative",
+      "--signal-positive",
+      "--space-1",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--surface-base",
+      "--surface-input",
+      "--surface-row",
+      "--text-muted",
+      "--text-primary",
+      "--text-secondary",
+      "--tracking-label",
+      "--weight-bold",
+      "--weight-regular"
+    ],
+    "tokenKinds": {
+      "--c-bg-base": "color",
+      "--c-bg-row": "color",
+      "--c-bg-input": "color",
+      "--c-border-hairline": "color",
+      "--c-text-primary": "font",
+      "--c-text-secondary": "font",
+      "--c-text-muted": "font",
+      "--c-amber": "color",
+      "--c-amber-dim": "color",
+      "--c-loss": "color",
+      "--c-tag-win-bg": "color",
+      "--c-tag-loss-bg": "color",
+      "--c-tag-pending-bg": "color",
+      "--c-tag-mvp-bg": "color",
+      "--c-tag-mvp-fg": "color",
+      "--c-tier-gray": "color",
+      "--c-tier-blue": "color",
+      "--c-tier-purple": "color",
+      "--c-tier-gray-bg": "color",
+      "--c-tier-blue-bg": "color",
+      "--c-tier-purple-bg": "color",
+      "--surface-base": "color",
+      "--surface-row": "color",
+      "--surface-input": "color",
+      "--border-default": "color",
+      "--text-primary": "font",
+      "--text-secondary": "font",
+      "--text-muted": "font",
+      "--signal-positive": "color",
+      "--signal-negative": "color",
+      "--font-mono": "font",
+      "--font-display": "font",
+      "--fs-micro": "spacing",
+      "--fs-label": "spacing",
+      "--fs-body": "spacing",
+      "--fs-body-lg": "spacing",
+      "--fs-heading": "spacing",
+      "--fs-hero-sm": "spacing",
+      "--fs-hero": "spacing",
+      "--fs-hero-lg": "spacing",
+      "--lh-tight": "other",
+      "--lh-body": "other",
+      "--tracking-label": "font",
+      "--weight-regular": "font",
+      "--weight-bold": "font",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--radius-sharp": "radius",
+      "--radius-none": "radius",
+      "--row-height": "spacing",
+      "--divider-hairline": "color"
+    },
+    "fontFamilies": []
+  }
+}

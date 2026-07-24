@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/tokens/base.css">
+  <link rel="stylesheet" href="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/styles.css">
+  <script src="_ds/frag-log-design-system-92506885-8d53-4caa-aeb8-26bce4b130e1/_ds_bundle.js"></script>
+</helmet>
+<div style="background:var(--c-bg-base);min-height:100vh;font-family:var(--font-mono);color:var(--text-primary)">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border-default)">
+    <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Wordmark" size="{{ 20 }}" hint-size="140px,24px"></x-import>
+    <div style="display:flex;gap:24px">
+      <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
+        <span style="cursor:pointer;font-size:12px;letter-spacing:1px;text-transform:lowercase;color:{{ tab.color }};border-bottom:{{ tab.border }};padding-bottom:4px">{{ tab.name }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:32px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px">
+      <div style="display:flex;align-items:baseline;gap:20px">
+        <span style="font-size:var(--fs-hero);font-weight:var(--weight-bold);text-transform:lowercase">ascent</span>
+        <span style="font-size:12px;color:var(--text-secondary);text-transform:lowercase;letter-spacing:1px">competitive</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px">
+        <span style="font-size:var(--fs-hero);font-weight:var(--weight-bold)">13&nbsp;–&nbsp;9</span>
+        <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.StatusTag" kind="win" hint-size="70px,24px">win</x-import>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--text-muted);margin-bottom:32px">2h ago // 41m 18s</div>
+
+    <div style="margin-bottom:40px">
+      <div style="font-size:12px;color:var(--text-secondary);text-transform:lowercase;letter-spacing:1px;margin-bottom:12px">round-by-round</div>
+      <div style="display:flex;gap:4px;flex-wrap:wrap">
+        <sc-for list="{{ rounds }}" as="r" hint-placeholder-count="22">
+          <div style="width:24px;height:32px;display:flex;align-items:center;justify-content:center;font-size:10px;background:{{ r.bg }};color:{{ r.fg }};border:1px solid var(--border-default)">{{ r.n }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div style="font-size:12px;color:var(--text-secondary);text-transform:lowercase;letter-spacing:1px">scoreboard</div>
+      <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.Button" variant="secondary" hint-size="auto,40px">export_log</x-import>
+    </div>
+    <x-import component-from-global-scope="FRAGLOGDesignSystem_925068.DataTable" columns="{{ columns }}" rows="{{ rows }}" hint-size="100%,320px"></x-import>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const tabs = ['overview','match','agents','leaderboard','profile'].map(name => ({
+      name,
+      color: name === 'match' ? 'var(--c-amber)' : 'var(--text-secondary)',
+      border: name === 'match' ? '1px solid var(--c-amber)' : '1px solid transparent',
+    }));
+
+    const roundResults = ['W','W','L','W','L','W','W','L','L','W','L','W','W','L','W','L','W','W','L','W','W','L'];
+    const rounds = roundResults.map((res, i) => ({
+      n: i + 1,
+      bg: res === 'W' ? 'var(--c-amber)' : 'transparent',
+      fg: res === 'W' ? 'var(--c-bg-base)' : 'var(--c-loss)',
+    }));
+
+    const columns = [
+      { key: 'operator', label: 'operator' },
+      { key: 'agent', label: 'agent' },
+      { key: 'kills', label: 'k', align: 'right' },
+      { key: 'deaths', label: 'd', align: 'right' },
+      { key: 'assists', label: 'a', align: 'right' },
+      { key: 'acs', label: 'acs', align: 'right' },
+    ];
+
+    const players = [
+      { operator: 'vandal_kid', agent: 'jett', kills: 24, deaths: 14, assists: 5, acs: 312, you: false },
+      { operator: 'you', agent: 'omen', kills: 21, deaths: 15, assists: 9, acs: 288, you: true },
+      { operator: 'clutchgod', agent: 'sage', kills: 15, deaths: 12, assists: 14, acs: 241, you: false },
+      { operator: 'peekaboo', agent: 'raze', kills: 17, deaths: 18, assists: 4, acs: 219, you: false },
+      { operator: 'lurking_owl', agent: 'cypher', kills: 11, deaths: 16, assists: 7, acs: 178, you: false },
+    ].sort((a, b) => b.acs - a.acs);
+
+    const rows = players.map(p => ({
+      operator: p.you
+        ? React.createElement('span', { style: { color: 'var(--c-amber)', fontWeight: 'var(--weight-bold)' } }, p.operator)
+        : p.operator,
+      agent: p.agent,
+      kills: p.kills,
+      deaths: p.deaths,
+      assists: p.assists,
+      acs: p.acs,
+    }));
+
+    return { tabs, rounds, columns, rows };
+  }
+}
+
+</script>
+</body>
+</html>

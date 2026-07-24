@@ -1,0 +1,6 @@
+*{box-sizing:border-box}
+body{background:var(--surface-base);color:var(--text-primary);font-family:var(--font-mono);margin:0}
+a{color:var(--c-amber)}
+a:hover{color:var(--c-text-primary)}
+::selection{background:var(--c-amber);color:var(--c-bg-base)}
+@keyframes fraglog-blink{0%,50%{opacity:1}50.01%,100%{opacity:0}}

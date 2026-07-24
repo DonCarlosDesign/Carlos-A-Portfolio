@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FRAG.LOG — a case study by DONCARLOS Design: a terminal-inspired stats tracker for competitive FPS players, with a fully coded interactive prototype.">
+    <title>FRAG.LOG | DONCARLOS Design</title>
+    <link rel="icon" href="images/DCD-Logo-Mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/case-study.css">
+    <link rel="stylesheet" href="css/fraglog.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prevent flash of white on page load -->
+    <script>
+        (function() {
+            if(localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+                document.documentElement.style.backgroundColor = '#1a1a1a';
+            }
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Layer 1.svg" alt="Logo">
+                    <span class="logo-text">DONCARLOS</span>
+                </a>
+            </div>
+            <div class="nav-icons">
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="mobile-theme-toggle">
+                        <i class="fas fa-moon"></i>Toggle Dark Mode
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Case Study Hero -->
+        <section class="case-hero">
+            <div class="container">
+                <a href="projects.html" class="case-back"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+
+                <div class="case-hero-labels">
+                    <div class="case-hero-label">Product Design &amp; Design System Case Study</div>
+                    <span class="concept-tag"><i class="fas fa-flask"></i> Concept Project</span>
+                </div>
+                <h1>FRAG.LOG — Terminal, With One Earned Flash of Arcade</h1>
+                <p class="lead">A stats-tracking product for competitive FPS players, built to look like a trading terminal instead of another neon esports dashboard — then coded into a real, working prototype.</p>
+
+                <div class="case-tags">
+                    <span>Product Design</span>
+                    <span>Design System</span>
+                    <span>UI/UX</span>
+                </div>
+
+                <div class="case-hero-media">
+                    <div class="fg-embed" id="fg-hero">
+                        <div class="fg-window-bar">
+                            <span class="fg-window-dot"></span>
+                            <span class="fg-window-dot"></span>
+                            <span class="fg-window-dot"></span>
+                            <span class="fg-window-label">frag.log — overview</span>
+                        </div>
+                        <div class="fg-hero-card">
+                            <div class="fg-hero-top">
+                                <span class="fg-wordmark">frag<span class="fg-dot-char">.</span>log<span class="fg-cursor"></span></span>
+                                <div class="fg-hero-nav">
+                                    <span class="active">overview</span>
+                                    <span>match</span>
+                                    <span>agents</span>
+                                    <span>leaderboard</span>
+                                    <span>profile</span>
+                                </div>
+                            </div>
+
+                            <div class="fg-stat-row">
+                                <div class="fg-stat">
+                                    <div class="fg-stat-label">current rank</div>
+                                    <div class="fg-stat-value accent" id="fg-stat-rank" style="opacity:0">radiant</div>
+                                </div>
+                                <div class="fg-stat">
+                                    <div class="fg-stat-label">win rate // 30d</div>
+                                    <div class="fg-stat-value" id="fg-stat-winrate" data-target="64">0%</div>
+                                </div>
+                                <div class="fg-stat">
+                                    <div class="fg-stat-label">k/d ratio</div>
+                                    <div class="fg-stat-value" id="fg-stat-kd" data-target="1.32">0.00</div>
+                                </div>
+                            </div>
+
+                            <div class="fg-chart-grid">
+                                <div>
+                                    <div class="fg-chart-label">rank progression // last 14 days</div>
+                                    <div class="fg-chart">
+                                        <svg viewBox="0 0 560 140" preserveAspectRatio="none">
+                                            <line class="fg-grid-line" x1="0" y1="42" x2="560" y2="42"></line>
+                                            <line class="fg-grid-line" x1="0" y1="75" x2="560" y2="75"></line>
+                                            <line class="fg-grid-line" x1="0" y1="108" x2="560" y2="108"></line>
+                                            <path class="fg-line" id="fg-rank-path" d="M0,130 L70,119 L140,124.5 L210,86 L280,64 L350,75 L420,42 L490,53 L560,20"></path>
+                                            <circle class="fg-end-dot" cx="560" cy="20" r="4"></circle>
+                                            <text class="fg-end-label" x="500" y="12">radiant</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="fg-chart-label">win rate by map</div>
+                                    <div class="fg-bars">
+                                        <div class="fg-bar-col"><div class="fg-bar" data-height="62" style="height:0"></div><span class="fg-bar-label">ascent</span></div>
+                                        <div class="fg-bar-col"><div class="fg-bar" data-height="48" style="height:0"></div><span class="fg-bar-label">bind</span></div>
+                                        <div class="fg-bar-col"><div class="fg-bar" data-height="71" style="height:0"></div><span class="fg-bar-label">haven</span></div>
+                                        <div class="fg-bar-col"><div class="fg-bar below" data-height="39" style="height:0"></div><span class="fg-bar-label">sunset</span></div>
+                                        <div class="fg-bar-col"><div class="fg-bar" data-height="55" style="height:0"></div><span class="fg-bar-label">split</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fg-matches">
+                                <div class="fg-matches-head">
+                                    <span>recent matches</span>
+                                    <span class="fg-btn">export_log</span>
+                                </div>
+                                <div class="fg-match-row">
+                                    <span class="fg-match-map">ascent</span>
+                                    <span class="fg-tag fg-tag-win">win</span>
+                                    <span class="fg-match-kd">1.42</span>
+                                    <span class="fg-match-time">2h ago</span>
+                                </div>
+                                <div class="fg-match-row">
+                                    <span class="fg-match-map">bind</span>
+                                    <span class="fg-tag fg-tag-loss">loss</span>
+                                    <span class="fg-match-kd">0.88</span>
+                                    <span class="fg-match-time">5h ago</span>
+                                </div>
+                                <div class="fg-match-row">
+                                    <span class="fg-match-map">sunset</span>
+                                    <span class="fg-tag fg-tag-pending">pending</span>
+                                    <span class="fg-match-kd">—</span>
+                                    <span class="fg-match-time">in progress</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-meta">
+                    <div class="case-meta-item">
+                        <h4>Client</h4>
+                        <p>FRAG.LOG (concept)</p>
+                    </div>
+                    <div class="case-meta-item">
+                        <h4>Role</h4>
+                        <p>Product &amp; Design System Designer</p>
+                    </div>
+                    <div class="case-meta-item">
+                        <h4>Industry</h4>
+                        <p>Gaming / Competitive FPS</p>
+                    </div>
+                    <div class="case-meta-item">
+                        <h4>Year</h4>
+                        <p>2026</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem / Approach / Solution -->
+        <section id="case-narrative">
+            <div class="container">
+                <div class="case-narrative">
+                    <div class="case-narrative-item">
+                        <span class="case-step-label">01</span>
+                        <h3>The Problem</h3>
+                        <p>FRAG.LOG needed a stats tracker for competitive FPS players that didn't look like everything else in the category — neon-on-black, purple-blue gradients, glowing esports chrome. It reads as "gaming," but not as trustworthy, and a stats tool lives or dies on whether players believe the numbers.</p>
+                    </div>
+                    <div class="case-narrative-item">
+                        <span class="case-step-label">02</span>
+                        <h3>The Approach</h3>
+                        <p>Instead of another esports dashboard, we looked at how serious data tools present information — trading terminals, flight boards, order books. Dense grids, minimal chrome, numbers that speak for themselves. Then we paired that discipline with one deliberate exception: a marquee moment for the numbers that matter most, treated like a scoreboard, not a spreadsheet cell.</p>
+                    </div>
+                    <div class="case-narrative-item">
+                        <span class="case-step-label">03</span>
+                        <h3>The Solution</h3>
+                        <p>A single locked design system — palette, type, spacing, and voice — applied across five app screens, a five-piece ad campaign, and the wordmark itself. The final deliverable is a fully coded, working prototype, not static mockups, built to demonstrate the product exactly as it was designed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Decisions -->
+        <section id="case-key-decisions" class="case-section-alt">
+            <div class="container">
+                <h2>Key Decisions</h2>
+                <p class="section-intro">Two rules that hold the whole system together.</p>
+
+                <div class="case-highlight-grid">
+                    <div class="case-highlight-item">
+                        <h3>Color as a signal, not a mood</h3>
+                        <p>Most competitors reach for a broad, decorative palette — the more colors, the more "energetic" it's supposed to feel. FRAG.LOG goes the opposite direction: one accent color, amber, reserved strictly for wins, MVP performances, and hero numbers. Everything else stays neutral, so when amber shows up, it means something happened.</p>
+                    </div>
+                    <div class="case-highlight-item">
+                        <h3>A voice that reports, not cheers</h3>
+                        <p>The product doesn't congratulate you. No exclamation points, no "Nice job!" — match results and milestones are written the way a system log would write them: lowercase, factual, present tense. "1,000,000 rounds logged." not "You did it!" That restraint is what makes the amber accent land when it finally does show up.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Product Tour -->
+        <section id="case-product-tour">
+            <div class="container">
+                <h2>Five Screens, One System</h2>
+                <p class="section-intro">Overview, match detail, agent breakdown, ranked ladder, and season profile — click through to browse the working prototype.</p>
+
+                <div class="fg-embed">
+                    <div class="fg-window-bar">
+                        <span class="fg-window-dot"></span>
+                        <span class="fg-window-dot"></span>
+                        <span class="fg-window-dot"></span>
+                        <span class="fg-window-label" id="fg-tour-label">frag.log — overview</span>
+                    </div>
+                    <div class="fg-tour-tabs" role="tablist">
+                        <button class="fg-tab active" data-screen="overview" data-label="overview">overview</button>
+                        <button class="fg-tab" data-screen="match" data-label="match detail">match</button>
+                        <button class="fg-tab" data-screen="agents" data-label="agent breakdown">agents</button>
+                        <button class="fg-tab" data-screen="leaderboard" data-label="ranked ladder">leaderboard</button>
+                        <button class="fg-tab" data-screen="profile" data-label="season profile">profile</button>
+                    </div>
+                    <div class="fg-tour-screen">
+                        <img
+                            src="images/projects/fraglog/overview.webp"
+                            data-src-overview="images/projects/fraglog/overview.webp"
+                            data-src-match="images/projects/fraglog/match-detail.webp"
+                            data-src-agents="images/projects/fraglog/agents.webp"
+                            data-src-leaderboard="images/projects/fraglog/leaderboard.webp"
+                            data-src-profile="images/projects/fraglog/profile.webp"
+                            alt="FRAG.LOG overview screen showing hero stats, rank progression, and recent matches"
+                            id="fg-tour-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design System -->
+        <section id="case-design-system" class="case-section-alt">
+            <div class="container">
+                <h2>The System</h2>
+                <p class="section-intro">Every screen, ad, and brand asset pulls from a single locked design system — palette, type, spacing, and voice rules defined once and applied everywhere.</p>
+
+                <div class="fg-embed" style="margin-bottom: 2rem;">
+                    <div class="fg-window-bar">
+                        <span class="fg-window-dot"></span>
+                        <span class="fg-window-dot"></span>
+                        <span class="fg-window-dot"></span>
+                        <span class="fg-window-label">design tokens</span>
+                    </div>
+                    <div style="padding: 24px;">
+                        <div class="fg-swatch-row">
+                            <div class="fg-swatch">
+                                <div class="fg-swatch-fill" style="background:#14100a;"></div>
+                                <div class="fg-swatch-info"><span class="name">bg base</span><span class="hex">#14100a</span></div>
+                            </div>
+                            <div class="fg-swatch">
+                                <div class="fg-swatch-fill" style="background:#3a2f1c;"></div>
+                                <div class="fg-swatch-info"><span class="name">border hairline</span><span class="hex">#3a2f1c</span></div>
+                            </div>
+                            <div class="fg-swatch">
+                                <div class="fg-swatch-fill" style="background:#e6d9c4;"></div>
+                                <div class="fg-swatch-info"><span class="name">text primary</span><span class="hex">#e6d9c4</span></div>
+                            </div>
+                            <div class="fg-swatch">
+                                <div class="fg-swatch-fill" style="background:#f0a93e;"></div>
+                                <div class="fg-swatch-info"><span class="name">amber (earned)</span><span class="hex">#f0a93e</span></div>
+                            </div>
+                            <div class="fg-swatch">
+                                <div class="fg-swatch-fill" style="background:#c85a3e;"></div>
+                                <div class="fg-swatch-info"><span class="name">loss signal</span><span class="hex">#c85a3e</span></div>
+                            </div>
+                            <div class="fg-swatch">
+                                <div class="fg-swatch-fill" style="background:#5a8fc0;"></div>
+                                <div class="fg-swatch-info"><span class="name">tier — blue</span><span class="hex">#5a8fc0</span></div>
+                            </div>
+                            <div class="fg-swatch">
+                                <div class="fg-swatch-fill" style="background:#9b6fd6;"></div>
+                                <div class="fg-swatch-info"><span class="name">tier — purple</span><span class="hex">#9b6fd6</span></div>
+                            </div>
+                        </div>
+                        <div class="fg-type-row">
+                            <div>
+                                <span class="regular">cascadia mono</span>
+                                <span class="fg-type-caption">regular // 400 — data &amp; body</span>
+                            </div>
+                            <div>
+                                <span class="semibold">cascadia mono</span>
+                                <span class="fg-type-caption">semibold // 600 — hero numbers</span>
+                            </div>
+                            <div>
+                                <span class="hero-sample">64%</span>
+                                <span class="fg-type-caption">hero number treatment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-gallery">
+                    <figure class="case-figure">
+                        <img src="images/projects/fraglog/wordmark-showcase.webp" alt="FRAG.LOG wordmark showcase, shown at nav bar size, dimmed corner treatment, and case study header size">
+                        <figcaption>Wordmark system — nav size, dim corner mark, and header-scale treatment.</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img src="images/projects/fraglog/ui-components.webp" alt="FRAG.LOG UI component reference sheet: buttons, status tags, rank badges, and input field">
+                        <figcaption>Component library — buttons, status tags, rank badges, inputs.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wordmark / Motion -->
+        <section id="case-motion">
+            <div class="container">
+                <h2>One Recurring Motion Signature</h2>
+                <p class="section-intro">Outside of this, motion stays minimal and functional — no bounce, no confetti on wins. The blinking cursor is the one place the product is allowed to feel alive.</p>
+
+                <div class="fg-embed" style="padding: 4rem 2rem; display:flex; align-items:center; justify-content:center;">
+                    <span class="fg-wordmark" style="font-size: 2.5rem;">frag<span class="fg-dot-char">.</span>log<span class="fg-cursor"></span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ad Campaign -->
+        <section id="case-ads" class="case-section-alt">
+            <div class="container">
+                <h2>Campaign</h2>
+                <p class="section-intro">Same base palette and monospace type as the product — the ads look like an extension of FRAG.LOG, not a separate marketing register.</p>
+
+                <div class="case-mixed-gallery">
+                    <figure class="case-figure">
+                        <img src="images/projects/fraglog/ad-4-hero-banner.webp" alt="FRAG.LOG hero banner ad: stop guessing, start logging" data-full="images/projects/fraglog/ad-4-hero-banner-full.webp">
+                        <figcaption>Hero banner — "stop guessing. start logging."</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img src="images/projects/fraglog/ad-1-rank-delta.webp" alt="FRAG.LOG rank delta ad: every round is a data point" data-full="images/projects/fraglog/ad-1-rank-delta-full.webp">
+                        <figcaption>Rank delta — "every round is a data point."</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img src="images/projects/fraglog/ad-2-win-rate-story.webp" alt="FRAG.LOG win rate story ad: your k/d says more than your rank does" data-full="images/projects/fraglog/ad-2-win-rate-story-full.webp">
+                        <figcaption>Win rate story — "your k/d says more than your rank does."</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img src="images/projects/fraglog/ad-5-milestone-log.webp" alt="FRAG.LOG milestone ad: 1,000,000 rounds logged" data-full="images/projects/fraglog/ad-5-milestone-log-full.webp">
+                        <figcaption>Milestone log — "1,000,000 rounds logged."</figcaption>
+                    </figure>
+                    <figure class="case-figure span-full">
+                        <img src="images/projects/fraglog/ad-3-leaderboard-banner.webp" alt="FRAG.LOG leaderboard banner ad: know your k/d" data-full="images/projects/fraglog/ad-3-leaderboard-banner-full.webp">
+                        <figcaption>Leaderboard banner — "know your k/d."</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables -->
+        <section id="case-deliverables">
+            <div class="container">
+                <h2>Deliverables</h2>
+                <p class="section-intro">Not static mockups — a fully coded, working prototype, ready to demonstrate the product exactly as it was designed.</p>
+
+                <ul class="project-highlights">
+                    <li>Five core app screens: overview, match detail, agent breakdown, leaderboard, and profile</li>
+                    <li>A five-piece ad campaign sharing the product's own visual language</li>
+                    <li>Wordmark system with nav, corner-mark, and header-scale treatments</li>
+                    <li>A locked design system: palette, type, spacing, components, motion, and voice rules</li>
+                    <li>A fully coded interactive prototype, built screen-for-screen from the design system</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <img src="images/Vector-CTA.svg" alt="Logo Icon">
+                </div>
+                <h2>Building a product that needs its own voice?</h2>
+                <p>Let's design a system disciplined enough to earn its one loud moment.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn primary-btn">Start a Project <i class="fas fa-arrow-right"></i></a>
+                    <a href="projects.html" class="btn secondary-btn">See More Work</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo-small">
+                <a href="index.html">
+                    <img src="images/Footer-Logo-Optimized-Simple.svg" alt="DONCARLOS" class="footer-logo">
+                </a>
+            </div>
+            <div class="social-links-footer">
+                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; <span id="copyright-year">2024</span> Don Carlos Design. Engineered at Don Carlos Design, accelerated with AI <i class="fas fa-heart"></i></p>
+        </div>
+    </footer>
+
+    <div class="case-lightbox" id="case-lightbox">
+        <button class="case-lightbox-close" id="case-lightbox-close" aria-label="Close"><i class="fas fa-times"></i></button>
+        <img src="" alt="" id="case-lightbox-img">
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate the hero widget once it scrolls into view
+            const heroWidget = document.getElementById('fg-hero');
+            if (heroWidget) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.classList.contains('fg-animated')) {
+                            entry.target.classList.add('fg-animated');
+                            animateFragHero();
+                        }
+                    });
+                }, { threshold: 0.3 });
+                observer.observe(heroWidget);
+            }
+
+            function animateFragHero() {
+                // Rank fades in
+                const rankEl = document.getElementById('fg-stat-rank');
+                if (rankEl) {
+                    rankEl.style.transition = 'opacity 0.6s ease';
+                    requestAnimationFrame(() => { rankEl.style.opacity = '1'; });
+                }
+
+                // Numeric stats count up
+                document.querySelectorAll('#fg-hero .fg-stat-value[data-target]').forEach(el => {
+                    const target = parseFloat(el.getAttribute('data-target'));
+                    const isPercent = el.id === 'fg-stat-winrate';
+                    const duration = 1200;
+                    const start = performance.now();
+                    function step(now) {
+                        const progress = Math.min((now - start) / duration, 1);
+                        const value = target * progress;
+                        el.textContent = isPercent ? Math.round(value) + '%' : value.toFixed(2);
+                        if (progress < 1) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                });
+
+                // Line chart draws in
+                const path = document.getElementById('fg-rank-path');
+                if (path) {
+                    const length = path.getTotalLength();
+                    path.style.strokeDasharray = length;
+                    path.style.strokeDashoffset = length;
+                    path.getBoundingClientRect(); // force reflow
+                    path.style.transition = 'stroke-dashoffset 1.4s ease';
+                    requestAnimationFrame(() => { path.style.strokeDashoffset = '0'; });
+                }
+
+                // Bars grow in
+                document.querySelectorAll('#fg-hero .fg-bar[data-height]').forEach((bar, i) => {
+                    const h = bar.getAttribute('data-height');
+                    setTimeout(() => { bar.style.height = h + '%'; }, 150 + i * 90);
+                });
+            }
+
+            // Interactive product tour tabs
+            const tourTabs = document.querySelectorAll('.fg-tab');
+            const tourImage = document.getElementById('fg-tour-image');
+            const tourLabel = document.getElementById('fg-tour-label');
+
+            tourTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    if (this.classList.contains('active')) return;
+                    tourTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const screen = this.getAttribute('data-screen');
+                    const label = this.getAttribute('data-label');
+                    const newSrc = tourImage.getAttribute('data-src-' + screen);
+
+                    tourImage.classList.add('fg-fade');
+                    setTimeout(() => {
+                        tourImage.setAttribute('src', newSrc);
+                        tourLabel.textContent = 'frag.log — ' + label;
+                        tourImage.classList.remove('fg-fade');
+                    }, 200);
+                });
+            });
+
+            // Click-to-enlarge lightbox for the campaign gallery
+            const lightbox = document.getElementById('case-lightbox');
+            const lightboxImg = document.getElementById('case-lightbox-img');
+            const lightboxClose = document.getElementById('case-lightbox-close');
+
+            function openLightbox(src, alt) {
+                lightboxImg.setAttribute('src', src);
+                lightboxImg.setAttribute('alt', alt);
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.case-mixed-gallery img').forEach(img => {
+                img.addEventListener('click', function() {
+                    const fullSrc = this.getAttribute('data-full') || this.getAttribute('src');
+                    openLightbox(fullSrc, this.getAttribute('alt'));
+                });
+            });
+
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) closeLightbox();
+            });
+            lightboxClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeLightbox();
+            });
+        });
+    </script>
+</body>
+</html>

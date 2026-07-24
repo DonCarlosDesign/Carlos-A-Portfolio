@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin:0; background:#0a0806; font-family:'JetBrains Mono','IBM Plex Mono',monospace; }
+  .wrap { background:#14100a; border-radius:12px; padding:28px; color:#e6d9c4; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .box { padding:24px; text-align:center; }
+  .empty { border:1px solid #241d11; }
+  .error { border:1px solid #3a2f1c; }
+  .meta { font-size:11px; letter-spacing:1px; margin-bottom:12px; }
+  .meta-empty { color:#8e7a56; }
+  .meta-error { color:#c85a3e; }
+  .title { font-size:15px; color:#e6d9c4; margin-bottom:6px; }
+  .desc { font-size:12px; color:#6a5b41; margin-bottom:16px; }
+  button { font-family:'JetBrains Mono','IBM Plex Mono',monospace; font-size:12px; padding:8px 16px; border-radius:2px; cursor:pointer; }
+  .btn-secondary { background:transparent; color:#e6d9c4; border:1px solid #3a2f1c; }
+  .btn-error { background:#c85a3e; color:#1a0d08; border:none; font-weight:700; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="box empty">
+      <div class="meta meta-empty">empty // no_matches</div>
+      <div class="title">no matches logged yet.</div>
+      <div class="desc">play a ranked match and it'll show up here automatically.</div>
+      <button class="btn-secondary">refresh_log</button>
+    </div>
+    <div class="box error">
+      <div class="meta meta-error">error // sync_failed</div>
+      <div class="title">couldn't reach the match server.</div>
+      <div class="desc">last synced 14 minutes ago. retry the connection below.</div>
+      <button class="btn-error">retry_sync</button>
+    </div>
+  </div>
+</body>
+</html>
