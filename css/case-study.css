@@ -167,10 +167,6 @@
     grid-column: 1 / -1;
 }
 
-.case-mixed-gallery .case-figure img {
-    cursor: zoom-in;
-}
-
 .case-narrative-item h3 {
     margin-bottom: 0.75rem;
 }
@@ -187,6 +183,12 @@
     display: block;
     width: 100%;
     height: auto;
+    cursor: zoom-in;
+}
+
+/* Opt-in for images outside .case-figure (e.g. a dense hero shot) */
+.lightbox-trigger {
+    cursor: zoom-in;
 }
 
 .case-figure figcaption {

@@ -512,39 +512,8 @@
                     }, 200);
                 });
             });
-
-            // Click-to-enlarge lightbox for the campaign gallery
-            const lightbox = document.getElementById('case-lightbox');
-            const lightboxImg = document.getElementById('case-lightbox-img');
-            const lightboxClose = document.getElementById('case-lightbox-close');
-
-            function openLightbox(src, alt) {
-                lightboxImg.setAttribute('src', src);
-                lightboxImg.setAttribute('alt', alt);
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            document.querySelectorAll('.case-mixed-gallery img').forEach(img => {
-                img.addEventListener('click', function() {
-                    const fullSrc = this.getAttribute('data-full') || this.getAttribute('src');
-                    openLightbox(fullSrc, this.getAttribute('alt'));
-                });
-            });
-
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) closeLightbox();
-            });
-            lightboxClose.addEventListener('click', closeLightbox);
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') closeLightbox();
-            });
         });
     </script>
+    <script src="js/lightbox.js"></script>
 </body>
 </html>
