@@ -134,6 +134,10 @@
     gap: 2rem;
 }
 
+.case-highlight-grid.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .case-highlight-item {
     padding: 2rem;
     border-radius: 16px;
@@ -165,6 +169,10 @@
 
 .case-mixed-gallery .case-figure.span-full {
     grid-column: 1 / -1;
+}
+
+.case-mixed-gallery.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .case-narrative-item h3 {
@@ -465,7 +473,8 @@
         grid-template-columns: 1fr;
     }
 
-    .case-highlight-grid {
+    .case-highlight-grid,
+    .case-highlight-grid.cols-3 {
         grid-template-columns: 1fr;
     }
 
@@ -477,7 +486,8 @@
         grid-template-columns: 1fr;
     }
 
-    .case-mixed-gallery {
+    .case-mixed-gallery,
+    .case-mixed-gallery.cols-3 {
         grid-template-columns: 1fr;
     }
 
