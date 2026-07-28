@@ -154,17 +154,23 @@
     margin: 0 auto;
 }
 
-/* Gallery for images with mixed aspect ratios — no forced cropping */
+/* Gallery for images with mixed aspect ratios — uniform card sizing, cropped to a fixed ratio per gallery/row */
 .case-mixed-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.75rem;
-    align-items: start;
 }
 
 .case-mixed-gallery .case-figure {
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+.case-mixed-gallery .case-figure img {
+    width: 100%;
+    aspect-ratio: var(--card-ratio, 4 / 3);
+    object-fit: cover;
 }
 
 .case-mixed-gallery .case-figure.span-full {
