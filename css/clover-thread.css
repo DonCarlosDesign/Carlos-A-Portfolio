@@ -1,0 +1,620 @@
+/* Clover & Thread case study — live brand system + e-commerce UI.
+   Scoped under .ct-embed and its own custom properties so this never
+   touches the site's own light/dark theme system, the same isolation
+   pattern used by .fg-embed on the FRAG.LOG case study. */
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Karla:wght@400;500;700&display=swap');
+
+.ct-embed {
+    --ct-patina: #7C9D7C;
+    --ct-bisque: #E8BBA0;
+    --ct-ecru: #E3C8A4;
+    --ct-alabaster: #F8F6EF;
+    --ct-quartz: #FCFAF7;
+    --ct-flint: #C3CFC1;
+    --ct-obsidian: #3D3B3C;
+    --ct-border: #DAD5C8;
+    --ct-shadow: 0 8px 24px rgba(124, 108, 76, 0.1);
+    --ct-radius: 3px;
+
+    font-family: 'Karla', sans-serif;
+    color: var(--ct-obsidian);
+    background-color: var(--ct-quartz);
+    border-radius: 12px;
+    border: 1px solid var(--ct-border);
+    overflow: hidden;
+    line-height: 1.65;
+}
+
+.ct-embed * {
+    box-sizing: border-box;
+}
+
+.ct-embed img {
+    max-width: 100%;
+    display: block;
+}
+
+.ct-embed p {
+    margin: 0;
+}
+
+/* Typography */
+.ct-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ct-obsidian);
+}
+
+.ct-embed h1, .ct-embed h2, .ct-embed h3, .ct-embed h4 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    color: var(--ct-obsidian);
+    margin: 0;
+    line-height: 1.25;
+}
+
+.ct-embed h2 { font-size: 1.6rem; }
+.ct-embed h3 { font-size: 1.15rem; }
+
+.ct-embed .ct-body {
+    font-family: 'Karla', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--ct-obsidian);
+}
+
+/* Logo lockup — built live from the actual mark + real text, not a flattened image */
+.ct-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.ct-logo img {
+    width: 34px;
+    height: 34px;
+    aspect-ratio: auto;
+    object-fit: contain;
+}
+
+/* Defense-in-depth: .case-mixed-gallery .case-figure img (a uniform-crop rule
+   meant for photo galleries) targets every descendant <img>, including small
+   mockup icons like this one nested inside a .case-figure. Same leak pattern
+   as the .section-title fix above — win back sizing/fit here rather than
+   letting an unrelated gallery rule stretch-then-crop the mark. */
+.case-mixed-gallery .ct-logo img,
+.case-figure-stack .ct-logo img {
+    width: 34px;
+    height: 34px;
+    aspect-ratio: auto;
+    object-fit: contain;
+}
+
+.ct-logo span {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ct-patina);
+}
+
+/* Site header / nav */
+.ct-site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    background-color: var(--ct-alabaster);
+    border-bottom: 1px solid var(--ct-border);
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.ct-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ct-nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ct-obsidian);
+    text-decoration: none;
+    transition: color 180ms ease;
+}
+
+.ct-nav-links a:hover {
+    color: var(--ct-patina);
+}
+
+.ct-nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: var(--ct-obsidian);
+    font-size: 0.95rem;
+}
+
+/* Buttons */
+.ct-btn {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border-radius: var(--ct-radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+    text-decoration: none;
+}
+
+.ct-btn-sm { padding: 8px 16px; font-size: 0.75rem; }
+.ct-btn-md { padding: 12px 24px; font-size: 0.85rem; }
+.ct-btn-lg { padding: 16px 32px; font-size: 0.95rem; }
+
+.ct-btn-primary {
+    background-color: var(--ct-obsidian);
+    color: var(--ct-quartz);
+}
+.ct-btn-primary:hover { background-color: #2b2a2a; }
+
+.ct-btn-secondary {
+    background-color: var(--ct-patina);
+    color: var(--ct-quartz);
+}
+.ct-btn-secondary:hover { background-color: #6d8c6d; }
+
+.ct-btn-ghost {
+    background-color: transparent;
+    color: var(--ct-obsidian);
+    border-color: var(--ct-obsidian);
+}
+.ct-btn-ghost:hover { background-color: var(--ct-alabaster); }
+
+.ct-btn[disabled] {
+    background-color: var(--ct-flint);
+    color: var(--ct-quartz);
+    border-color: var(--ct-flint);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Tags */
+.ct-tag {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Karla', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 4px 10px;
+    border-radius: var(--ct-radius);
+}
+
+.ct-tag-neutral {
+    background-color: var(--ct-alabaster);
+    color: var(--ct-obsidian);
+    border: 1px solid var(--ct-border);
+}
+
+.ct-tag-accent {
+    background-color: var(--ct-patina);
+    color: var(--ct-quartz);
+}
+
+.ct-tag-outline {
+    background-color: transparent;
+    color: var(--ct-obsidian);
+    border: 1px solid var(--ct-obsidian);
+}
+
+/* Inputs */
+.ct-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ct-field label {
+    font-family: 'Karla', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--ct-obsidian);
+}
+
+.ct-field input {
+    font-family: 'Karla', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ct-obsidian);
+    background-color: var(--ct-quartz);
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius);
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.ct-field input:focus {
+    border-color: var(--ct-patina);
+    box-shadow: 0 0 0 3px rgba(124, 157, 124, 0.18);
+}
+
+.ct-field input::placeholder {
+    color: #a39c8a;
+}
+
+/* Product card */
+.ct-shop-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 32px;
+}
+
+.ct-product-card {
+    background-color: var(--ct-quartz);
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius);
+    overflow: hidden;
+    transition: box-shadow 200ms ease;
+}
+
+.ct-product-card:hover {
+    box-shadow: var(--ct-shadow);
+}
+
+.ct-product-card .ct-product-img {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+}
+
+.ct-product-card .ct-product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ct-product-info {
+    padding: 14px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ct-product-info h3 {
+    font-size: 0.95rem;
+}
+
+.ct-product-price {
+    font-family: 'Karla', sans-serif;
+    font-size: 0.88rem;
+    color: var(--ct-obsidian);
+}
+
+/* Product detail page */
+.ct-pdp {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 0;
+}
+
+.ct-pdp-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background-color: var(--ct-border);
+}
+
+.ct-pdp-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ct-pdp-gallery .ct-pdp-main {
+    grid-column: 1 / -1;
+    aspect-ratio: 4 / 3;
+}
+
+.ct-pdp-gallery .ct-pdp-thumb {
+    aspect-ratio: 1 / 1;
+}
+
+.ct-pdp-info {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--ct-alabaster);
+}
+
+.ct-pdp-info .ct-product-price {
+    font-size: 1.1rem;
+}
+
+.ct-pdp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ct-size-row {
+    display: flex;
+    gap: 8px;
+}
+
+.ct-size-swatch {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius);
+    font-family: 'Karla', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: var(--ct-quartz);
+    transition: border-color 180ms ease;
+}
+
+.ct-size-swatch.active {
+    border-color: var(--ct-obsidian);
+    border-width: 2px;
+}
+
+/* Cart drawer */
+.ct-cart {
+    background-color: var(--ct-quartz);
+    max-width: 420px;
+    margin: 0 auto;
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius);
+    overflow: hidden;
+}
+
+.ct-cart-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--ct-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ct-cart-item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--ct-border);
+    align-items: center;
+}
+
+.ct-cart-item img {
+    width: 56px;
+    height: 68px;
+    object-fit: cover;
+    border-radius: var(--ct-radius);
+}
+
+.ct-cart-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ct-cart-item-info h4 { font-size: 0.88rem; }
+
+.ct-cart-item-info span {
+    font-size: 0.78rem;
+    color: #736c5c;
+}
+
+.ct-cart-summary {
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ct-cart-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+.ct-cart-note {
+    font-size: 0.75rem;
+    color: var(--ct-patina);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Color + type foundation swatches */
+.ct-swatch-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 14px;
+}
+
+.ct-swatch {
+    border-radius: var(--ct-radius);
+    overflow: hidden;
+    border: 1px solid var(--ct-border);
+}
+
+.ct-swatch-fill {
+    height: 64px;
+}
+
+.ct-swatch-info {
+    padding: 10px 12px;
+    background-color: var(--ct-quartz);
+}
+
+.ct-swatch-info .ct-name {
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    display: block;
+}
+
+.ct-swatch-info .ct-hex {
+    font-size: 0.72rem;
+    color: #736c5c;
+}
+
+.ct-type-sample {
+    padding: 20px;
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius);
+    background-color: var(--ct-quartz);
+}
+
+.ct-type-sample .ct-type-label {
+    font-size: 0.72rem;
+    color: #736c5c;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Hang tag mockup */
+.ct-hangtag {
+    position: relative;
+    width: 220px;
+    margin: 0 auto;
+    background-color: var(--ct-alabaster);
+    border: 1px solid var(--ct-border);
+    border-radius: 10px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: var(--ct-shadow);
+}
+
+.ct-hangtag::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--ct-border);
+    background-color: var(--ct-quartz);
+}
+
+.ct-hangtag .ct-logo {
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.ct-hangtag p {
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: #736c5c;
+}
+
+/* Social post template */
+.ct-social-post {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--ct-radius);
+    overflow: hidden;
+}
+
+.ct-social-post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ct-social-post .ct-social-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(61, 59, 60, 0.55), rgba(61, 59, 60, 0) 45%);
+}
+
+.ct-social-overlay .ct-eyebrow {
+    color: var(--ct-quartz, #FCFAF7);
+}
+
+.ct-social-overlay h3 {
+    color: var(--ct-quartz, #FCFAF7);
+    font-size: 1.3rem;
+    margin-top: 6px;
+}
+
+/* Component showcase rows */
+.ct-showcase-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    padding: 24px 32px;
+    border-top: 1px solid var(--ct-border);
+}
+
+.ct-showcase-row:first-child { border-top: none; }
+
+.ct-showcase-label {
+    width: 100%;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #736c5c;
+    margin-bottom: 4px;
+}
+
+/* Neutralize animations.js's sitewide auto-injection of .section-title onto
+   every <h2> inside a <section> (adds an underline bar via ::after). It has
+   no notion of this component's scope, so it's overridden here rather than
+   patched per h2 instance. */
+.ct-embed .section-title {
+    margin-bottom: 0;
+}
+
+.ct-embed .section-title::after {
+    content: none;
+}
+
+@media (max-width: 760px) {
+    .ct-shop-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        padding: 20px;
+    }
+
+    .ct-pdp {
+        grid-template-columns: 1fr;
+    }
+
+    .ct-nav-links {
+        display: none;
+    }
+
+    .ct-site-header {
+        padding: 16px 20px;
+    }
+}
