@@ -10,6 +10,11 @@
     --border-color: #E2E8F0;
     --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     --font-family: 'Poppins', sans-serif;
+    /* CTA banner — darker than --primary/--secondary; white text on the
+       original pair only hit 3.68:1 against the blue end (fails WCAG AA
+       for body text at 4.5:1). These hit 14.8:1 and 10.4:1. */
+    --cta-color-1: #2A1B5E;
+    --cta-color-2: #1E3A8A;
 }
 
 * {
@@ -712,7 +717,7 @@ header {
 
 .carousel-track {
     display: flex;
-    animation: marquee 30s linear infinite;
+    animation: marquee 32.5s linear infinite;
     /* Double the width to accommodate the duplicated logos */
     width: max-content;
 }
@@ -759,6 +764,13 @@ header {
     background-color: var(--section-bg);
     padding: 5rem 0;
     text-align: center;
+}
+
+/* Heading stays centered; body copy standardized to left */
+#skills > p {
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto 2rem;
 }
 
 #skills h2, #skills > p {
@@ -839,7 +851,7 @@ header {
 }
 
 #services > p {
-    text-align: center;
+    text-align: left;
     max-width: 700px;
     margin: 0 auto 3rem;
     padding: 0 1.5rem;
@@ -890,9 +902,42 @@ header {
     background-color: var(--secondary-color);
 }
 
+/* Service card icon colors cycle by grid position (purple/pink/blue), so the
+   pattern stays correct automatically as cards are added or removed rather
+   than relying on a manually-assigned class per card. Grid is 3 columns at
+   desktop and 2 columns in an intermediate tablet range (.services-grid uses
+   auto-fill, not a fixed column count).
+
+   This is a 3-row Latin square: each row is the previous row rotated by one
+   position (row1: P,K,B / row2: B,P,K / row3: K,B,P). That guarantees, at
+   3-wide, every column shows all 3 colors (no column repeats) AND no two
+   adjacent rows share a starting color (no row echoes the one above it) —
+   row4 would repeat row1, but rows 3 apart are never adjacent, so the
+   pattern keeps working correctly no matter how many cards are added. A
+   simple period-3 or period-5 cycle can satisfy the column rule alone but
+   not this row-contrast rule too, so the sequence is spelled out per
+   position (period 9) rather than derived from one small formula. */
+.services-grid .service-card:nth-child(9n+1) .service-icon,
+.services-grid .service-card:nth-child(9n+5) .service-icon,
+.services-grid .service-card:nth-child(9n) .service-icon {
+    background-color: var(--primary-color);
+}
+
+.services-grid .service-card:nth-child(9n+2) .service-icon,
+.services-grid .service-card:nth-child(9n+6) .service-icon,
+.services-grid .service-card:nth-child(9n+7) .service-icon {
+    background-color: var(--accent-color);
+}
+
+.services-grid .service-card:nth-child(9n+3) .service-icon,
+.services-grid .service-card:nth-child(9n+4) .service-icon,
+.services-grid .service-card:nth-child(9n+8) .service-icon {
+    background-color: var(--secondary-color);
+}
+
 /* CTA Section */
 #cta {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--cta-color-1) 0%, var(--cta-color-2) 100%);
     color: white;
     padding: 5rem 0;
     text-align: center;
@@ -932,7 +977,7 @@ header {
 
 .cta-buttons .primary-btn {
     background-color: white;
-    color: var(--primary-color);
+    color: var(--cta-color-1);
 }
 
 .cta-buttons .primary-btn:hover {
@@ -953,6 +998,63 @@ footer {
     background-color: var(--section-bg);
     padding: 3rem 0 1.5rem;
     border-top: 1px solid var(--border-color);
+}
+
+/* Footer directory — Site + Case Studies links, above the logo/social row */
+.footer-directory {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.footer-links-column h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.footer-links-column ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.footer-case-studies-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem 2rem;
+}
+
+.footer-directory a {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-directory a:hover {
+    color: var(--primary-color);
+}
+
+.dark-theme .footer-directory a {
+    color: #ccc;
+}
+
+.dark-theme .footer-links-column h4 {
+    color: #f0f0f0;
+}
+
+.dark-theme .footer-directory {
+    border-bottom-color: #333;
 }
 
 .footer-content {
@@ -1230,6 +1332,7 @@ footer {
 
 .process-steps {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
     position: relative;
     max-width: 1000px;
@@ -1248,6 +1351,47 @@ footer {
     z-index: 1;
 }
 
+/* Desktop: the flat line is replaced by a JS-positioned SVG (see
+   initProcessLine in animations.js) that connects the staggered circle
+   centers exactly, so it stays correct at any container width. Mobile
+   keeps the original ::before vertical rail below untouched. */
+@media (min-width: 769px) {
+    .process-steps::before {
+        display: none;
+    }
+}
+
+.process-line-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .process-line-svg {
+        display: block;
+    }
+}
+
+.process-line-path {
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 2;
+}
+
+.process-line-path.drawn {
+    transition: stroke-dashoffset 1.2s ease-out;
+    stroke-dashoffset: 0 !important;
+}
+
+.dark-theme .process-line-path {
+    stroke: var(--border-color);
+}
+
 .process-step {
     position: relative;
     z-index: 2;
@@ -1256,6 +1400,19 @@ footer {
     padding: 0 1rem;
     max-width: 250px;
     margin: 0 auto;
+}
+
+/* Descending staircase, desktop only — each step sits lower than the last,
+   left to right. Five fixed steps (a named methodology, not a growable
+   list), so plain nth-child offsets are simpler than a formula. */
+@media (min-width: 769px) {
+    /* nth-of-type, not nth-child — the SVG connector line is a sibling
+       (child 1) so nth-child counts would be off by one */
+    .process-step:nth-of-type(1) { margin-top: 0; }
+    .process-step:nth-of-type(2) { margin-top: 50px; }
+    .process-step:nth-of-type(3) { margin-top: 100px; }
+    .process-step:nth-of-type(4) { margin-top: 150px; }
+    .process-step:nth-of-type(5) { margin-top: 200px; }
 }
 
 .step-number {
@@ -1805,6 +1962,13 @@ button[type="submit"].btn:hover {
     text-align: center;
 }
 
+/* Heading stays centered; body copy standardized to left */
+#skills > p {
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
 #skills h2, #skills > p {
     max-width: 700px;
     margin-left: auto;
@@ -1841,7 +2005,7 @@ button[type="submit"].btn:hover {
 }
 
 #services > p {
-    text-align: center;
+    text-align: left;
     max-width: 700px;
     margin: 0 auto 3rem;
     padding: 0 1.5rem;
@@ -2003,9 +2167,7 @@ button[type="submit"].btn:hover {
 }
 
 /* Dark Mode Icon Colors */
-.dark-theme .service-icon.purple,
-.dark-theme .service-icon.pink,
-.dark-theme .service-icon.blue {
+.dark-theme .services-grid .service-icon {
     background-color: rgba(105, 56, 239, 0.3);
     color: #ffffff;
 }
@@ -2368,6 +2530,10 @@ button[type="submit"].btn:hover {
 }
 
 .featured-project-details {
+    /* #featured-section sets text-align:center; only the h2 below had its own
+       left-align override, so the description and highlights list were
+       silently inheriting center. Reset the whole column instead. */
+    text-align: left;
     padding: 2.5rem;
 }
 

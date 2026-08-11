@@ -1,9 +1,8 @@
 /* Clover & Thread case study — live brand system + e-commerce UI.
    Scoped under .ct-embed and its own custom properties so this never
    touches the site's own light/dark theme system, the same isolation
-   pattern used by .fg-embed on the FRAG.LOG case study. */
-
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Karla:wght@400;500;700&display=swap');
+   pattern used by .fg-embed on the FRAG.LOG case study.
+   Jost/Karla are loaded via <link> in the page <head>, not @import here. */
 
 .ct-embed {
     --ct-patina: #7C9D7C;

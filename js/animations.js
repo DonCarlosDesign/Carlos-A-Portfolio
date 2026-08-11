@@ -4,15 +4,20 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScrolling();
     createBackToTopButton();
     updateSectionVisibility();
-    
+    initProcessLine();
+
     // Setup scroll event listener
     window.addEventListener('scroll', function() {
         updateSectionVisibility();
     });
-    
+
     // Setup resize event listener
+    let processLineResizeTimeout;
     window.addEventListener('resize', function() {
         updateSectionVisibility();
+
+        clearTimeout(processLineResizeTimeout);
+        processLineResizeTimeout = setTimeout(positionProcessLine, 150);
     });
 
     // Observer for section titles
@@ -76,7 +81,7 @@ function addAnimationClasses() {
     });
     
     // Add fade-in-up animation to various content elements
-    document.querySelectorAll('.skills-container, .timeline-item, .education-item, .approach-item, .faq-item, .cta-content').forEach(element => {
+    document.querySelectorAll('.skills-container, .timeline-item, .education-item, .approach-item, .faq-item, .cta-content, .case-hero-media').forEach(element => {
         if (!element.classList.contains('fade-in-up')) {
             element.classList.add('fade-in-up');
         }
@@ -125,14 +130,17 @@ function initIntersectionObservers() {
 // Initialize staggered animations for grid items
 function initStaggeredAnimations() {
     // Select grid containers
-    const gridContainers = document.querySelectorAll('.services-grid, .projects-grid, .education-grid, .approach-grid, .faq-grid');
+    const gridContainers = document.querySelectorAll('.services-grid, .projects-grid, .education-grid, .approach-grid, .faq-grid, .process-steps, .case-narrative, .case-highlight-grid, .case-meta, .case-mixed-gallery, .case-gallery, .case-gallery-wide, .logo-system-grid, .color-swatch-row, .case-stat-row, .brand-asset-grid, .case-pdf-list, .ct-shop-grid');
     
     gridContainers.forEach(container => {
-        // Get all direct children
-        const items = container.children;
-        
+        // Get all direct children that should actually stagger — excludes
+        // decorative elements like .process-steps' connector SVG, which has
+        // its own draw-in animation and would otherwise shift every real
+        // item's stagger index by one.
+        const items = Array.from(container.children).filter(item => item.tagName.toLowerCase() !== 'svg');
+
         // Add stagger-item class to each child
-        Array.from(items).forEach((item, index) => {
+        items.forEach((item, index) => {
             if (!item.classList.contains('stagger-item')) {
                 item.classList.add('stagger-item');
             }
@@ -162,6 +170,61 @@ function initStaggeredAnimations() {
         // Observe the container
         observer.observe(container);
     });
+}
+
+// Position the Process section's diagonal connector line by measuring the
+// actual circle centers with JS, rather than approximating with a
+// percentage-based SVG viewBox — stays exactly aligned at any container
+// width. No-op at mobile, where the SVG is hidden in favor of the original
+// vertical ::before rail.
+function positionProcessLine() {
+    const container = document.querySelector('.process-steps');
+    const svg = container ? container.querySelector('.process-line-svg') : null;
+    const path = svg ? svg.querySelector('.process-line-path') : null;
+    if (!container || !svg || !path) return;
+    if (getComputedStyle(svg).display === 'none') return;
+
+    const containerRect = container.getBoundingClientRect();
+    const circles = container.querySelectorAll('.step-number');
+    if (!circles.length) return;
+
+    const points = Array.from(circles).map(circle => {
+        const r = circle.getBoundingClientRect();
+        const x = r.left + r.width / 2 - containerRect.left;
+        const y = r.top + r.height / 2 - containerRect.top;
+        return `${x},${y}`;
+    }).join(' ');
+
+    svg.setAttribute('viewBox', `0 0 ${containerRect.width} ${containerRect.height}`);
+    path.setAttribute('points', points);
+
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = length;
+    if (!path.classList.contains('drawn')) {
+        path.style.strokeDashoffset = length;
+    }
+}
+
+// Reveal the connector line (draws in via stroke-dashoffset) once the
+// Process section scrolls into view, alongside the steps' own stagger-item
+// fade/slide from initStaggeredAnimations.
+function initProcessLine() {
+    positionProcessLine();
+
+    const container = document.querySelector('.process-steps');
+    if (!container) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        if (entries[0].isIntersecting) {
+            const path = container.querySelector('.process-line-path');
+            if (path) {
+                path.classList.add('drawn');
+            }
+            obs.unobserve(container);
+        }
+    }, { threshold: 0.1 });
+
+    observer.observe(container);
 }
 
 // Initialize smooth scrolling for navigation links

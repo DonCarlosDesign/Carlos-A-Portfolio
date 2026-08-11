@@ -98,13 +98,21 @@
     left: 0;
 }
 
-/* Enhanced hover animations for various elements */
-.service-card, 
-.project-card, 
-.education-item, 
-.approach-item, 
+/* Enhanced hover animations for various elements.
+   These also carry .fade-in-up/.stagger-item for scroll reveal, which needs
+   opacity and transform to transition together at 600ms ease-out. A shorthand
+   `transition` declaration fully replaces any earlier one on the same element
+   rather than merging, so this rule was silently dropping the opacity
+   transition (and shortening transform to 300ms) — cards appeared to "pop in"
+   instead of fading/sliding in like the rest of the site. Keeping opacity and
+   transform aligned with the site-wide reveal timing; box-shadow (hover-only,
+   no reveal counterpart) stays snappier. */
+.service-card,
+.project-card,
+.education-item,
+.approach-item,
 .faq-item {
-    transition: transform 300ms ease, box-shadow 300ms ease;
+    transition: opacity 600ms ease-out, transform 600ms ease-out, box-shadow 300ms ease;
 }
 
 /* Smooth image zoom effect */

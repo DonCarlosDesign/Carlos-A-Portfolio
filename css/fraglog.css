@@ -1,10 +1,9 @@
 /* FRAG.LOG case study — interactive product widgets.
    Scoped under .fg-embed and its own custom properties so this never
    touches the site's own light/dark theme system. The product itself
-   is a fixed dark terminal UI regardless of the portfolio's theme toggle. */
-
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/cascadia-mono/400.css');
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/cascadia-mono/600.css');
+   is a fixed dark terminal UI regardless of the portfolio's theme toggle.
+   Cascadia Mono is loaded via <link> in the page <head>, not @import here —
+   see project-fraglog.html for why. */
 
 .fg-embed {
     --fg-bg: #14100a;

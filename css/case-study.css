@@ -148,10 +148,12 @@
     margin-bottom: 0.75rem;
 }
 
-/* Deliverables list — match the width/centering of .section-intro above it */
+/* Deliverables list — use the full container width rather than the narrower
+   .section-intro width above it. Bullets are short discrete phrases, not
+   flowing prose, so they don't need a reading-width cap; at 700px on a
+   ~1152px container, longer bullets were wrapping with room to spare. */
 #case-deliverables .project-highlights {
-    max-width: 700px;
-    margin: 0 auto;
+    max-width: 100%;
 }
 
 /* Gallery for images with mixed aspect ratios — uniform card sizing, cropped to a fixed ratio per gallery/row */
