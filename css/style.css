@@ -1000,10 +1000,12 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
-/* Footer directory — Site + Case Studies links, above the logo/social row */
+/* Footer directory — three balanced columns of 4 links each, above the
+   logo/social row. Case Studies (8 links) splits into two columns rather
+   than one column running twice as tall as Site. */
 .footer-directory {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -1021,17 +1023,27 @@ footer {
     margin-bottom: 1rem;
 }
 
+/* The second Case Studies column repeats the heading markup but hides it
+   visually — keeps the link lists starting at the same vertical position
+   as the first column (and Site) so all three read as the same height,
+   while a screen reader still gets a real (if redundant-looking) label. */
+.footer-links-column h4.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .footer-links-column ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-}
-
-.footer-case-studies-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem 2rem;
 }
 
 .footer-directory a {
