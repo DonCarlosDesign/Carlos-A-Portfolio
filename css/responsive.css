@@ -249,7 +249,22 @@
     .about-hero-content {
         padding: 0 1.5rem;
     }
-    
+
+    /* The 5rem/80px top+bottom section padding is tuned for desktop; on a
+       phone screen two adjacent sections each contributing 80px stacks into
+       ~160px of empty space at the seam, reading as a broken layout rather
+       than a section boundary. */
+    #clients,
+    #skills,
+    #services,
+    #experience,
+    #cta,
+    #testimonials,
+    #contact-info,
+    #faq {
+        padding: 3rem 0;
+    }
+
     .services-grid {
         grid-template-columns: 1fr;
     }
