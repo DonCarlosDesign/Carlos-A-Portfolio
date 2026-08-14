@@ -2148,7 +2148,8 @@ button[type="submit"].btn:hover {
 .dark-theme .contact-form-container,
 .dark-theme .contact-details,
 .dark-theme .faq-item,
-.dark-theme .project-card {
+.dark-theme .project-card,
+.dark-theme .case-deliverable-card {
     background-color: var(--card-bg);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     color: var(--text-color);

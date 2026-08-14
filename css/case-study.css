@@ -150,82 +150,71 @@
 
 /* Deliverables section, all case studies except Cigna (which uses a
    different "Additional Collateral" PDF-link pattern, not this one).
-   Replaces the old centered heading + centered .section-intro +
-   full-width bullet list (three different alignment axes, no shared
-   edge) with one left-aligned layout: intro copy in a narrower left
-   column, a row-per-deliverable table in a wider right column. New
-   class names throughout rather than reusing .project-highlights,
-   which the Featured Project section elsewhere on the site still
-   depends on. Columns are top-aligned (align-items: start) rather than
-   centered: the heading sitting level with the first row is the
-   structural anchor of the layout and holds regardless of item count,
-   whereas centering would put the heading at a different height on
-   every case study. Any resulting whitespace at the bottom of a
-   shorter intro column is left as-is -- uneven negative space at the
-   bottom of a two-column editorial layout reads as intentional as long
-   as the top edge is crisp. */
-.case-deliverables-layout {
+   Second pass: the two-column row-table layout (heading/intro left,
+   divider rows right) is gone, replaced by a centered heading + centered
+   .section-intro (both back to the standard pattern every other
+   case-study section uses) followed by a full-width card grid, one card
+   per deliverable. Card styling follows .service-card's mechanism (white
+   fill + var(--card-shadow) + the shared dark-mode card override list)
+   rather than .case-highlight-item's var(--section-bg) fill, since
+   Finvero and Vantrex render this section on a var(--section-bg)-tinted
+   .case-section-alt background -- a var(--section-bg) card there would
+   be invisible against its own section. */
+.case-deliverables-grid {
     display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 3rem;
-    align-items: start;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
 }
 
-.case-deliverables-intro h2 {
-    text-align: left;
+/* Odd item count: last card spans both columns instead of leaving an
+   orphan half-empty row. Works for any odd count (4, 5, or 6 items
+   across the 7 pages) with no per-page override. */
+.case-deliverable-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
 }
 
-.case-deliverables-intro p {
-    text-align: left;
-    color: var(--text-light);
-    margin-bottom: 0;
-}
-
-.case-deliverables-list {
+.case-deliverable-card {
     display: flex;
-    flex-direction: column;
-}
-
-/* Fixed-width marker column, identical on every row, is what makes the
-   text start at one shared x position -- the entire point of dropping
-   the bullet list's hanging indent. */
-.case-deliverable-row {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    align-items: baseline;
+    align-items: flex-start;
     gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color);
-    text-align: left;
+    padding: 2rem;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: var(--card-shadow);
 }
 
-.case-deliverable-row:first-child {
-    padding-top: 0;
-}
-
-.case-deliverable-row:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-/* A short bar, not a numeral: numerals imply a sequence, and these
-   items aren't ordered. */
+/* Fixed-width icon column (not an inline glyph in the text flow) so
+   every card's text starts at the same x position regardless of how
+   many lines it wraps to. Font Awesome 6.4 solid glyph via ::before
+   rather than a markup icon element -- keeps all 7 pages' HTML as a
+   plain marker span. Solid style requires font-weight: 900, the glyph
+   won't render at the default weight. */
 .case-deliverable-marker {
-    display: block;
-    width: 16px;
-    height: 2px;
-    background-color: var(--primary-color);
-    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 1.6em;
+}
+
+.case-deliverable-marker::before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1.1rem;
+    line-height: 1;
+    color: var(--primary-color);
 }
 
 .case-deliverable-text {
     color: var(--text-light);
+    margin: 0;
 }
 
 @media (max-width: 992px) {
-    .case-deliverables-layout {
+    .case-deliverables-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
     }
 }
 
