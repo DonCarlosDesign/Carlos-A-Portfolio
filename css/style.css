@@ -1751,7 +1751,23 @@ social-links {
 #contact-hero {
     padding-top: 8rem;
     padding-bottom: 3rem;
+    text-align: center;
     background-color: var(--background-color);
+}
+
+/* Match the width/centering of the message card below, so both left edges align */
+#contact-hero .hero-content {
+    max-width: 800px;
+    padding: 0;
+    margin: 0 auto 3rem;
+}
+
+/* #contact-hero inherits text-align: center for its message form below;
+   override just the hero text back to left above the mobile stacking breakpoint */
+@media (min-width: 993px) {
+    #contact-hero .hero-text {
+        text-align: left;
+    }
 }
 
 .lead {
