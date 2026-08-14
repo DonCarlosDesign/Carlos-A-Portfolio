@@ -766,11 +766,14 @@ header {
     text-align: center;
 }
 
-/* Heading stays centered; body copy standardized to left */
+/* Heading stays centered; body copy standardized to left, same pattern
+   as #services > p (text-align/max-width/margin/padding, no responsive.css
+   override needed) */
 #skills > p {
     text-align: left;
     max-width: 700px;
     margin: 0 auto 2rem;
+    padding: 0 1.5rem;
 }
 
 #skills h2, #skills > p {
@@ -1958,11 +1961,14 @@ button[type="submit"].btn:hover {
     text-align: center;
 }
 
-/* Heading stays centered; body copy standardized to left */
+/* Heading stays centered; body copy standardized to left, same pattern
+   as #services > p (text-align/max-width/margin/padding, no responsive.css
+   override needed) */
 #skills > p {
     text-align: left;
     max-width: 700px;
     margin: 0 auto 2rem;
+    padding: 0 1.5rem;
 }
 
 #skills h2, #skills > p {
