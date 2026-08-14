@@ -47,151 +47,6 @@
         .dark-theme .hero-image img:hover {
             filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.6));
         }
-
-        /* PROTOTYPE: CTA banner redesign, this page only, for review before
-           rolling out to css/style.css (which every page shares). Hollow
-           outlined card: brand color lives only on the border, never on
-           either button. */
-        #cta {
-            background: transparent;
-        }
-
-        .cta-content {
-            /* max-width alone only binds above ~1152px; below that, width
-               guarantees a 1.5rem gutter on each side at every viewport
-               (including mobile, where max-width never kicks in) so the
-               border never touches the screen edge. Above ~1152px width
-               settles at max-width, landing on the .container/.hero-content
-               edge (56.5px at 1280px viewport) instead of the raw 1200px
-               box edge (32.5px). */
-            width: calc(100% - 3rem);
-            max-width: calc(1200px - 3rem);
-            margin: 0 auto;
-            padding: 3rem 2.5rem;
-            border: 3px solid var(--primary-color);
-            border-radius: 20px;
-            background-color: transparent;
-            transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Sized up from the shared 60px box (css/style.css), which was tuned
-           for a mark tucked inside a filled banner. Scoped here rather than
-           editing the shared rule, which other CTA instances may depend on.
-           Bottom margin bumped from the shared 2rem to 2.5rem too: that gap
-           was tuned for the old 60px mark, and stayed proportionally tight
-           once the mark grew to 96px. */
-        .cta-icon {
-            width: 96px;
-            height: 96px;
-            margin-bottom: 2.5rem;
-        }
-
-        .cta-icon img {
-            width: 46px;
-            height: auto;
-            transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* The mark is a hardcoded dark fill (#1c1f26), single-color with no
-           brand hue in it, so brightness(0) invert(1) to flip it white in
-           dark mode loses nothing. There's no separate light-variant asset
-           (this is a filter, not a real asset; flagged in chat already). */
-        .dark-theme .cta-icon img {
-            filter: brightness(0) invert(1);
-        }
-
-        /* One hover on the card, not separate hovers on the logo and the
-           card. Hovering anywhere on .cta-content triggers both the glow
-           and the icon lift together, so it reads as one object. No
-           transform on .cta-content itself: growing/lifting the whole card
-           is the filled-card language this design moved away from.
-           Transitions are declared explicitly here (matching the sitewide
-           250ms/cubic-bezier(0.4,0,0.2,1) values from animations.css) rather
-           than relying on that universal rule, so this hover keeps working
-           if that rule is ever scoped down. */
-        .cta-content:hover {
-            box-shadow: 0 0 60px rgba(105, 56, 239, 0.25);
-        }
-
-        /* Same glow needs more opacity to read against the dark page. */
-        .dark-theme .cta-content:hover {
-            box-shadow: 0 0 60px rgba(139, 92, 246, 0.35);
-        }
-
-        .cta-content:hover .cta-icon img {
-            transform: translateY(-4px) scale(1.08);
-        }
-
-        #cta h2 {
-            color: var(--text-color);
-        }
-
-        #cta p {
-            color: var(--text-light);
-        }
-
-        /* Solid web-black fill: the one filled shape in the banner,
-           deliberately not brand-colored so the stroke stays the only
-           spot of brand color. */
-        .cta-buttons .primary-btn {
-            background-color: #000;
-            color: #fff;
-            border: none;
-        }
-
-        /* The shared .btn:hover box-shadow (rgba(0,0,0,.15)) was tuned for
-           buttons that always sat on a light page. That still reads fine
-           here in light mode, but in dark mode the same dark shadow is
-           nearly invisible against the dark page behind the card, so it's
-           overridden per-theme rather than leaning on the sitewide default. */
-        .cta-buttons .primary-btn:hover {
-            background-color: #262626;
-            color: #fff;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-        }
-
-        .dark-theme .cta-buttons .primary-btn {
-            background-color: #fff;
-            color: #000;
-        }
-
-        .dark-theme .cta-buttons .primary-btn:hover {
-            background-color: #e5e5e5;
-            color: #000;
-            box-shadow: 0 6px 16px rgba(255, 255, 255, 0.15);
-        }
-
-        /* Plain text link: deliberately not a .btn (dropped from the <a>'s
-           class list) so it can't inherit the shared .btn:hover lift/shadow
-           or .btn:hover i icon-shift. Fully self-contained: own layout, own
-           hover, own icon transition. */
-        .cta-buttons .secondary-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: transparent;
-            color: var(--text-color);
-            border: none;
-            border-radius: 0;
-            padding: 0;
-            font-weight: 500;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .cta-buttons .secondary-btn i {
-            transition: transform 0.3s ease;
-        }
-
-        .cta-buttons .secondary-btn:hover {
-            background: transparent;
-            color: var(--primary-color);
-        }
-
-        .cta-buttons .secondary-btn:hover i {
-            transform: translateX(5px);
-        }
     </style>
 </head>
 
@@ -506,14 +361,14 @@
         <section id="cta">
             <div class="cta-content">
                 <div class="cta-icon">
-                    <img src="images/DCD-Logo-Mark.svg" alt="Logo Icon">
+                    <img src="images/Vector-CTA.svg" alt="Logo Icon">
                 </div>
                 <h2 class="section-title">Ready to start your project?</h2>
                 <p>Let's create something amazing together! Get in touch to discuss your project needs and how I can
                     help bring your vision to life.</p>
                 <div class="cta-buttons">
                     <a href="contact.html" class="btn primary-btn">Get In Touch <i class="fas fa-arrow-right"></i></a>
-                    <a href="projects.html" class="secondary-btn">Explore My Work <i class="fas fa-arrow-right"></i></a>
+                    <a href="projects.html" class="btn secondary-btn">Explore My Work</a>
                 </div>
             </div>
         </section>
