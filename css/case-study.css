@@ -1,4 +1,4 @@
-/* Case Study Template — reusable for future project detail pages */
+/* Case Study Template: reusable for future project detail pages */
 
 .case-back {
     display: inline-flex;
@@ -148,7 +148,7 @@
     margin-bottom: 0.75rem;
 }
 
-/* Deliverables list — use the full container width rather than the narrower
+/* Deliverables list: use the full container width rather than the narrower
    .section-intro width above it. Bullets are short discrete phrases, not
    flowing prose, so they don't need a reading-width cap; at 700px on a
    ~1152px container, longer bullets were wrapping with room to spare. */
@@ -156,7 +156,7 @@
     max-width: 100%;
 }
 
-/* Gallery for images with mixed aspect ratios — uniform card sizing, cropped to a fixed ratio per gallery/row */
+/* Gallery for images with mixed aspect ratios: uniform card sizing, cropped to a fixed ratio per gallery/row */
 .case-mixed-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -292,7 +292,7 @@
     color: var(--text-light);
 }
 
-/* Neutral brand asset grid — for pre-composed mockup/lockup images (no forced dark/light background) */
+/* Neutral brand asset grid: for pre-composed mockup/lockup images (no forced dark/light background) */
 .brand-asset-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -364,7 +364,7 @@
     object-fit: cover;
 }
 
-/* Full-width stacked rows — for pairing dissimilar content types (e.g. a
+/* Full-width stacked rows: for pairing dissimilar content types (e.g. a
    small mockup next to a full-bleed photo) that shouldn't be forced into
    matching grid-row heights */
 .case-figure-stack {
@@ -373,7 +373,7 @@
     gap: 1.75rem;
 }
 
-/* Wide gallery grid — 3-up, for gallery-style project pages */
+/* Wide gallery grid: 3-up, for gallery-style project pages */
 .case-gallery-wide {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -404,7 +404,7 @@
     }
 }
 
-/* Click-to-enlarge lightbox — reusable across case studies */
+/* Click-to-enlarge lightbox: reusable across case studies */
 .case-lightbox {
     position: fixed;
     inset: 0;

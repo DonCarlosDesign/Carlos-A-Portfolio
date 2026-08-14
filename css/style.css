@@ -10,7 +10,7 @@
     --border-color: #E2E8F0;
     --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     --font-family: 'Poppins', sans-serif;
-    /* CTA banner — darker than --primary/--secondary; white text on the
+    /* CTA banner: darker than --primary/--secondary; white text on the
        original pair only hit 3.68:1 against the blue end (fails WCAG AA
        for body text at 4.5:1). These hit 14.8:1 and 10.4:1. */
     --cta-color-1: #2A1B5E;
@@ -911,7 +911,7 @@ header {
    This is a 3-row Latin square: each row is the previous row rotated by one
    position (row1: P,K,B / row2: B,P,K / row3: K,B,P). That guarantees, at
    3-wide, every column shows all 3 colors (no column repeats) AND no two
-   adjacent rows share a starting color (no row echoes the one above it) —
+   adjacent rows share a starting color (no row echoes the one above it).
    row4 would repeat row1, but rows 3 apart are never adjacent, so the
    pattern keeps working correctly no matter how many cards are added. A
    simple period-3 or period-5 cycle can satisfy the column rule alone but
@@ -1000,7 +1000,7 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
-/* Footer directory — three balanced columns of 4 links each, above the
+/* Footer directory: three balanced columns of 4 links each, above the
    logo/social row. Case Studies (8 links) splits into two columns rather
    than one column running twice as tall as Site. */
 .footer-directory {
@@ -1024,7 +1024,7 @@ footer {
 }
 
 /* The second Case Studies column repeats the heading markup but hides it
-   visually — keeps the link lists starting at the same vertical position
+   visually, keeping the link lists starting at the same vertical position
    as the first column (and Site) so all three read as the same height,
    while a screen reader still gets a real (if redundant-looking) label. */
 .footer-links-column h4.visually-hidden {
@@ -1414,11 +1414,11 @@ footer {
     margin: 0 auto;
 }
 
-/* Descending staircase, desktop only — each step sits lower than the last,
+/* Descending staircase, desktop only: each step sits lower than the last,
    left to right. Five fixed steps (a named methodology, not a growable
    list), so plain nth-child offsets are simpler than a formula. */
 @media (min-width: 769px) {
-    /* nth-of-type, not nth-child — the SVG connector line is a sibling
+    /* nth-of-type, not nth-child: the SVG connector line is a sibling
        (child 1) so nth-child counts would be off by one */
     .process-step:nth-of-type(1) { margin-top: 0; }
     .process-step:nth-of-type(2) { margin-top: 50px; }
@@ -2277,7 +2277,7 @@ button[type="submit"].btn:hover {
     filter: drop-shadow(0 0 25px rgba(105, 56, 239, 0.6));
 }
 
-/* Concept Project tag — marks speculative/practice projects, distinct from real client work */
+/* Concept Project tag: marks speculative/practice projects, distinct from real client work */
 .concept-tag {
     display: inline-flex;
     align-items: center;

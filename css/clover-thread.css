@@ -1,4 +1,4 @@
-/* Clover & Thread case study — live brand system + e-commerce UI.
+/* Clover & Thread case study: live brand system + e-commerce UI.
    Scoped under .ct-embed and its own custom properties so this never
    touches the site's own light/dark theme system, the same isolation
    pattern used by .fg-embed on the FRAG.LOG case study.
@@ -66,7 +66,7 @@
     color: var(--ct-obsidian);
 }
 
-/* Logo lockup — built live from the actual mark + real text, not a flattened image */
+/* Logo lockup: built live from the actual mark + real text, not a flattened image */
 .ct-logo {
     display: inline-flex;
     align-items: center;
@@ -83,7 +83,7 @@
 /* Defense-in-depth: .case-mixed-gallery .case-figure img (a uniform-crop rule
    meant for photo galleries) targets every descendant <img>, including small
    mockup icons like this one nested inside a .case-figure. Same leak pattern
-   as the .section-title fix above — win back sizing/fit here rather than
+   as the .section-title fix above: win back sizing/fit here rather than
    letting an unrelated gallery rule stretch-then-crop the mark. */
 .case-mixed-gallery .ct-logo img,
 .case-figure-stack .ct-logo img {

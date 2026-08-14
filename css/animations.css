@@ -103,7 +103,7 @@
    opacity and transform to transition together at 600ms ease-out. A shorthand
    `transition` declaration fully replaces any earlier one on the same element
    rather than merging, so this rule was silently dropping the opacity
-   transition (and shortening transform to 300ms) — cards appeared to "pop in"
+   transition (and shortening transform to 300ms). Cards appeared to "pop in"
    instead of fading/sliding in like the rest of the site. Keeping opacity and
    transform aligned with the site-wide reveal timing; box-shadow (hover-only,
    no reveal counterpart) stays snappier. */
