@@ -148,12 +148,85 @@
     margin-bottom: 0.75rem;
 }
 
-/* Deliverables list: use the full container width rather than the narrower
-   .section-intro width above it. Bullets are short discrete phrases, not
-   flowing prose, so they don't need a reading-width cap; at 700px on a
-   ~1152px container, longer bullets were wrapping with room to spare. */
-#case-deliverables .project-highlights {
-    max-width: 100%;
+/* Deliverables section, all case studies except Cigna (which uses a
+   different "Additional Collateral" PDF-link pattern, not this one).
+   Replaces the old centered heading + centered .section-intro +
+   full-width bullet list (three different alignment axes, no shared
+   edge) with one left-aligned layout: intro copy in a narrower left
+   column, a row-per-deliverable table in a wider right column. New
+   class names throughout rather than reusing .project-highlights,
+   which the Featured Project section elsewhere on the site still
+   depends on. Columns are top-aligned (align-items: start) rather than
+   centered: the heading sitting level with the first row is the
+   structural anchor of the layout and holds regardless of item count,
+   whereas centering would put the heading at a different height on
+   every case study. Any resulting whitespace at the bottom of a
+   shorter intro column is left as-is -- uneven negative space at the
+   bottom of a two-column editorial layout reads as intentional as long
+   as the top edge is crisp. */
+.case-deliverables-layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.case-deliverables-intro h2 {
+    text-align: left;
+}
+
+.case-deliverables-intro p {
+    text-align: left;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+.case-deliverables-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fixed-width marker column, identical on every row, is what makes the
+   text start at one shared x position -- the entire point of dropping
+   the bullet list's hanging indent. */
+.case-deliverable-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.case-deliverable-row:first-child {
+    padding-top: 0;
+}
+
+.case-deliverable-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* A short bar, not a numeral: numerals imply a sequence, and these
+   items aren't ordered. */
+.case-deliverable-marker {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background-color: var(--primary-color);
+    align-self: center;
+}
+
+.case-deliverable-text {
+    color: var(--text-light);
+}
+
+@media (max-width: 992px) {
+    .case-deliverables-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 /* Gallery for images with mixed aspect ratios: uniform card sizing, cropped to a fixed ratio per gallery/row */
