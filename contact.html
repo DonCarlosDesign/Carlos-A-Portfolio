@@ -29,7 +29,15 @@
            the layout, so this card's outer edge sits on the site's spine
            instead of being centered as an island. */
         .contact-hero-wrapper {
-            max-width: 1200px;
+            /* max-width alone only binds above ~1152px; below that, width
+               guarantees a 1.5rem gutter on each side at every viewport
+               (including mobile, where max-width never kicks in) so the
+               card never touches the screen edge. Above ~1152px width
+               settles at max-width, landing on the .container/.hero-content
+               edge (56.5px at 1280px viewport) instead of the raw 1200px
+               box edge (32.5px). */
+            width: calc(100% - 3rem);
+            max-width: calc(1200px - 3rem);
             margin: 3rem auto 0;
             padding: 2rem;
             background-color: var(--color-bg-secondary, #f8f9fa);

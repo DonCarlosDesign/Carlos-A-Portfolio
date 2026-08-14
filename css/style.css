@@ -787,7 +787,7 @@ header {
     gap: 2rem;
     max-width: 1200px;
     margin: 3rem auto;
-    padding: 0;
+    padding: 0 1.5rem;
 }
 
 .skills-column {
@@ -1927,15 +1927,6 @@ button[type="submit"].btn:hover {
     padding: 5rem 0;
 }
 
-.project-showcase {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0;
-}
-
 .project-image {
     flex: 1.2;
     max-width: 550px;
@@ -1982,7 +1973,7 @@ button[type="submit"].btn:hover {
     gap: 2rem;
     max-width: 1200px;
     margin: 3rem auto;
-    padding: 0;
+    padding: 0 1.5rem;
 }
 
 .skills-column {
