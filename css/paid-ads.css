@@ -325,7 +325,7 @@ body.lp {
 }
 
 /* Type */
-.lp-eyebrow {
+.lp .lp-eyebrow {
     color: var(--primary-ink);
     font-size: 0.8rem;
     font-weight: 600;
@@ -334,8 +334,13 @@ body.lp {
     margin-bottom: 0.75rem !important;
 }
 
-.lp-eyebrow--light {
+.lp .lp-eyebrow--light {
     color: #C4B5FD;
+}
+
+.lp h1,
+.lp h2 {
+    text-wrap: balance;
 }
 
 .lp h1 {
@@ -912,6 +917,7 @@ body.lp {
 .lp-field {
     display: grid;
     gap: 6px;
+    align-content: start;
     min-width: 0;
 }
 

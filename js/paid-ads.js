@@ -60,31 +60,27 @@ function initStickyCta() {
     const bar = document.querySelector('[data-sticky-cta]');
     const hero = document.querySelector('.lp-hero');
     const inquiry = document.getElementById('inquiry');
-    if (!bar || !hero || !inquiry || !('IntersectionObserver' in window)) return;
+    if (!bar || !hero || !inquiry) return;
 
     bar.hidden = false;
     document.body.classList.add('has-sticky');
 
-    let pastHero = false;
-    let formVisible = false;
+    let shown = null;
     const update = () => {
+        const pastHero = hero.getBoundingClientRect().bottom < 0;
+        // Treat the form as on screen once its top reaches the lower 20% of the viewport
+        const formVisible = inquiry.getBoundingClientRect().top < window.innerHeight * 0.8;
         const show = pastHero && !formVisible;
+        if (show === shown) return;
+        shown = show;
         bar.classList.toggle('is-visible', show);
         // Keep the off-screen link out of the tab order and accessibility tree
         bar.toggleAttribute('inert', !show);
         bar.setAttribute('aria-hidden', String(!show));
     };
 
-    new IntersectionObserver(([entry]) => {
-        pastHero = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-        update();
-    }).observe(hero);
-
-    new IntersectionObserver(([entry]) => {
-        formVisible = entry.isIntersecting;
-        update();
-    }, { rootMargin: '0px 0px -20% 0px' }).observe(inquiry);
-
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
     update();
 }
 
@@ -158,7 +154,9 @@ function initLeadForm() {
         if (sending) return;
         formError.hidden = true;
 
-        const firstInvalid = Object.keys(rules).find(name => validateField(name));
+        // Validate every field so all errors show at once, then focus the first
+        const invalid = Object.keys(rules).filter(name => validateField(name));
+        const firstInvalid = invalid[0];
         if (firstInvalid) {
             fieldFor(firstInvalid).focus();
             return;
