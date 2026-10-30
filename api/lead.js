@@ -158,7 +158,7 @@ module.exports = async function handler(req, res) {
 
     // Honeypot filled in: act as if it worked so bots get no signal
     if (clean(raw.extra_info)) {
-        console.warn('Lead dropped by honeypot:', clean(raw.company).slice(0, 120));
+        console.warn('Lead dropped by honeypot.');
         return reply(200, { ok: true }, '/paid-ads-thanks.html');
     }
 
@@ -195,14 +195,15 @@ module.exports = async function handler(req, res) {
         });
 
         if (!response.ok) {
-            const detail = await response.text().catch(() => '');
-            console.error(`Resend rejected the lead email (${response.status}): ${detail.slice(0, 500)}`);
+            // Provider error bodies can echo submitted data. Log status only.
+            console.error(`Resend rejected the lead email (${response.status}).`);
             return reply(502, { ok: false, error: 'Could not send inquiry' }, '/paid-ads.html#inquiry-error');
         }
     } catch (err) {
-        console.error('Lead email request failed:', err && err.message);
+        console.error('Lead email request failed.');
         return reply(502, { ok: false, error: 'Could not send inquiry' }, '/paid-ads.html#inquiry-error');
     }
 
-    return reply(200, { ok: true }, '/paid-ads-thanks.html');
+    // Only an inquiry accepted by the email provider is eligible for tracking.
+    return reply(200, { ok: true, accepted: true }, '/paid-ads-thanks.html');
 };

@@ -93,8 +93,8 @@ Nothing is installed yet and no ID is invented. The page is prepared so one cont
 ## 4. Before production approval
 
 - [ ] Step 1 done and a test lead received.
-- [ ] Independent Codex audit run against `docs/paid-ads/AUDIT-HANDOFF.md` and its findings resolved.
-      The builder's self-review doesn't replace it.
+- [x] Independent Codex audit run against `docs/paid-ads/AUDIT-HANDOFF.md` and its important findings resolved.
+      See `AUDIT-RESULTS.md` for coverage, minor follow-ups and test limits.
 - [ ] Owner review of the final screenshots.
 - [ ] Then: push the branch, open a PR into `master`, check the Vercel preview deployment, merge.
       Vercel deploys `master` to production automatically.

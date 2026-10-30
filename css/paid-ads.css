@@ -2659,6 +2659,11 @@ body.lp {
         margin: 0 -4px;
     }
 
+    /* Keep typed details and full budget ranges readable on narrow screens. */
+    .lp-form__row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .lp-footer__inner {
         flex-direction: column;
         align-items: flex-start;

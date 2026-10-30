@@ -319,7 +319,10 @@ function initLeadForm() {
             if (res.ok && body.ok) {
                 // The conversion event fires on the thank-you page (initLeadConversion),
                 // so it isn't lost to the redirect
-                try { sessionStorage.setItem(LEAD_FLAG_KEY, '1'); } catch (e) { }
+                try {
+                    sessionStorage.removeItem(LEAD_FLAG_KEY);
+                    if (body.accepted === true) sessionStorage.setItem(LEAD_FLAG_KEY, '1');
+                } catch (e) { }
                 window.location.assign(THANK_YOU_URL);
                 return;
             }

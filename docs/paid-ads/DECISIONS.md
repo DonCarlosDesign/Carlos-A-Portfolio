@@ -115,13 +115,15 @@ visitors *experience* excellent paid media while scrolling (SELL, SHOW, EXPLAIN,
 
 - [ ] **Resend + Vercel env vars** (required; the form must work before launch). See `LAUNCH-CHECKLIST.md` step 1.
 - [ ] **`www` redirect** in Vercel + Namecheap. See `LAUNCH-CHECKLIST.md` step 2.
-- [ ] **Independent Codex audit** before production approval. See `AUDIT-HANDOFF.md`.
+- [x] **Independent Codex audit** completed. See `AUDIT-RESULTS.md`.
 - [ ] Later, when paid traffic starts: GTM container and conversion tags. See `LAUNCH-CHECKLIST.md` step 3.
 
 ## Audit
 
-The Codex CLI is not installed on this laptop, so the independent Codex audit has not run yet.
-The builder ran a self-review against the same checklist; the brief for Codex is in `AUDIT-HANDOFF.md`.
+Independent Codex audit completed on 2026-10-30 against checkpoint `e6ff916`.
+See `AUDIT-RESULTS.md` for findings, fixes, verification and remaining setup gates.
+The review approves proceeding to Resend + Vercel setup; a real delivered test lead
+and owner review are still required before production approval.
 
 ## Rollback
 
