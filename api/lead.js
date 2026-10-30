@@ -14,12 +14,12 @@ const RESEND_URL = 'https://api.resend.com/emails';
 
 const OPTIONS = {
     industry: [
-        'Home services & trades',
-        'Med spa or clinic',
-        'Dental or wellness practice',
-        'Legal or professional services',
-        'Real estate or mortgage',
-        'Fitness or studio',
+        'Dental or orthodontics',
+        'HVAC, plumbing or roofing',
+        'Home improvement',
+        'Med spa or aesthetics',
+        'Legal',
+        'Specialized B2B services',
         'Other local or service business'
     ],
     ad_spend: ['Not running ads yet', 'Under $1,000', '$1,000 to $3,000', '$3,000 to $10,000', '$10,000+'],

@@ -10,13 +10,120 @@ const LEAD_ENDPOINT = '/api/lead';
 const THANK_YOU_URL = 'paid-ads-thanks.html';
 const REQUEST_TIMEOUT_MS = 15000;
 
+// Set in the <head> script when the visitor hasn't asked for reduced motion
+const MOTION = document.documentElement.classList.contains('motion');
+
 document.addEventListener('DOMContentLoaded', function () {
     initTheme();
     initYear();
     initBooking();
     initStickyCta();
     initLeadForm();
+    initCampaignTabs();
+    initReveals();
+    initHeroDepth();
 });
+
+// Industry tabs for the concept-campaign showcase (WAI-ARIA tabs pattern,
+// automatic activation, arrow/Home/End keys)
+function initCampaignTabs() {
+    const tabs = Array.from(document.querySelectorAll('.lp-tabs [role="tab"]'));
+    if (!tabs.length) return;
+    const panelFor = tab => document.getElementById(tab.getAttribute('aria-controls'));
+
+    function select(tab, focus) {
+        tabs.forEach(t => {
+            const on = t === tab;
+            t.setAttribute('aria-selected', String(on));
+            t.tabIndex = on ? 0 : -1;
+            const panel = panelFor(t);
+            panel.hidden = !on;
+            panel.classList.remove('is-entering');
+        });
+        const panel = panelFor(tab);
+        if (MOTION) {
+            // Restart the staggered entrance for the newly shown campaign
+            void panel.offsetWidth;
+            panel.classList.add('is-entering');
+        }
+        const canvas = panel.querySelector('.lp-canvas');
+        if (canvas) canvas.scrollLeft = 0;
+        if (focus) tab.focus();
+        tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    }
+
+    tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => select(tab, false));
+        tab.addEventListener('keydown', e => {
+            let next = null;
+            if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+            else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+            else if (e.key === 'Home') next = tabs[0];
+            else if (e.key === 'End') next = tabs[tabs.length - 1];
+            if (next) {
+                e.preventDefault();
+                select(next, true);
+            }
+        });
+    });
+
+    // Panels are all visible without JavaScript; hide the inactive ones now
+    const current = tabs.find(t => t.getAttribute('aria-selected') === 'true') || tabs[0];
+    tabs.forEach(t => { panelFor(t).hidden = t !== current; });
+}
+
+// Fade/slide sections in as they enter the viewport. Without motion (or
+// without IntersectionObserver) everything is simply shown.
+function initReveals() {
+    const items = document.querySelectorAll('[data-reveal]');
+    if (!MOTION || !('IntersectionObserver' in window)) {
+        items.forEach(el => el.classList.add('is-in'));
+        return;
+    }
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-in');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    items.forEach(el => io.observe(el));
+}
+
+// Hero composition: layers drift apart slightly as the hero scrolls away,
+// and respond a little to the pointer on desktop.
+function initHeroDepth() {
+    const stage = document.querySelector('[data-stage]');
+    if (!stage || !MOTION) return;
+    const hero = stage.closest('.lp-hero');
+    let ticking = false;
+
+    const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            const progress = Math.min(Math.max(window.scrollY / hero.offsetHeight, 0), 1);
+            stage.style.setProperty('--sy', progress.toFixed(3));
+            ticking = false;
+        });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        hero.addEventListener('pointermove', e => {
+            const r = stage.getBoundingClientRect();
+            const x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+            const y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+            stage.style.setProperty('--mx', Math.max(-1, Math.min(1, x)).toFixed(3));
+            stage.style.setProperty('--my', Math.max(-1, Math.min(1, y)).toFixed(3));
+        });
+        hero.addEventListener('pointerleave', () => {
+            stage.style.setProperty('--mx', 0);
+            stage.style.setProperty('--my', 0);
+        });
+    }
+}
 
 function initTheme() {
     const root = document.documentElement;

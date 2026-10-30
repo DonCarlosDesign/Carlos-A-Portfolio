@@ -4,7 +4,7 @@
 **Base:** `master` @ `9986bc3` (what is live on doncarlosdesign.com via Vercel)
 **Scope:** `git diff master...paid-acquisition-landing-page` (new files only; no existing file modified)
 
-Read `docs/paid-ads/DECISIONS.md` first: it records the owner's direction and why the page is built this way.
+Revision 2 (checkpoint 4) redesigned the page visually; see decisions 15 to 24. Read `docs/paid-ads/DECISIONS.md` first: it records the owner's direction and why the page is built this way.
 
 ## What to review
 
@@ -33,7 +33,10 @@ Read `docs/paid-ads/DECISIONS.md` first: it records the owner's direction and wh
 9. **Form functionality:** happy path, validation, server errors, timeout, honeypot, email HTML escaping,
    header/subject injection, `reply_to`.
 10. **Performance:** critical path weight, image sizing/lazy loading, font loading, CLS.
-11. **Marketing claims:** flag anything misleading, unverifiable or implying results. The page intentionally
+11. **Concept campaigns:** confirm every concept is clearly labeled fictional and nothing implies real
+    client results or that DCD managed paid media for Cigna/Evernorth. Check the industry tabs
+    (keyboard, ARIA), the swipe rows under 1100px, and reduced-motion behavior.
+12. **Marketing claims:** flag anything misleading, unverifiable or implying results. The page intentionally
     makes no performance claims; the owner still has to confirm the practice statements listed in DECISIONS.md.
 
 ## How to test locally

@@ -55,6 +55,38 @@ No existing file was modified.
 13. **"Strategy call"** is the single name for the first conversation everywhere on both pages.
 14. **Dark mode** uses the same `localStorage.theme` key and `dark-theme` class as the rest of the site.
 
+## Revision 2: visual redesign (2026-10-30)
+
+Owner feedback: the page explained the service well but felt like a generic agency page. Goal: make
+visitors *experience* excellent paid media while scrolling (SELL, SHOW, EXPLAIN, SHOW, PROVE, CONVERT).
+
+15. **Hero** is now a layered composition of designed concept ads (dental Facebook ad, med spa
+    Instagram story, HVAC Google search ad, lead and booking notifications), labeled "Concept campaign".
+    Staged entrance, slight scroll-linked depth and pointer response; all off under reduced motion.
+16. **Signature showcase "What your ads could look like."** Five concept campaign systems (Dental, HVAC,
+    Med Spa, Legal, Home Improvement), each with its own palette, typography and copy: landing page,
+    feed ad, story ad, search ad and a tracked-lead notification, plus offer/audience/tracking/tone notes.
+    Industry tabs follow the WAI-ARIA tabs pattern. Desktop is a layered canvas; under 1100px it becomes a
+    swipeable row so each piece stays readable.
+17. **Concept artwork is SVG**, not photography. There is no licensed industry photography in the repo,
+    and stock photos of real-looking patients/clients would read as real work. Brands (Brightline Dental,
+    Northpeak Heating & Air, Lumen Aesthetics, Hartwell Injury Law, Ridgeway Roofing) are fictional;
+    the page says so in three places (section intro, footnote, FAQ). The legal concept carries
+    "Attorney advertising" notices, as a real one would.
+18. **Statement band** "You run the business. I run the acquisition." with the target industries.
+19. **Why ads stall** is an editorial numbered list (no cards). **What's included** is three grouped
+    modules (Strategy / Build / Grow) instead of eight cards, with a clear-scope note (no social posting,
+    content calendars or community management). **Process** is a connected four-stage journey with an
+    animated progress line. Mobile never stacks more than three similar cards.
+20. **Cigna/Evernorth proof** kept, with the caption now stating it was design work only and that I didn't
+    manage their paid media.
+21. **Email-first conversion.** Primary CTA: "Request an ad opportunity review". Copy no longer promises a
+    call; "If it looks like a fit, I'll personally follow up by email with next steps. A call is optional."
+22. **Form industries** now match the target list; `api/lead.js` validates the same values.
+23. **DM Serif Display** is loaded only for the med spa and legal concept ads. The site font stays Poppins.
+24. **Rhythm:** dark showcase, dark journey and the brand-gradient fit band alternate with light sections;
+    the hero composition, showcase and proof media break out of the 1200px container.
+
 ## Owner inputs still needed before launch
 
 - [ ] **Resend:** verify `doncarlosdesign.com` in Resend, then in Vercel set
@@ -68,6 +100,9 @@ No existing file was modified.
   - Ad creative (concepts, copy, variations) is included and designed in-house. (Video was deliberately not promised.)
   - A quote is given after the strategy call, before anything is signed.
   - "I read every inquiry myself."
+  - An "ad opportunity review" is something you'll deliver by email for qualified inquiries.
+  - "Starts by email. A call is optional." and "Most of the early back-and-forth happens by email."
+- [ ] **Concept brand names:** fictional, but confirm none collide with a real local business you know of.
 - [ ] **Tracking:** GA4/GTM, Meta Pixel and Google Ads conversion IDs, if this page should report its own conversions.
 - [ ] **Consider** fixing `www.doncarlosdesign.com` (no DNS record today) before ads point anywhere near it.
 
