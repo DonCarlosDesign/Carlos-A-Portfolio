@@ -20,16 +20,18 @@ Branch: `paid-acquisition-landing-page` (from `master` at `9986bc3`). Not merged
 | `paid-ads-thanks.html` | Post-submit confirmation page (also a clean URL for ad conversion tracking) |
 | `css/paid-ads.css` | Page styles, self-contained |
 | `js/paid-ads.js` | Theme toggle, form validation + submit, sticky mobile CTA, booking link |
+| `js/site-nav.js` | Shared responsive menu behavior across the portfolio and paid pages |
 | `api/lead.js` | `POST /api/lead` Vercel function, emails the lead through Resend |
 | `.vercelignore` | Keeps `docs/` off the Vercel deployment |
 | `docs/paid-ads/LAUNCH-CHECKLIST.md` | Owner setup steps: Resend, env vars, `www`, tracking, audit |
 
-No existing file was modified.
+The initial landing-page checkpoints added files only. The subsequent owner-requested
+integration also updates the public page headers/footers, homepage service entry and shared navigation styles.
 
 ## Decisions
 
-1. **Standalone page, not linked from the main nav.** Paid traffic goes straight to `/paid-ads.html`.
-   The rest of the site is untouched, so rollback is deleting the new files (or not merging).
+1. **Originally a standalone paid-traffic page.** Superseded by the owner's post-audit
+   direction below: Paid Ads is now linked throughout the portfolio's public navigation.
 2. **Self-contained CSS/JS.** The page does not load `style.css`, `responsive.css`, `main.js`,
    `animations.js`, Font Awesome or the Netlify Identity widget. Brand tokens (colors, Poppins, pill
    buttons, CTA gradient) are copied from `style.css`. Reasons: zero risk of regressions elsewhere, and
@@ -111,6 +113,11 @@ visitors *experience* excellent paid media while scrolling (SELL, SHOW, EXPLAIN,
 30. **Launch steps** (Resend, Vercel env vars, `www` redirect, tracking, Codex) are in
     `LAUNCH-CHECKLIST.md`. DNS and Vercel settings are left to the owner.
 
+## Post-audit owner direction: global integration (2026-10-30)
+
+31. The owner requested seamless global navigation for Paid Ads. All 14 public pages now link to the service from their headers and footers; the homepage has a dedicated service entry. Paid pages provide matching Home, Projects, About, Paid Ads and Contact navigation while retaining the inquiry CTA.
+32. A small shared site-nav.js handles native menu buttons, expanded state, Escape/focus return, outside-click closing and breakpoint changes. Existing portfolio styling and the landing page offer/form/tracking remain intact. The historical audit describes the earlier standalone checkpoint; integration is a subsequent authorized scope change.
+
 ## Owner inputs still needed before launch
 
 - [ ] **Resend + Vercel env vars** (required; the form must work before launch). See `LAUNCH-CHECKLIST.md` step 1.
@@ -129,4 +136,6 @@ and owner review are still required before production approval.
 
 - Nothing reaches production unless this branch is merged into `master`.
 - Each checkpoint is its own commit; `git revert <sha>` or `git reset --hard <checkpoint>` on this branch.
-- Removing the feature entirely: delete the files listed above. No other file depends on them.
+- To remove the integrated feature, revert the integration checkpoint first so public navigation
+  no longer links to it, then revert the original feature commits. Shared `site-nav.js` is also
+  used by the portfolio pages and must not be deleted while those references remain.

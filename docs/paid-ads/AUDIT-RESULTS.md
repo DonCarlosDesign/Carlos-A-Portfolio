@@ -40,3 +40,17 @@ Run `node --test docs/paid-ads/tests/lead.test.cjs`: **10 tests passed**. These 
 Browser testing used a local static server for actual form controls, themes, industry switching, layout widths, keyboard focus, error display/retry and confirmation layout. The unavailable endpoint produced the expected focused alert and restored submit state. A second local harness ran the actual API handler with a stubbed email transport: a valid browser submission successfully reached `/paid-ads-thanks.html`. Confirmation also passed overflow checks at all five required widths. A successful real Resend/Vercel submission remains the setup acceptance test; local stubs do not replace it.
 
 `node --check` passed for both production JS files. `git diff --check` passed. Viewport override restored after testing. No push, merge, deployment, DNS change, external form submission or production branch modification was performed.
+
+## Subsequent owner-requested navigation integration
+
+After the audit, the owner requested that Paid Ads become part of normal site navigation.
+This supersedes the original standalone-page constraint and the earlier statement that existing pages were untouched.
+All 14 public pages now include Paid Ads in the header and footer. The homepage includes a service entry,
+and both paid pages link back to the main site. A shared lightweight script handles native menu buttons,
+expanded state, Escape/focus return, outside clicks and breakpoint changes.
+
+Verified all 14 mobile menus at 320px, including every case-study page, with links and menu bounds intact.
+Checked portfolio headers at 320, 390, 768, 769, 1024, 1280 and 1440px and paid headers at
+320, 390, 768, 1024, 1280 and 1440px. Checked light/dark presentation, homepage-to-Paid-Ads and return navigation,
+and the homepage service entry. Fixed an inherited mobile dropdown transform and dark active-link contrast.
+The existing 10 lead/API/tracking tests and JavaScript syntax checks still pass. Changes remain local to the feature branch.

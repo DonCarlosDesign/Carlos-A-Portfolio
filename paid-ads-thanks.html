@@ -27,6 +27,7 @@
         })();
     </script>
     <script src="js/paid-ads.js" defer></script>
+    <script src="js/site-nav.js" defer></script>
 </head>
 
 <body class="lp">
@@ -39,18 +40,29 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="lp-header">
-        <div class="lp-container lp-header__inner">
+        <nav class="lp-container lp-header__inner" aria-label="Primary">
             <a class="lp-logo" href="index.html" aria-label="DONCARLOS Design home">
                 <img src="images/Layer 1.svg" alt="" width="28" height="28">
                 <span>DONCARLOS</span>
             </a>
+            <ul class="lp-site-links" id="site-navigation" data-site-menu>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="paid-ads.html">Paid Ads</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
             <div class="lp-header__actions">
                 <button type="button" class="lp-theme-toggle" aria-label="Dark mode" aria-pressed="false">
                     <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
                     <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
                 </button>
+                <button type="button" class="lp-menu-toggle" data-site-menu-toggle data-menu-breakpoint="1100"
+                    aria-label="Open navigation" aria-expanded="false" aria-controls="site-navigation">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
             </div>
-        </div>
+        </nav>
     </header>
 
     <main id="main" class="lp-thanks" data-lead-confirmation>
@@ -74,6 +86,15 @@
                 <img src="images/Footer-Logo-Optimized-Simple.svg" alt="" class="logo-light" width="32" height="31">
                 <img src="images/Footer-Logo-White.svg" alt="" class="logo-dark" width="32" height="31">
             </a>
+            <nav aria-label="Site">
+                <ul class="lp-footer__links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="paid-ads.html">Paid Ads</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
             <p class="lp-footer__copy">&copy; <span data-year>2026</span> DON CARLOS DESIGN</p>
         </div>
     </footer>

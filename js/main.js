@@ -89,25 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Mobile menu functionality
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (mobileMenuToggle && navLinks) {
-        mobileMenuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            
-            // Toggle icon between bars and times
-            const icon = this.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    }
+    // Mobile disclosure behavior is shared with paid pages in site-nav.js.
     
     // Handle active link based on current page and scrolling
     const links = document.querySelectorAll('.nav-links a');

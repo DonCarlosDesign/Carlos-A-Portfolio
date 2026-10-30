@@ -2806,3 +2806,24 @@ button[type="submit"].btn:hover {
     line-height: 1.6;
 }
 
+
+/* Entry to the paid acquisition service from the main portfolio. */
+.home-paid-ads {
+    padding: clamp(48px, 7vw, 88px) 24px;
+    background: var(--card-bg, #f8f9fc);
+    text-align: center;
+}
+
+.home-paid-ads h2 {
+    margin: 12px 0 20px;
+}
+
+.home-paid-ads p {
+    max-width: 720px;
+    margin: 0 auto 28px;
+    color: var(--text-light);
+}
+
+.dark-theme .home-paid-ads {
+    background: #222225;
+}
