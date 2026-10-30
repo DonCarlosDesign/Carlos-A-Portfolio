@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanks, your inquiry is in | DONCARLOS Design</title>
+    <!-- Conversion confirmation page for paid campaigns. A URL-based
+         conversion (Google Ads / Meta) can fire on this page. -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#6938EF">
+    <link rel="icon" href="images/DCD-Logo-Mark.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/paid-ads.css">
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.documentElement.classList.add('dark-theme');
+                }
+            } catch (e) { }
+        })();
+    </script>
+    <script src="js/paid-ads.js" defer></script>
+</head>
+
+<body class="lp">
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    </svg>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="lp-header">
+        <div class="lp-container lp-header__inner">
+            <a class="lp-logo" href="index.html" aria-label="DONCARLOS Design home">
+                <img src="images/Layer 1.svg" alt="" width="28" height="28">
+                <span>DONCARLOS</span>
+            </a>
+            <div class="lp-header__actions">
+                <button type="button" class="lp-theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+                    <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+                    <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="lp-thanks">
+        <div class="lp-container">
+            <div class="lp-thanks__card">
+                <span class="lp-thanks__icon"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+                <h1>Thanks, your inquiry is in.</h1>
+                <p>I'll read through the details you sent and follow up by email. If it looks like a fit, the next
+                    step is a short discovery call about your business and goals.</p>
+                <div class="lp-actions">
+                    <a class="lp-btn lp-btn--primary" href="projects.html">Browse my design work</a>
+                    <a class="lp-btn lp-btn--ghost" href="paid-ads.html">Back to paid ads</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="lp-footer">
+        <div class="lp-container lp-footer__inner">
+            <a href="index.html" class="lp-footer__logo" aria-label="DONCARLOS Design home">
+                <img src="images/Footer-Logo-Optimized-Simple.svg" alt="" class="logo-light" width="160" height="40">
+                <img src="images/Footer-Logo-White.svg" alt="" class="logo-dark" width="160" height="40">
+            </a>
+            <p class="lp-footer__copy">&copy; <span data-year>2026</span> DON CARLOS DESIGN</p>
+        </div>
+    </footer>
+</body>
+
+</html>

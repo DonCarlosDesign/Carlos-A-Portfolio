@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paid Ads Management for Service Businesses | DONCARLOS Design</title>
+    <meta name="description"
+        content="Meta Ads and Google Ads management for local and service businesses: strategy, ad creative, campaign setup, conversion tracking, ongoing optimization and clear reporting.">
+    <!-- Paid-traffic landing page: kept out of search results so it doesn't
+         compete with the main site. Remove this tag to let it be indexed. -->
+    <meta name="robots" content="noindex, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Paid Ads Management for Service Businesses | DONCARLOS Design">
+    <meta property="og:description"
+        content="Meta and Google Ads built to bring in qualified leads, with designer-led creative, conversion tracking and clear reporting.">
+    <meta name="theme-color" content="#6938EF">
+    <link rel="icon" href="images/DCD-Logo-Mark.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/paid-ads.css">
+    <!-- Apply the saved theme before first paint (same key as the rest of the site) -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.documentElement.classList.add('dark-theme');
+                }
+            } catch (e) { }
+        })();
+    </script>
+    <script src="js/paid-ads.js" defer></script>
+</head>
+
+<body class="lp">
+    <!-- Icon sprite (stroke icons, inherit currentColor) -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+        <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3z"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><path d="M16 4a4 4 0 0 1 0 8"/><path d="M22 21v-1a6 6 0 0 0-4-5.6"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+        <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+        <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></symbol>
+        <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+        <symbol id="i-trend" viewBox="0 0 24 24"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></symbol>
+        <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
+        <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+    </svg>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="lp-header">
+        <div class="lp-container lp-header__inner">
+            <a class="lp-logo" href="index.html" aria-label="DONCARLOS Design home">
+                <img src="images/Layer 1.svg" alt="" width="28" height="28">
+                <span>DONCARLOS</span>
+            </a>
+            <div class="lp-header__actions">
+                <button type="button" class="lp-theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+                    <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+                    <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+                </button>
+                <a class="lp-btn lp-btn--primary lp-btn--sm" href="#inquiry">Get started</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Hero -->
+        <section class="lp-hero" aria-labelledby="hero-title">
+            <div class="lp-container lp-hero__grid">
+                <div class="lp-hero__copy">
+                    <p class="lp-eyebrow">Paid ads for local &amp; service businesses</p>
+                    <h1 id="hero-title">Paid ads built to bring in <span class="lp-highlight">qualified leads</span>, not just clicks.</h1>
+                    <p class="lp-lead">I plan, design, launch and manage Meta and Google Ads campaigns for service
+                        businesses, with conversion tracking and plain-English reporting so you can see what your ad
+                        spend is actually producing.</p>
+                    <div class="lp-actions">
+                        <a class="lp-btn lp-btn--primary" href="#inquiry">Request a strategy call
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        <a class="lp-btn lp-btn--ghost" href="#included">See what's included</a>
+                    </div>
+                    <ul class="lp-tags" aria-label="Services">
+                        <li>Meta Ads</li>
+                        <li>Google Ads</li>
+                        <li>Ad creative</li>
+                        <li>Conversion tracking</li>
+                        <li>Reporting</li>
+                    </ul>
+                </div>
+
+                <aside class="lp-flow" aria-labelledby="flow-title">
+                    <p class="lp-flow__title" id="flow-title">How every lead gets accounted for</p>
+                    <ol class="lp-flow__steps">
+                        <li>
+                            <span class="lp-flow__icon lp-tone-1"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg></span>
+                            <span><strong>The ad</strong>Designed for your offer and audience on Meta or Google</span>
+                        </li>
+                        <li>
+                            <span class="lp-flow__icon lp-tone-2"><svg class="icon" aria-hidden="true"><use href="#i-layout"/></svg></span>
+                            <span><strong>The landing page</strong>A focused page that matches the ad's promise</span>
+                        </li>
+                        <li>
+                            <span class="lp-flow__icon lp-tone-3"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+                            <span><strong>The lead</strong>A form fill or call, captured as a conversion</span>
+                        </li>
+                        <li>
+                            <span class="lp-flow__icon lp-tone-1"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></span>
+                            <span><strong>The report</strong>Leads and cost per lead, by campaign</span>
+                        </li>
+                    </ol>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Fit -->
+        <section class="lp-section" id="fit" aria-labelledby="fit-title">
+            <div class="lp-container">
+                <div class="lp-section__head">
+                    <p class="lp-eyebrow">Who it's for</p>
+                    <h2 id="fit-title">Built for businesses where one new customer is worth real money</h2>
+                    <p>Paid acquisition works best when a single job, patient or client covers the cost of finding
+                        them several times over.</p>
+                </div>
+                <ul class="lp-industries">
+                    <li>Home services &amp; trades</li>
+                    <li>Med spas &amp; clinics</li>
+                    <li>Dental &amp; wellness practices</li>
+                    <li>Legal &amp; professional services</li>
+                    <li>Real estate &amp; mortgage</li>
+                    <li>Fitness &amp; studios</li>
+                </ul>
+                <div class="lp-fit">
+                    <div class="lp-fit__col lp-fit__col--yes">
+                        <h3>A good fit if you</h3>
+                        <ul>
+                            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Can take on more customers and want a steadier flow of leads</li>
+                            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Earn enough per customer that a qualified lead is worth paying for</li>
+                            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Are ready to invest in both management and a real monthly ad budget</li>
+                            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Want to see what's working in numbers, not guesses</li>
+                        </ul>
+                    </div>
+                    <div class="lp-fit__col lp-fit__col--no">
+                        <h3>Probably not a fit if you</h3>
+                        <ul>
+                            <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Want results without spending on ads</li>
+                            <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Need a guaranteed number of leads before starting</li>
+                            <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Can't follow up with new leads quickly</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="lp-section lp-section--alt" id="why" aria-labelledby="why-title">
+            <div class="lp-container">
+                <div class="lp-section__head">
+                    <p class="lp-eyebrow">Why ads stall</p>
+                    <h2 id="why-title">Most ad accounts don't fail because of the platform</h2>
+                    <p>They fail on the basics around it. These are the three gaps I look for first.</p>
+                </div>
+                <div class="lp-cards lp-cards--3">
+                    <article class="lp-card">
+                        <span class="lp-card__icon lp-tone-1"><svg class="icon" aria-hidden="true"><use href="#i-pulse"/></svg></span>
+                        <h3>No reliable tracking</h3>
+                        <p>If calls and form fills aren't recorded as conversions, the platforms optimize for clicks
+                            and you can't tell which dollars turned into customers.</p>
+                    </article>
+                    <article class="lp-card">
+                        <span class="lp-card__icon lp-tone-2"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg></span>
+                        <h3>Creative that blends in</h3>
+                        <p>Stock photos and recycled ads get scrolled past. Creative is one of the biggest levers you
+                            control, and it's usually the least developed.</p>
+                    </article>
+                    <article class="lp-card">
+                        <span class="lp-card__icon lp-tone-3"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg></span>
+                        <h3>Set-and-forget management</h3>
+                        <p>Campaigns drift. Budgets, audiences, keywords and ads need regular attention, not a
+                            quarterly check-in.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Included -->
+        <section class="lp-section" id="included" aria-labelledby="included-title">
+            <div class="lp-container">
+                <div class="lp-section__head">
+                    <p class="lp-eyebrow">What's included</p>
+                    <h2 id="included-title">Everything it takes to run paid acquisition properly</h2>
+                    <p>One monthly engagement covers the strategy, the creative and the day-to-day management.</p>
+                </div>
+                <div class="lp-cards lp-cards--4">
+                    <article class="lp-card lp-card--compact">
+                        <span class="lp-card__icon lp-tone-1"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span>
+                        <h3>Campaign strategy</h3>
+                        <p>Channels, offers, audiences and budget split, planned around what a lead is worth to you.</p>
+                    </article>
+                    <article class="lp-card lp-card--compact">
+                        <span class="lp-card__icon lp-tone-2"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
+                        <h3>Meta Ads</h3>
+                        <p>Facebook and Instagram campaigns that reach the right people in your service area.</p>
+                    </article>
+                    <article class="lp-card lp-card--compact">
+                        <span class="lp-card__icon lp-tone-3"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg></span>
+                        <h3>Google Ads</h3>
+                        <p>Search campaigns that show up when people are actively looking for what you do.</p>
+                    </article>
+                    <article class="lp-card lp-card--compact">
+                        <span class="lp-card__icon lp-tone-1"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg></span>
+                        <h3>Ad creative</h3>
+                        <p>Static and video ad concepts, copy and variations, designed in-house and refreshed over time.</p>
+                    </article>
+                    <article class="lp-card lp-card--compact">
+                        <span class="lp-card__icon lp-tone-2"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg></span>
+                        <h3>Campaign setup</h3>
+                        <p>Account structure, targeting, keywords, budgets and naming, built cleanly from the start.</p>
+                    </article>
+                    <article class="lp-card lp-card--compact">
+                        <span class="lp-card__icon lp-tone-3"><svg class="icon" aria-hidden="true"><use href="#i-pulse"/></svg></span>
+                        <h3>Conversion tracking</h3>
+                        <p>Form fills and calls tracked as conversions, so the platforms optimize for leads.</p>
+                    </article>
+                    <article class="lp-card lp-card--compact">
+                        <span class="lp-card__icon lp-tone-1"><svg class="icon" aria-hidden="true"><use href="#i-trend"/></svg></span>
+                        <h3>Ongoing optimization</h3>
+                        <p>Testing, bid and budget adjustments, and cutting what isn't working.</p>
+                    </article>
+                    <article class="lp-card lp-card--compact">
+                        <span class="lp-card__icon lp-tone-2"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></span>
+                        <h3>Reporting</h3>
+                        <p>A clear monthly report: leads, cost per lead, what changed and what's next.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creative edge -->
+        <section class="lp-section lp-section--alt" id="creative" aria-labelledby="creative-title">
+            <div class="lp-container lp-split">
+                <div class="lp-split__copy">
+                    <p class="lp-eyebrow">The design advantage</p>
+                    <h2 id="creative-title">Designer-led creative, from the ad to the landing page</h2>
+                    <p>I've spent more than 17 years as a designer. That includes three years (2021 to 2024) creating
+                        campaign landing pages, email and banner sets and print collateral for Cigna and Evernorth
+                        through Summer Friday.</p>
+                    <p>That background is built into every campaign: the person reading your numbers is also the
+                        person designing your ads and landing pages, so creative changes happen quickly and stay on
+                        brand.</p>
+                    <a class="lp-link" href="project-cigna.html">See the Cigna &amp; Evernorth design work
+                        <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                </div>
+                <div class="lp-split__media">
+                    <figure class="lp-shot lp-shot--back">
+                        <img src="images/projects/cigna/ewc-landing-page.webp" width="1200" height="1320"
+                            alt="Evernorth wellness landing page design" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="lp-shot lp-shot--front">
+                        <img src="images/projects/cigna/dental-landing-page.webp" width="1200" height="1320"
+                            alt="Cigna dental preventive care campaign landing page design" loading="lazy"
+                            decoding="async">
+                    </figure>
+                    <p class="lp-shot__caption">Campaign landing page design for Cigna and Evernorth, created at
+                        Summer Friday.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="lp-section" id="process" aria-labelledby="process-title">
+            <div class="lp-container">
+                <div class="lp-section__head">
+                    <p class="lp-eyebrow">How it works</p>
+                    <h2 id="process-title">From first call to a campaign you can measure</h2>
+                </div>
+                <ol class="lp-steps">
+                    <li class="lp-step">
+                        <span class="lp-step__num" aria-hidden="true">1</span>
+                        <h3>Discovery call</h3>
+                        <p>We talk through your services, service area, margins and what a good lead looks like for
+                            you.</p>
+                    </li>
+                    <li class="lp-step">
+                        <span class="lp-step__num" aria-hidden="true">2</span>
+                        <h3>Audit &amp; plan</h3>
+                        <p>I review any existing ad accounts, tracking and landing pages, then map out channels,
+                            budget, offers and creative.</p>
+                    </li>
+                    <li class="lp-step">
+                        <span class="lp-step__num" aria-hidden="true">3</span>
+                        <h3>Build &amp; launch</h3>
+                        <p>Tracking is set up first, then campaigns, audiences, keywords and ad creative. Nothing goes
+                            live untracked.</p>
+                    </li>
+                    <li class="lp-step">
+                        <span class="lp-step__num" aria-hidden="true">4</span>
+                        <h3>Optimize &amp; report</h3>
+                        <p>Ongoing testing and budget adjustments, with a monthly report on leads, cost per lead and
+                            what's changing next.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Investment -->
+        <section class="lp-section lp-section--tight" id="investment" aria-labelledby="investment-title">
+            <div class="lp-container">
+                <div class="lp-invest">
+                    <div>
+                        <p class="lp-eyebrow lp-eyebrow--light">Investment</p>
+                        <h2 id="investment-title">A monthly management fee, separate from your ad spend</h2>
+                    </div>
+                    <div class="lp-invest__body">
+                        <p>Your ad budget is paid directly to Meta and Google. My fee covers strategy, creative,
+                            management and reporting, and depends on the channels, campaigns and creative volume
+                            involved.</p>
+                        <p>You'll get a clear quote after the discovery call, before anything is signed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="lp-section" id="faq" aria-labelledby="faq-title">
+            <div class="lp-container lp-container--narrow">
+                <div class="lp-section__head">
+                    <p class="lp-eyebrow">Questions</p>
+                    <h2 id="faq-title">Before you reach out</h2>
+                </div>
+                <div class="lp-faq">
+                    <details>
+                        <summary>Is ad spend included in your fee?</summary>
+                        <p>No. Ad spend is paid directly to Meta and Google from your own accounts. My monthly fee is
+                            separate and covers strategy, creative, management and reporting.</p>
+                    </details>
+                    <details>
+                        <summary>Can you guarantee results?</summary>
+                        <p>No, and you should be careful with anyone who guarantees a specific number of leads before
+                            they've seen your market and your tracking. What I commit to is a clear plan, proper
+                            tracking, active management and honest reporting.</p>
+                    </details>
+                    <details>
+                        <summary>I'm already running ads. Can you take over?</summary>
+                        <p>Yes. I start by reviewing what's running, how it's tracked and what it's producing, then
+                            recommend whether to keep, restructure or rebuild.</p>
+                    </details>
+                    <details>
+                        <summary>Do I need a new website?</summary>
+                        <p>Not necessarily. Often the best move is a focused landing page for the campaign. If your
+                            current pages are holding results back, I'll tell you, and I can design and build what's
+                            needed.</p>
+                    </details>
+                    <details>
+                        <summary>Which platforms do you manage?</summary>
+                        <p>Meta (Facebook and Instagram) and Google Ads. We'll decide on the call which one, or which
+                            mix, makes sense for your business.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inquiry -->
+        <section class="lp-section lp-section--alt" id="inquiry" aria-labelledby="inquiry-title">
+            <div class="lp-container lp-inquiry">
+                <div class="lp-inquiry__intro">
+                    <p class="lp-eyebrow">Get started</p>
+                    <h2 id="inquiry-title">Tell me about your business</h2>
+                    <p>A few quick details help me understand whether paid ads are the right next step for you.</p>
+                    <ol class="lp-next">
+                        <li>I read every inquiry myself.</li>
+                        <li>If it looks like a fit, I'll reach out to set up a discovery call.</li>
+                        <li>You'll get an honest recommendation, even if that's "not yet."</li>
+                    </ol>
+                    <p class="lp-booking" hidden>
+                        <span>Prefer to talk first?</span>
+                        <a class="lp-btn lp-btn--ghost" data-booking-link href="#" target="_blank" rel="noopener">
+                            <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>
+                            Book a call<span class="visually-hidden"> (opens in a new tab)</span></a>
+                    </p>
+                </div>
+
+                <div class="lp-form-card">
+                    <!-- Shown via :target when the no-JavaScript fallback redirects back with an error -->
+                    <div class="lp-alert lp-alert--error lp-alert--target" id="inquiry-error" role="alert">
+                        <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+                        <p>Something went wrong sending your inquiry. Please check the form and try again.</p>
+                    </div>
+
+                    <form class="lp-form" id="lead-form" action="/api/lead" method="POST" novalidate>
+                        <p class="lp-form__note"><span aria-hidden="true">*</span> Required</p>
+
+                        <div class="lp-form__row">
+                            <div class="lp-field">
+                                <label for="lf-name">Your name <span class="req" aria-hidden="true">*</span></label>
+                                <input id="lf-name" name="name" type="text" autocomplete="name" maxlength="100"
+                                    required aria-describedby="lf-name-err">
+                                <p class="lp-field__error" id="lf-name-err"></p>
+                            </div>
+                            <div class="lp-field">
+                                <label for="lf-company">Business name <span class="req" aria-hidden="true">*</span></label>
+                                <input id="lf-company" name="company" type="text" autocomplete="organization"
+                                    maxlength="120" required aria-describedby="lf-company-err">
+                                <p class="lp-field__error" id="lf-company-err"></p>
+                            </div>
+                        </div>
+
+                        <div class="lp-form__row">
+                            <div class="lp-field">
+                                <label for="lf-email">Email <span class="req" aria-hidden="true">*</span></label>
+                                <input id="lf-email" name="email" type="email" autocomplete="email" maxlength="254"
+                                    inputmode="email" required aria-describedby="lf-email-err">
+                                <p class="lp-field__error" id="lf-email-err"></p>
+                            </div>
+                            <div class="lp-field">
+                                <label for="lf-phone">Phone <span class="opt">(optional)</span></label>
+                                <input id="lf-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"
+                                    aria-describedby="lf-phone-err">
+                                <p class="lp-field__error" id="lf-phone-err"></p>
+                            </div>
+                        </div>
+
+                        <div class="lp-field">
+                            <label for="lf-website">Website <span class="opt">(optional)</span></label>
+                            <input id="lf-website" name="website" type="text" autocomplete="url" maxlength="200"
+                                inputmode="url" placeholder="yourbusiness.com" aria-describedby="lf-website-err">
+                            <p class="lp-field__error" id="lf-website-err"></p>
+                        </div>
+
+                        <div class="lp-field">
+                            <label for="lf-industry">Type of business <span class="req" aria-hidden="true">*</span></label>
+                            <select id="lf-industry" name="industry" required aria-describedby="lf-industry-err">
+                                <option value="">Choose one</option>
+                                <option>Home services &amp; trades</option>
+                                <option>Med spa or clinic</option>
+                                <option>Dental or wellness practice</option>
+                                <option>Legal or professional services</option>
+                                <option>Real estate or mortgage</option>
+                                <option>Fitness or studio</option>
+                                <option>Other local or service business</option>
+                            </select>
+                            <p class="lp-field__error" id="lf-industry-err"></p>
+                        </div>
+
+                        <div class="lp-form__row">
+                            <div class="lp-field">
+                                <label for="lf-spend">Current monthly ad spend <span class="req" aria-hidden="true">*</span></label>
+                                <select id="lf-spend" name="ad_spend" required aria-describedby="lf-spend-err">
+                                    <option value="">Choose one</option>
+                                    <option>Not running ads yet</option>
+                                    <option>Under $1,000</option>
+                                    <option>$1,000 to $3,000</option>
+                                    <option>$3,000 to $10,000</option>
+                                    <option>$10,000+</option>
+                                </select>
+                                <p class="lp-field__error" id="lf-spend-err"></p>
+                            </div>
+                            <div class="lp-field">
+                                <label for="lf-budget">Monthly budget for management <span class="req" aria-hidden="true">*</span></label>
+                                <select id="lf-budget" name="budget" required aria-describedby="lf-budget-hint lf-budget-err">
+                                    <option value="">Choose one</option>
+                                    <option>Under $1,500</option>
+                                    <option>$1,500 to $2,500</option>
+                                    <option>$2,500+</option>
+                                    <option>Not sure yet</option>
+                                </select>
+                                <p class="lp-field__hint" id="lf-budget-hint">Not including ad spend.</p>
+                                <p class="lp-field__error" id="lf-budget-err"></p>
+                            </div>
+                        </div>
+
+                        <fieldset class="lp-field lp-checks">
+                            <legend>Platforms you're interested in <span class="opt">(optional)</span></legend>
+                            <label><input type="checkbox" name="platforms" value="Meta (Facebook & Instagram)"> Meta (Facebook &amp; Instagram)</label>
+                            <label><input type="checkbox" name="platforms" value="Google Ads"> Google Ads</label>
+                            <label><input type="checkbox" name="platforms" value="Not sure yet"> Not sure yet</label>
+                        </fieldset>
+
+                        <div class="lp-field">
+                            <label for="lf-goals">What do you want paid ads to do for your business? <span class="req" aria-hidden="true">*</span></label>
+                            <textarea id="lf-goals" name="goals" rows="5" maxlength="3000" required
+                                aria-describedby="lf-goals-err"
+                                placeholder="For example: more booked consultations, fill weekday slots, launch a new service area"></textarea>
+                            <p class="lp-field__error" id="lf-goals-err"></p>
+                        </div>
+
+                        <!-- Honeypot: hidden from people and assistive tech; bots tend to fill it -->
+                        <div class="lp-hp" aria-hidden="true">
+                            <label for="lf-extra">Leave this field empty</label>
+                            <input id="lf-extra" name="extra_info" type="text" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <button class="lp-btn lp-btn--primary lp-btn--block" type="submit">
+                            <span class="lp-btn__label">Send my inquiry</span>
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                        </button>
+
+                        <p class="lp-form__privacy">I'll only use these details to respond to your inquiry.</p>
+
+                        <div class="lp-alert lp-alert--error" data-form-error role="alert" tabindex="-1" hidden>
+                            <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+                            <p>Your inquiry couldn't be sent. Please try again in a moment, or reach me on
+                                <a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank"
+                                    rel="noopener">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="lp-footer">
+        <div class="lp-container lp-footer__inner">
+            <a href="index.html" class="lp-footer__logo" aria-label="DONCARLOS Design home">
+                <img src="images/Footer-Logo-Optimized-Simple.svg" alt="" class="logo-light" width="160" height="40">
+                <img src="images/Footer-Logo-White.svg" alt="" class="logo-dark" width="160" height="40">
+            </a>
+            <nav aria-label="Site">
+                <ul class="lp-footer__links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="https://www.linkedin.com/in/carlosaguilarjr/" target="_blank" rel="noopener">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+                </ul>
+            </nav>
+            <p class="lp-footer__copy">&copy; <span data-year>2026</span> DON CARLOS DESIGN</p>
+        </div>
+    </footer>
+
+    <!-- Mobile sticky CTA: shown after the hero, hidden while the form is on screen -->
+    <div class="lp-sticky" data-sticky-cta hidden>
+        <a class="lp-btn lp-btn--primary lp-btn--block" href="#inquiry">Request a strategy call</a>
+    </div>
+</body>
+
+</html>
