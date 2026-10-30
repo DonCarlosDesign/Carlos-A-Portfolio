@@ -92,7 +92,9 @@ Nothing is installed yet and no ID is invented. The page is prepared so one cont
 
 ## 4. Before production approval
 
-- [ ] Step 1 done and a test lead received.
+- [x] Step 1 verified on Preview: real browser submission reached confirmation and email arrived
+      in the configured Gmail inbox on 2026-10-30 at 3:00 PM America/New_York.
+      See `PREVIEW-VERIFICATION.md`. Production still needs its own post-launch test.
 - [x] Independent Codex audit run against `docs/paid-ads/AUDIT-HANDOFF.md` and its important findings resolved.
       See `AUDIT-RESULTS.md` for coverage, minor follow-ups and test limits.
 - [ ] Owner review of the final screenshots.

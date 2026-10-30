@@ -120,7 +120,8 @@ visitors *experience* excellent paid media while scrolling (SELL, SHOW, EXPLAIN,
 
 ## Owner inputs still needed before launch
 
-- [ ] **Resend + Vercel env vars** (required; the form must work before launch). See `LAUNCH-CHECKLIST.md` step 1.
+- [x] **Resend + Vercel env vars** verified with a delivered Preview lead on 2026-10-30.
+      See `PREVIEW-VERIFICATION.md`; repeat the test on production after launch.
 - [ ] **`www` redirect** in Vercel + Namecheap. See `LAUNCH-CHECKLIST.md` step 2.
 - [x] **Independent Codex audit** completed. See `AUDIT-RESULTS.md`.
 - [ ] Later, when paid traffic starts: GTM container and conversion tags. See `LAUNCH-CHECKLIST.md` step 3.
@@ -129,8 +130,9 @@ visitors *experience* excellent paid media while scrolling (SELL, SHOW, EXPLAIN,
 
 Independent Codex audit completed on 2026-10-30 against checkpoint `e6ff916`.
 See `AUDIT-RESULTS.md` for findings, fixes, verification and remaining setup gates.
-The review approves proceeding to Resend + Vercel setup; a real delivered test lead
-and owner review are still required before production approval.
+The review approved proceeding to Resend + Vercel setup. A real Preview test lead
+was subsequently delivered and verified; final release approval and the remaining
+launch checklist still apply.
 
 ## Rollback
 
