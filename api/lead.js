@@ -170,8 +170,13 @@ module.exports = async function handler(req, res) {
     const apiKey = process.env.RESEND_API_KEY;
     const to = (process.env.LEAD_TO_EMAIL || '').split(',').map(s => s.trim()).filter(Boolean);
     const from = process.env.LEAD_FROM_EMAIL;
-    if (!apiKey || !to.length || !from) {
-        console.error('Lead form is not configured: set RESEND_API_KEY, LEAD_TO_EMAIL and LEAD_FROM_EMAIL.');
+    const missingConfig = [];
+    if (!apiKey) missingConfig.push('RESEND_API_KEY');
+    if (!to.length) missingConfig.push('LEAD_TO_EMAIL');
+    if (!from) missingConfig.push('LEAD_FROM_EMAIL');
+    if (missingConfig.length) {
+        // Names only: never log environment values, credentials or lead data.
+        console.error(`Lead form is not configured: missing ${missingConfig.join(', ')}.`);
         return reply(500, { ok: false, error: 'Lead form is not configured' }, '/paid-ads.html#inquiry-error');
     }
 

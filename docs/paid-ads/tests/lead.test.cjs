@@ -19,7 +19,7 @@ async function request(body, { method = 'POST', json = true, env = true, failure
     const sent = [], logs = [];
     const context = vm.createContext({
         module: { exports: {} }, URLSearchParams, AbortSignal,
-        process: { env: env ? { RESEND_API_KEY: 'stub', LEAD_TO_EMAIL: 'owner@example.com', LEAD_FROM_EMAIL: 'leads@example.com' } : {} },
+        process: { env: env === true ? { RESEND_API_KEY: 'stub', LEAD_TO_EMAIL: 'owner@example.com', LEAD_FROM_EMAIL: 'leads@example.com' } : env || {} },
         console: { warn: (...args) => logs.push(args.join(' ')), error: (...args) => logs.push(args.join(' ')) },
         fetch: async (_, options) => {
             sent.push(JSON.parse(options.body));
@@ -89,6 +89,20 @@ test('no-JavaScript URL-encoded posts redirect to local success/error pages', as
         const r = await request(body, { json: false });
         assert.equal(r.status, 303);
         assert.equal(r.headers.Location, location);
+    }
+});
+
+test('missing configuration logs identify only absent names without exposing values', async () => {
+    const configured = { RESEND_API_KEY: 'private-test-key', LEAD_TO_EMAIL: 'private-owner@example.com', LEAD_FROM_EMAIL: 'private-sender@example.com' };
+    for (const missing of Object.keys(configured)) {
+        const env = { ...configured };
+        delete env[missing];
+        const r = await request(valid, { env });
+        assert.equal(r.status, 500);
+        assert.equal(r.sent.length, 0);
+        assert.deepEqual(r.logs, [`Lead form is not configured: missing ${missing}.`]);
+        assert.equal(r.body.error, 'Lead form is not configured');
+        assert.ok(!JSON.stringify(r).includes('private-'));
     }
 });
 
