@@ -117,6 +117,9 @@ visitors *experience* excellent paid media while scrolling (SELL, SHOW, EXPLAIN,
 
 31. The owner requested seamless global navigation for Paid Ads. All 14 public pages now link to the service from their headers and footers; the homepage has a dedicated service entry. Paid pages provide matching Home, Projects, About, Paid Ads and Contact navigation while retaining the inquiry CTA.
 32. A small shared site-nav.js handles native menu buttons, expanded state, Escape/focus return, outside-click closing and breakpoint changes. Existing portfolio styling and the landing page offer/form/tracking remain intact. The historical audit describes the earlier standalone checkpoint; integration is a subsequent authorized scope change.
+33. After the delivered Preview test, the owner explicitly approved merging and publishing.
+    The feature was fast-forwarded into `master` and deployed to production on 2026-10-30.
+    A real production browser submission and inbox delivery passed; see `PRODUCTION-VERIFICATION.md`.
 
 ## Owner inputs still needed before launch
 
@@ -130,9 +133,9 @@ visitors *experience* excellent paid media while scrolling (SELL, SHOW, EXPLAIN,
 
 Independent Codex audit completed on 2026-10-30 against checkpoint `e6ff916`.
 See `AUDIT-RESULTS.md` for findings, fixes, verification and remaining setup gates.
-The review approved proceeding to Resend + Vercel setup. A real Preview test lead
-was subsequently delivered and verified; final release approval and the remaining
-launch checklist still apply.
+The review approved proceeding to Resend + Vercel setup. Real Preview and production
+test leads were subsequently delivered and verified. Owner release approval was received;
+the remaining `www` and future tracking tasks are recorded in the launch checklist.
 
 ## Rollback
 

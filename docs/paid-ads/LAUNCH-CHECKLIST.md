@@ -97,7 +97,9 @@ Nothing is installed yet and no ID is invented. The page is prepared so one cont
       See `PREVIEW-VERIFICATION.md`. Production still needs its own post-launch test.
 - [x] Independent Codex audit run against `docs/paid-ads/AUDIT-HANDOFF.md` and its important findings resolved.
       See `AUDIT-RESULTS.md` for coverage, minor follow-ups and test limits.
-- [ ] Owner review of the final screenshots.
-- [ ] Then: push the branch, open a PR into `master`, check the Vercel preview deployment, merge.
-      Vercel deploys `master` to production automatically.
-- [ ] After launch: submit one real test lead on production, and check the `www` redirect.
+- [x] Owner reviewed the preview and explicitly approved production publication.
+- [x] Tested feature merged into `master` and pushed on 2026-10-30. Published through
+      Vercel's Git integration after owner approval; direct fast-forward merge, no PR created.
+- [x] Production browser submission reached confirmation and its email arrived in Gmail INBOX
+      on 2026-10-30 at 3:31 PM America/New_York. See `PRODUCTION-VERIFICATION.md`.
+- [ ] Configure and verify the `www` redirect. The apex domain is live; `www` still lacks DNS/configuration.
