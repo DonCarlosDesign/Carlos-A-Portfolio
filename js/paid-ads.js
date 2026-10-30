@@ -23,10 +23,9 @@ function initTheme() {
     const toggle = document.querySelector('.lp-theme-toggle');
     if (!toggle) return;
 
+    // Toggle button pattern: the label stays "Dark mode", aria-pressed carries the state
     const sync = () => {
-        const dark = root.classList.contains('dark-theme');
-        toggle.setAttribute('aria-pressed', String(dark));
-        toggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        toggle.setAttribute('aria-pressed', String(root.classList.contains('dark-theme')));
     };
 
     toggle.addEventListener('click', function () {

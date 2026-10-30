@@ -52,7 +52,8 @@ No existing file was modified.
 11. **Spam:** hidden honeypot field (`extra_info`); submissions that fill it get a fake success and are
     logged, not emailed. No CAPTCHA (would add friction for paid traffic). No rate limiting yet.
 12. **Booking link** is hidden until `BOOKING_URL` in `js/paid-ads.js` is set.
-13. **Dark mode** uses the same `localStorage.theme` key and `dark-theme` class as the rest of the site.
+13. **"Strategy call"** is the single name for the first conversation everywhere on both pages.
+14. **Dark mode** uses the same `localStorage.theme` key and `dark-theme` class as the rest of the site.
 
 ## Owner inputs still needed before launch
 
@@ -64,11 +65,16 @@ No existing file was modified.
   - Ad spend is paid directly to Meta/Google from the client's own accounts.
   - Reporting is monthly.
   - "Nothing goes live untracked" (tracking set up before launch).
-  - Static and video ad creative is included and designed in-house.
-  - A quote is given after the discovery call, before anything is signed.
+  - Ad creative (concepts, copy, variations) is included and designed in-house. (Video was deliberately not promised.)
+  - A quote is given after the strategy call, before anything is signed.
   - "I read every inquiry myself."
 - [ ] **Tracking:** GA4/GTM, Meta Pixel and Google Ads conversion IDs, if this page should report its own conversions.
 - [ ] **Consider** fixing `www.doncarlosdesign.com` (no DNS record today) before ads point anywhere near it.
+
+## Audit
+
+The Codex CLI is not installed on this laptop, so the independent Codex audit has not run yet.
+The builder ran a self-review against the same checklist; the brief for Codex is in `AUDIT-HANDOFF.md`.
 
 ## Rollback
 

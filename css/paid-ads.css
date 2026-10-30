@@ -6,7 +6,6 @@
 :root {
     --primary: #6938EF;
     --secondary: #3B82F6;
-    --accent: #F471B5;
     --primary-ink: #5B2FD6;
     --text: #1F2433;
     --text-muted: #555B6B;
@@ -31,7 +30,6 @@
 .dark-theme {
     --primary: #6938EF;
     --secondary: #60A5FA;
-    --accent: #F472B6;
     --primary-ink: #A78BFA;
     --text: #E8EAF0;
     --text-muted: #B4B9C6;
@@ -727,7 +725,6 @@ body.lp {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 24px;
-    counter-reset: step;
 }
 
 .lp-step {
@@ -743,7 +740,7 @@ body.lp {
     align-items: center;
     justify-content: center;
     width: 36px;
-    height: 36px;
+    height: 32px;
     border-radius: 50%;
     background: var(--primary);
     color: #fff;
@@ -1099,7 +1096,7 @@ body.lp {
 }
 
 .lp-footer__logo img {
-    height: 36px;
+    height: 32px;
     width: auto;
 }
 
