@@ -4,7 +4,9 @@
 **Base:** `master` @ `9986bc3` (what is live on doncarlosdesign.com via Vercel)
 **Scope:** `git diff master...paid-acquisition-landing-page` (new files only; no existing file modified)
 
-Revision 2 (checkpoint 4) redesigned the page visually; see decisions 15 to 24. Read `docs/paid-ads/DECISIONS.md` first: it records the owner's direction and why the page is built this way.
+Revision 2 (checkpoint 4) redesigned the page visually; see decisions 15 to 24. Revision 3
+(checkpoint 5) renamed the concept brands, strengthened spec-work labeling and moved the conversion
+event to the thank-you page; see decisions 25 to 30. Read `docs/paid-ads/DECISIONS.md` first: it records the owner's direction and why the page is built this way.
 
 ## What to review
 
@@ -13,7 +15,7 @@ Revision 2 (checkpoint 4) redesigned the page visually; see decisions 15 to 24. 
 | `paid-ads.html` | Landing page for paid traffic: Meta/Google Ads management for local and service businesses |
 | `paid-ads-thanks.html` | Post-submit confirmation page |
 | `css/paid-ads.css` | Self-contained styles (does not load the site's `style.css`) |
-| `js/paid-ads.js` | Theme toggle, form validation/submission, sticky mobile CTA, optional booking link |
+| `js/paid-ads.js` | Theme toggle, form validation/submission, sticky mobile CTA, optional booking link, campaign tabs, reveals, thank-you `generate_lead` event |
 | `api/lead.js` | Vercel Node function `POST /api/lead` → Resend email |
 | `.vercelignore` | Excludes `docs/` from Vercel deployments |
 
@@ -33,7 +35,8 @@ Revision 2 (checkpoint 4) redesigned the page visually; see decisions 15 to 24. 
 9. **Form functionality:** happy path, validation, server errors, timeout, honeypot, email HTML escaping,
    header/subject injection, `reply_to`.
 10. **Performance:** critical path weight, image sizing/lazy loading, font loading, CLS.
-11. **Concept campaigns:** confirm every concept is clearly labeled fictional and nothing implies real
+11. **Concept campaigns:** confirm every concept is clearly labeled fictional spec work (brands: Solvane Dental,
+    Kelvenor Heating & Air, Oriselle Aesthetics, Vantmoor Injury Law, Halvrook Roofing) and nothing implies real
     client results or that DCD managed paid media for Cigna/Evernorth. Check the industry tabs
     (keyboard, ARIA), the swipe rows under 1100px, and reduced-motion behavior.
 12. **Marketing claims:** flag anything misleading, unverifiable or implying results. The page intentionally
@@ -58,8 +61,8 @@ static file serving + `req.body` parsing (JSON and urlencoded) + `res.status().j
   the button; theme persists across the site via `localStorage.theme`.
 - Contrast: automated check of every text node passes AA in light and dark.
 - Structure: one `h1`, no skipped heading levels, all fields labeled, no duplicate IDs, all in-page anchors resolve.
-- Layout: no horizontal overflow at 320, 375, 768, 1366.
-- Weight: HTML 7.7 KB + CSS 5.6 KB + JS 2.9 KB gzipped; no images above the fold; two lazy-loaded
+- Layout: no horizontal overflow at 320, 390, 768, 1280, 1440 (every industry tab checked).
+- Weight: HTML 14.6 KB + CSS 11.3 KB + JS 4.5 KB gzipped (checkpoint 5); no images above the fold; two lazy-loaded
   case-study screenshots (~205 KB) below.
 
 ## Known limitations / open items (not bugs unless you disagree)
@@ -70,7 +73,9 @@ static file serving + `req.body` parsing (JSON and urlencoded) + `res.status().j
   ~150 KB; no image tooling was available during the build.
 - `BOOKING_URL` in `js/paid-ads.js` is empty, so the "Book a call" option is hidden until the owner provides one.
 - GitHub Pages also publishes this repo; `/api/lead` does not exist there, so the form shows its error state.
-- No analytics or ad pixels are installed (owner decision pending). A `generate_lead` dataLayer event fires on success.
+- No analytics or ad pixels are installed (by owner decision, until paid traffic starts). The thank-you page pushes a
+  `generate_lead` dataLayer event once per real submission (sessionStorage flag). Please check it can't fire on
+  direct visits or reloads.
 
 ## Constraints for any fixes
 

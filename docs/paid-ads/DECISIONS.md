@@ -22,6 +22,7 @@ Branch: `paid-acquisition-landing-page` (from `master` at `9986bc3`). Not merged
 | `js/paid-ads.js` | Theme toggle, form validation + submit, sticky mobile CTA, booking link |
 | `api/lead.js` | `POST /api/lead` Vercel function, emails the lead through Resend |
 | `.vercelignore` | Keeps `docs/` off the Vercel deployment |
+| `docs/paid-ads/LAUNCH-CHECKLIST.md` | Owner setup steps: Resend, env vars, `www`, tracking, audit |
 
 No existing file was modified.
 
@@ -87,24 +88,35 @@ visitors *experience* excellent paid media while scrolling (SELL, SHOW, EXPLAIN,
 24. **Rhythm:** dark showcase, dark journey and the brand-gradient fit band alternate with light sections;
     the hero composition, showcase and proof media break out of the 1200px container.
 
+## Revision 3: owner decisions (2026-10-30)
+
+25. **Practice statements confirmed by the owner:** ad spend is paid directly to Meta/Google, separate
+    from the management fee; reporting is monthly; conversion tracking is set up before launch; ad
+    creative is included; a proposal comes before signing; the owner reads every inquiry (for now);
+    the Ad Opportunity Review is delivered by email; email-first, a call is optional. The copy already
+    matched; it was re-checked for any wording that implies a required call.
+26. **Booking link stays hidden** (`BOOKING_URL` empty). Not a launch blocker. Decision 13's "strategy
+    call" naming is superseded by decision 21 (email-first).
+27. **Concept brands renamed** because some old names overlapped with real businesses. New coined
+    names: Solvane Dental, Kelvenor Heating & Air, Oriselle Aesthetics, Vantmoor Injury Law, Halvrook
+    Roofing (and matching fictional domains). Web searches on 2026-10-30 found no business with these
+    exact names; that is a spot check, not a trademark search.
+28. **Spec-work labeling strengthened:** hero label "Concept campaign · fictional brands"; the showcase
+    intro says it is spec work and none are clients; the footnote says every brand, offer, web address
+    and page is fictional, created by DONCARLOS Design, with no results implied; the FAQ says the same.
+29. **Tracking prepared, not installed.** A `TRACKING` comment in both pages' `<head>` marks where the
+    Google Tag Manager snippet goes. The `generate_lead` dataLayer event moved from just before the
+    redirect to the thank-you page (one-time sessionStorage flag), so it can't be lost to navigation and
+    doesn't fire on direct visits or reloads. No IDs, pixels or analytics scripts were added.
+30. **Launch steps** (Resend, Vercel env vars, `www` redirect, tracking, Codex) are in
+    `LAUNCH-CHECKLIST.md`. DNS and Vercel settings are left to the owner.
+
 ## Owner inputs still needed before launch
 
-- [ ] **Resend:** verify `doncarlosdesign.com` in Resend, then in Vercel set
-      `RESEND_API_KEY`, `LEAD_TO_EMAIL`, `LEAD_FROM_EMAIL` (e.g. `DONCARLOS Leads <leads@doncarlosdesign.com>`).
-      Until then the form shows its error message.
-- [ ] **Booking URL** for the "Book a call" button.
-- [ ] **Confirm these practice statements** (the page states them as fact):
-  - Ad spend is paid directly to Meta/Google from the client's own accounts.
-  - Reporting is monthly.
-  - "Nothing goes live untracked" (tracking set up before launch).
-  - Ad creative (concepts, copy, variations) is included and designed in-house. (Video was deliberately not promised.)
-  - A quote is given after the strategy call, before anything is signed.
-  - "I read every inquiry myself."
-  - An "ad opportunity review" is something you'll deliver by email for qualified inquiries.
-  - "Starts by email. A call is optional." and "Most of the early back-and-forth happens by email."
-- [ ] **Concept brand names:** fictional, but confirm none collide with a real local business you know of.
-- [ ] **Tracking:** GA4/GTM, Meta Pixel and Google Ads conversion IDs, if this page should report its own conversions.
-- [ ] **Consider** fixing `www.doncarlosdesign.com` (no DNS record today) before ads point anywhere near it.
+- [ ] **Resend + Vercel env vars** (required; the form must work before launch). See `LAUNCH-CHECKLIST.md` step 1.
+- [ ] **`www` redirect** in Vercel + Namecheap. See `LAUNCH-CHECKLIST.md` step 2.
+- [ ] **Independent Codex audit** before production approval. See `AUDIT-HANDOFF.md`.
+- [ ] Later, when paid traffic starts: GTM container and conversion tags. See `LAUNCH-CHECKLIST.md` step 3.
 
 ## Audit
 

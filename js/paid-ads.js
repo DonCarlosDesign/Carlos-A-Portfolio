@@ -10,6 +10,10 @@ const LEAD_ENDPOINT = '/api/lead';
 const THANK_YOU_URL = 'paid-ads-thanks.html';
 const REQUEST_TIMEOUT_MS = 15000;
 
+// Set on a successful submit and read once on the thank-you page, so the
+// conversion event fires only for real submissions (not direct visits/reloads)
+const LEAD_FLAG_KEY = 'dcd_paid_ads_lead';
+
 // Set in the <head> script when the visitor hasn't asked for reduced motion
 const MOTION = document.documentElement.classList.contains('motion');
 
@@ -22,7 +26,22 @@ document.addEventListener('DOMContentLoaded', function () {
     initCampaignTabs();
     initReveals();
     initHeroDepth();
+    initLeadConversion();
 });
+
+// Thank-you page: push one generate_lead event to the dataLayer for a tag
+// manager to pick up. Nothing is sent anywhere until a container is installed.
+function initLeadConversion() {
+    if (!document.querySelector('[data-lead-confirmation]')) return;
+    let submitted = false;
+    try {
+        submitted = sessionStorage.getItem(LEAD_FLAG_KEY) === '1';
+        sessionStorage.removeItem(LEAD_FLAG_KEY);
+    } catch (e) { /* storage unavailable: no event */ }
+    if (!submitted) return;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'generate_lead', form_id: 'paid-ads-inquiry' });
+}
 
 // Industry tabs for the concept-campaign showcase (WAI-ARIA tabs pattern,
 // automatic activation, arrow/Home/End keys)
@@ -298,9 +317,9 @@ function initLeadForm() {
             const body = await res.json().catch(() => ({}));
 
             if (res.ok && body.ok) {
-                // Conversion event for Google Tag Manager / GA4 if a tag is added later
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({ event: 'generate_lead', form_id: 'paid-ads-inquiry' });
+                // The conversion event fires on the thank-you page (initLeadConversion),
+                // so it isn't lost to the redirect
+                try { sessionStorage.setItem(LEAD_FLAG_KEY, '1'); } catch (e) { }
                 window.location.assign(THANK_YOU_URL);
                 return;
             }
